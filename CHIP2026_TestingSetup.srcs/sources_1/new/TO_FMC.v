@@ -101,7 +101,7 @@ module TO_FMC(
     
     output[1:0] DIG_AXI_OUT_0,
     output[31:0] DIG_DEBUG_AXI_OUT_0,
-    output[3:0] DIG_DEBUG_AXI_OUT_1
+    output[1:0] DIG_DEBUG_AXI_OUT_1
     );
     
     //Update FMC INPUT PINS
@@ -109,36 +109,35 @@ module TO_FMC(
     
     //Update FMC OUTPUT PINS
     assign FMC_L21 = WL_EN;
-    assign FMC_L22 = BANK_EN_0;
-    assign FMC_R19 = BANK_EN_1;
-    assign FMC_T19 = BANK_EN_3;
-    assign FMC_K19 = BANK_EN_2;
+    assign FMC_L22 = BANK_EN[0];
+    assign FMC_R19 = BANK_EN[1];
+    assign FMC_T19 = BANK_EN[3];
+    assign FMC_K19 = BANK_EN[2];
     assign FMC_K20 = InputEN_DAC;
-    assign FMC_D20 = READ_EN;
-    assign FMC_C20 = BL_PCHG;
-    assign FMC_E21 = CLK_SA;
-    assign FMC_D21 = WRITE_EN;
-    assign FMC_N19 = SCN_SEL_0;
-    assign FMC_N20 = SCN_SEL_1;
-    assign FMC_J18 = SCN_SEL_2;
-    assign FMC_K18 = CS_0;
-    assign FMC_R20 = CS_1;
-    assign FMC_R21 = BL_SEL_0;
-    assign FMC_L17 = BL_SEL_1;
-    assign FMC_M17 = SA_EN;
-    assign FMC_B19 = CALIB_EN;
-    assign FMC_B20 = BANK_SEL;
-    assign FMC_E15 = DEL_RST;
-    assign FMC_D15 = PRECHARGE;
-    assign FMC_F18 = ENTIME;
-    assign FMC_E18 = ENCHG;
+    
+    assign FMC_D20 = BL_PCHG;
+    assign FMC_C20 = CLK_SA;
+    assign FMC_E21 = WRITE_EN;
+    assign FMC_D21 = SA_EN;
+    assign FMC_N19 = SCN_SEL[0];
+    assign FMC_N20 = SCN_SEL[1];
+    assign FMC_J18 = SCN_SEL[2];
+    assign FMC_K18 = SCN_SEL[3];
+    
+    assign FMC_R20 = CS[0];
+    assign FMC_R21 = CS[1];
+    assign FMC_L17 = CALIB_EN;
+    assign FMC_M17 = BANK_SEL;
+    
+    assign FMC_B19 = RST_CAP_B;
+    assign FMC_B20 = CHG_EN;
     assign FMC_M19 = VDAC_CTRL;
     assign FMC_M20 = VTC_EN;
     assign FMC_N22 = TDC_EN;
     assign FMC_P22 = TDC_RST;
     assign FMC_J21 = DFF_RST;
     assign FMC_J22 = TDC_COMPUTE;
-    assign FMC_G20 = IN;
+
     assign FMC_G21 = CTRL_EN;
     assign FMC_G19 = CLK_A;
     assign FMC_F19 = CLK_B;
@@ -147,7 +146,6 @@ module TO_FMC(
     assign FMC_B16 = CTRL_VB;
     assign FMC_B17 = CTRL_VBP;
     assign FMC_B21 = CTRL_VBN;
-    assign FMC_B22 = CTRL_AIN;
     
     //Update DEBUG AXI PINS 
     assign DIG_DEBUG_AXI_OUT_0[0]  = BANK_EN[0];
