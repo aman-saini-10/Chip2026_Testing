@@ -39,8 +39,6 @@ module dma_recv_data (
                     rx_done <= 1;
                 end
             end
-            
         end
     end
-
 endmodule

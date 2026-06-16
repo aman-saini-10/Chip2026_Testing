@@ -1,7 +1,7 @@
 module scan_out_verilog (
     input  wire        EN,
     input  wire        CLK,
-    input  wire [7:0]  N_Cycles,
+    input  wire [7:0]  N_CYCLES,
     input  wire        SCAN_OUT,
     input  wire [10:0]  scan_len_bits,
 
@@ -31,7 +31,7 @@ module scan_out_verilog (
                 0: begin // CLK_B high
                     CLK_B <= 1;
                     CLK_A <= 0;
-                    if (cycle_count == N_Cycles) begin
+                    if (cycle_count == N_CYCLES) begin
                         cycle_count <= 0;
                         phase <= 1;
                     end
@@ -39,7 +39,7 @@ module scan_out_verilog (
 
                 1: begin // CLK_B low
                     CLK_B <= 0;
-                    if (cycle_count == N_Cycles) begin
+                    if (cycle_count == N_CYCLES) begin
                         cycle_count <= 0;
                         phase <= 2;
                     end
@@ -48,7 +48,7 @@ module scan_out_verilog (
                 2: begin // CLK_A high, sample SCAN_OUT
                     CLK_A <= 1;
                     SCAN_OUT_BUFF[i] <= SCAN_OUT;  // <== direct write
-                    if (cycle_count == N_Cycles) begin
+                    if (cycle_count == N_CYCLES) begin
                         cycle_count <= 0;
                         phase <= 3;
                     end
@@ -56,7 +56,7 @@ module scan_out_verilog (
 
                 3: begin // CLK_A low
                     CLK_A <= 0;
-                    if (cycle_count == N_Cycles) begin
+                    if (cycle_count == N_CYCLES) begin
                         cycle_count <= 0;
                         if (i >= scan_len_bits - 1) begin
                             SCAN_DONE <= 1;
