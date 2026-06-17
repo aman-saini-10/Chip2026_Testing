@@ -192,7 +192,7 @@ module Verilog_Controller(
                         (SCN_ID == 1) ? 11'd900  :
                                         11'd900;  //Default for 0
 
-    
+
     // DMA Receive scan_in_data module definition 
     dma_recv_data u_recv (
         .clk(clk),
@@ -290,13 +290,63 @@ module Verilog_Controller(
     ////////////////////////////////////////////////////////
     // IMC OUT BLOCK (for fast IMC output reading)
     ////////////////////////////////////////////////////////
+    wire SCAN_IN_IMC, IN_EN_IMC, CLK_A_IMC, CLK_B_IMC, BANK_SEL_IMC, DFF_RST_IMC, FAST_IMC_DONE;
+    wire [3:0] BANK_EN_IMC, SCAN_SEL_IMC;
     IMC_ScanOut u_imc_scnout (
         .CLK(clk),
         .EN(FAST_IMC_EN),
         .SCAN_OUT(SCAN_OUT),
         .IMC_DONE(IMC_DONE),
-        .SCAN_IN(SCANIN_IMC)
-    )
-
-
+        .SCAN_IN(SCAN_IN_IMC),
+        .IN_EN(IN_EN_IMC),
+        .CLK_A(CLK_A_IMC),
+        .CLK_B(CLK_B_IMC),
+        .BANK_SEL(BANK_SEL_IMC),
+        .BANK_EN(BANK_EN_IMC),
+        .DFF_RST(DFF_RST_IMC),
+        .SCAN_SEL(SCAN_SEL_IMC),
+        .DONE(FAST_IMC_DONE),
+        .OUT(IMC_OUT_BUFF)
+    );
+    
+    ////////////////////////////////////////////////////////
+    // VERILOG CONTROLLER OUTPUT SIGNALS
+    ////////////////////////////////////////////////////////
+    assign SCAN_DONE_FLAGS = {FAST_IMC_DONE, WRITE_SRAM_DONE, SCAN_OUT_DONE, SCAN_IN_DONE};
+    assign BANK_EN = (FAST_IMC_EN) ? BANK_EN_IMC : BANK_EN_C;
+    
+    // Read & Write Signals
+    assign WL_EN = (WRITE_SRAM_EN) ? WLEN_SRAM : WL_EN_C;
+    assign SA_EN = SA_EN_C;
+    assign BL_PCHG = BL_PCHG_C;
+    assign CLK_SA = CLK_SA_C;
+    assign WRITE_EN = (WRITE_SRAM_EN == 1) ? WEN_SRAM : WRITE_EN_C;
+    assign CS = CS_C;
+    
+    // Scan Chain Signals
+    assign SCN_SEL = (FAST_IMC_EN == 1) ? SCAN_SEL_IMC : (VERILOG_C_SCN == 1) ? SCN_ID : SCN_SEL_C;
+    assign CLK_A = (FAST_IMC_EN == 1) ? CLK_A_IMC : (VERILOG_C_SCN == 1) ? CLK_A_VER : CLK_A_C;
+    assign CLK_B = (FAST_IMC_EN == 1) ? CLK_B_IMC : (VERILOG_C_SCN == 1) ? CLK_B_VER : CLK_B_C;
+    assign IN_EN = (FAST_IMC_EN == 1) ? IN_EN_IMC : IN_EN_C;
+    assign SCN_IN = (FAST_IMC_EN == 1) ? SCAN_IN_IMC : (VERILOG_C_SCN == 1) ? SCAN_IN_VER : SCN_IN_C;
+    
+    // Compute Signals
+    assign InputEN_DAC = InputEN_DAC_C;
+    assign CALIB_EN = CALIB_EN_C;
+    assign BANK_SEL = (FAST_IMC_EN == 1) ? BANK_SEL_IMC : BANK_SEL_C;
+    assign CHG_EN = CHG_EN_C;
+    assign RST_CAP_B = RST_CAP_B_C;
+    assign VDAC_CTRL = VDAC_CTRL_C;
+    assign VTC_EN = VTC_EN_C;
+    assign TDC_EN = TDC_EN_C;
+    assign TDC_RST = TDC_RST_C;
+    assign TDC_COMPUTE = TDC_COMPUTE_C;
+    assign DFF_RST = DFF_RST_C;
+    assign CTRL_EN = CTRL_EN_C;
+    
+    // TMUX SIGNALS
+    assign CTRL_VB = CTRL_VB_C;
+    assign CTRL_VBP = CTRL_VBP_C;
+    assign CTRL_VBN = CTRL_VBN_C;
+    
 endmodule

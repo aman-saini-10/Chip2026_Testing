@@ -1,0 +1,362 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Wed Jun 17 18:07:53 2026
+| Host         : aman-PC running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file Verilog_Controller_control_sets_placed.rpt
+| Design       : Verilog_Controller
+| Device       : xc7z020
+-----------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |   292 |
+| Unused register locations in slices containing registers |   165 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      1 |            2 |
+|      4 |            2 |
+|      5 |            2 |
+|      6 |            1 |
+|      8 |          212 |
+|     14 |            2 |
+|    16+ |           71 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |            2128 |          857 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              31 |           13 |
+| Yes          | No                    | No                     |            3600 |         2217 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |            1404 |          524 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+------------------------------------------------------+------------------------------------------------------------+------------------+----------------+
+|  Clock Signal  |                     Enable Signal                    |                      Set/Reset Signal                      | Slice Load Count | Bel Load Count |
++----------------+------------------------------------------------------+------------------------------------------------------------+------------------+----------------+
+|  clk_IBUF_BUFG |                                                      | u_write_sram/done_i_1_n_0                                  |                1 |              1 |
+|  clk_IBUF_BUFG | u_imc_scnout/DONE_i_1_n_0                            | u_imc_scnout/RSTB                                          |                1 |              1 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/E[0]                      | u_imc_scnout/RSTB                                          |                2 |              4 |
+|  clk_IBUF_BUFG | u_imc_scnout/BANK_EN[3]_i_1_n_0                      | u_imc_scnout/RSTB                                          |                1 |              4 |
+|  clk_IBUF_BUFG |                                                      | u_imc_scnout/u_imc_scanout/FSM_sequential_phase[1]_i_1_n_0 |                1 |              5 |
+|  clk_IBUF_BUFG |                                                      | u_imc_scnout/RSTB                                          |                4 |              5 |
+|  clk_IBUF_BUFG |                                                      | u_scn_in/FSM_sequential_phase[1]_i_1__1_n_0                |                2 |              6 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_102      |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_8     |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5    |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_14    |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_4         |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_1     |                                                            |                2 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_0     |                                                            |                2 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_3         |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_7         |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_8         |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_13    |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_15    |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_2     |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_3     |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_6         |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_17    |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_11 |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_12 |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_13 |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_14 |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_15 |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_16 |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_17 |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_18 |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_19 |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_2  |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_20 |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_21 |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_7  |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_23 |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_26 |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_27 |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_54       |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_28 |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_29 |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_30 |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_3  |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_31 |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_32 |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_33 |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_121      |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_122      |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_133      |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_104      |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_126      |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_135      |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_11       |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_17       |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_19       |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_128      |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_109      |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_103      |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_110      |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_105      |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_35 |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_34 |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_4  |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_119      |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_5  |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_6  |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_130      |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_131      |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_8  |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_18       |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_136      |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_101      |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_117      |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_9  |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[3]_rep__10   |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_108      |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[3]_rep__10_0 |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_112      |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_123      |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_114      |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_124      |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_125      |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_113      |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_12       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_16       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_10       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_100      |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_116      |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_111      |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_13       |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[3]_rep__10_1 |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_118      |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[3]_rep__10_2 |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_127      |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_132      |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_14       |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_21       |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_30       |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_2        |                                                            |                2 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[3]_rep__9_1  |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[3]_rep__9_0  |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_42       |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_47       |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_58       |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_63       |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_66       |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_40       |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_38       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_52       |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_68       |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_23       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_50       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_69       |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_61       |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_25       |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[3]_rep__9    |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[3]_rep__9_2  |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[3]_rep__9_3  |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_72       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_scn_out/p_0_in                                     | u_scn_out/FSM_sequential_phase[1]_i_1__0_n_0               |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_73       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_74       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_31       |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_26       |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_45       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_55       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/delay_cnt[7]_i_1_n_0                    | u_imc_scnout/RSTB                                          |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_22       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_67       |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_scn_in/p_0_in_0                                    | u_scn_in/FSM_sequential_phase[1]_i_1__1_n_0                |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_71       |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_75       |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_76       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_77       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_41       |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_53       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_44       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_35       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_27       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_49       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_37       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_28       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_3        |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_59       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_62       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_24 |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_60       |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_24       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_33       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_32       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_36       |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_39       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_46       |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_51       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_64       |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_81       |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_78       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_85       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_8        |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_88       |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_80       |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_89       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_9        |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_96       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_82       |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_90       |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_91       |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_83       |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_86       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_92       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_95       |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_99       |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_87       |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_94       |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_97       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_22 |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/p_0_in                    | u_imc_scnout/u_imc_scanout/FSM_sequential_phase[1]_i_1_n_0 |                2 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[0]_rep__2_7  |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]           |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_12        |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_10        |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[0]_rep__2    |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[0]_rep__2_6  |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_14        |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_11        |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_15        |                                                            |                2 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_1         |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[0]_rep__2_3  |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[0]_rep__2_2  |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_16        |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_17        |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_18        |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_19        |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[0]_rep__2_5  |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[0]_rep__2_1  |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[0]_rep__2_0  |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[0]_rep__2_4  |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_0         |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_13        |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_2         |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_20        |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_0  |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_5     |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_4     |                                                            |                3 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_9     |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep__8    |                                                            |                7 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_10    |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_7     |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_12    |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_6     |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_1  |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_5         |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_11    |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_10 |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep       |                                                            |                6 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_16    |                                                            |                4 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_9         |                                                            |                5 |              8 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[1]_rep_18    |                                                            |                8 |              8 |
+|  clk_IBUF_BUFG |                                                      | u_scn_out/FSM_sequential_phase[1]_i_1__0_n_0               |                5 |             14 |
+|  clk_IBUF_BUFG | u_send_scn/read_ptr[7]_i_2_n_0                       | u_send_scn/read_ptr[7]_i_1_n_0                             |                6 |             14 |
+|  clk_IBUF_BUFG | u_scn_in/i[10]_i_1__1_n_0                            | u_scn_in/FSM_sequential_phase[1]_i_1__1_n_0                |                7 |             17 |
+|  clk_IBUF_BUFG | u_send_imc/read_ptr[7]_i_2__0_n_0                    | u_send_imc/read_ptr[7]_i_1__0_n_0                          |                8 |             27 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[95]                                    | u_recv/buffer_flat[95]_i_1_n_0                             |               20 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[191]                                   | u_recv/buffer_flat[191]_i_1_n_0                            |                7 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[223]                                   | u_recv/buffer_flat[223]_i_1_n_0                            |                8 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[127]                                   | u_recv/buffer_flat[127]_i_1_n_0                            |               10 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[159]                                   | u_recv/buffer_flat[159]_i_1_n_0                            |               15 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[1055]                                  | u_recv/buffer_flat[1055]_i_1_n_0                           |               10 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[863]                                   | u_recv/buffer_flat[863]_i_1_n_0                            |               14 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[319]                                   | u_recv/buffer_flat[319]_i_1_n_0                            |               13 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[959]                                   | u_recv/buffer_flat[959]_i_1_n_0                            |               10 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[383]                                   | u_recv/buffer_flat[383]_i_1_n_0                            |                9 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[575]                                   | u_recv/buffer_flat[575]_i_1_n_0                            |               11 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[607]                                   | u_recv/buffer_flat[607]_i_1_n_0                            |               11 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[735]                                   | u_recv/buffer_flat[735]_i_1_n_0                            |               13 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[351]                                   | u_recv/buffer_flat[351]_i_1_n_0                            |               10 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[415]                                   | u_recv/buffer_flat[415]_i_1_n_0                            |               14 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[1023]                                  | u_recv/buffer_flat[1023]_i_1_n_0                           |               12 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[287]                                   | u_recv/buffer_flat[287]_i_1_n_0                            |                9 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[799]                                   | u_recv/buffer_flat[799]_i_1_n_0                            |               15 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[479]                                   | u_recv/buffer_flat[479]_i_1_n_0                            |               12 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[543]                                   | u_recv/buffer_flat[543]_i_1_n_0                            |               12 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[1119]                                  | u_recv/buffer_flat[1119]_i_1_n_0                           |               10 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[1087]                                  | u_recv/buffer_flat[1087]_i_1_n_0                           |                9 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[447]                                   | u_recv/buffer_flat[447]_i_1_n_0                            |               12 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[831]                                   | u_recv/buffer_flat[831]_i_1_n_0                            |               12 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[255]                                   | u_recv/buffer_flat[255]_i_1_n_0                            |                9 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[511]                                   | u_recv/buffer_flat[511]_i_1_n_0                            |               17 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[639]                                   | u_recv/buffer_flat[639]_i_1_n_0                            |               12 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[767]                                   | u_recv/buffer_flat[767]_i_1_n_0                            |               18 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[895]                                   | u_recv/buffer_flat[895]_i_1_n_0                            |               16 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[1183]                                  | u_recv/buffer_flat[1183]_i_1_n_0                           |                8 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[1151]                                  | u_recv/buffer_flat[1151]_i_1_n_0                           |                6 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[671]                                   | u_recv/buffer_flat[671]_i_1_n_0                            |               16 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[703]                                   | u_recv/buffer_flat[703]_i_1_n_0                            |               10 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[991]                                   | u_recv/buffer_flat[991]_i_1_n_0                            |                8 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[927]                                   | u_recv/buffer_flat[927]_i_1_n_0                            |               14 |             32 |
+|  clk_IBUF_BUFG | u_send_scn/m_axis_tdata[31]_i_2_n_0                  | u_send_scn/p_0_in                                          |               14 |             32 |
+|  clk_IBUF_BUFG | u_send_imc/m_axis_tdata[31]_i_2__0_n_0               | u_send_imc/p_0_in                                          |               24 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[63]                                    | u_recv/buffer_flat[63]_i_1_n_0                             |                8 |             32 |
+|  clk_IBUF_BUFG | u_recv/p_0_in[31]                                    | u_recv/buffer_flat[31]_i_1_n_0                             |                9 |             32 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/CEB2                      | u_imc_scnout/RSTB                                          |               20 |             57 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_15       |                                                            |               28 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_134      |                                                            |               43 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_129      |                                                            |               46 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_34       |                                                            |               43 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_29       |                                                            |               47 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_7        |                                                            |               49 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_65       |                                                            |               41 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_70       |                                                            |               31 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_56       |                                                            |               27 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_20       |                                                            |               32 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_93       |                                                            |               34 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_84       |                                                            |               45 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_57       |                                                            |               44 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_79       |                                                            |               41 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_5        |                                                            |               40 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_115      |                                                            |               43 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_48       |                                                            |               55 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_43       |                                                            |               57 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/scan_idx_reg[2]_rep__5_25 |                                                            |               38 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_106      |                                                            |               19 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_0        |                                                            |               30 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_120      |                                                            |               30 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_107      |                                                            |               20 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_98       |                                                            |               56 |             68 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]          |                                                            |               45 |             76 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_1        |                                                            |               31 |             76 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_6        |                                                            |               44 |             76 |
+|  clk_IBUF_BUFG | u_imc_scnout/u_imc_scanout/FSM_state_reg[3]_4        |                                                            |               20 |             76 |
+|  clk_IBUF_BUFG |                                                      |                                                            |              857 |           2128 |
++----------------+------------------------------------------------------+------------------------------------------------------------+------------------+----------------+
+
+

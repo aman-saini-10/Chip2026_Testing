@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Jun 17 18:06:36 2026
+# Process ID: 4688
+# Current directory: C:/Chip2026_Testing/CHIP2026_TestingSetup/CHIP2026_TestingSetup.runs/impl_1
+# Command line: vivado.exe -log Verilog_Controller.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source Verilog_Controller.tcl -notrace
+# Log file: C:/Chip2026_Testing/CHIP2026_TestingSetup/CHIP2026_TestingSetup.runs/impl_1/Verilog_Controller.vdi
+# Journal file: C:/Chip2026_Testing/CHIP2026_TestingSetup/CHIP2026_TestingSetup.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source Verilog_Controller.tcl -notrace

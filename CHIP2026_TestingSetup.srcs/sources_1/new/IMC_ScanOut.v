@@ -67,7 +67,7 @@ module IMC_ScanOut(
     scan_out_verilog u_imc_scanout (
         .EN(FSM_state == ST_SCAN_OUT),
         .CLK(CLK),
-        .NCycles(Ncycles),
+        .N_CYCLES(Ncycles),
         .SCAN_OUT(SCAN_OUT),
         .scan_len_bits(N_bits),
         .CLK_A(CLK_A_scnout),
