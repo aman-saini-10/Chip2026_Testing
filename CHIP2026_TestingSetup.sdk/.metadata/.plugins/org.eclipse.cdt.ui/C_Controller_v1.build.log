@@ -1,0 +1,23 @@
+11:52:13 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+'Finished building: ../src/echo.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 110856	   3040	5364000	5477896	 539608	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+
+11:52:14 Build Finished (took 1s.187ms)
+
