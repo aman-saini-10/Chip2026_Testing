@@ -27,7 +27,7 @@
  */
 
 #include <stdio.h>
-
+#include "unistd.h"
 #include "xparameters.h"
 
 #include "netif/xadapter.h"
@@ -40,91 +40,27 @@
 
 #include "lwip/tcp.h"
 #include "xil_cache.h"
+#include "state_machine.h"
+#include "echo.h"
 
-#if LWIP_IPV6==1
-#include "lwip/ip.h"
-#else
-#if LWIP_DHCP==1
-#include "lwip/dhcp.h"
-#endif
-#endif
-
-/* defined by each RAW mode application */
-void print_app_header();
-int start_application();
-int transfer_data();
-void tcp_fasttmr(void);
-void tcp_slowtmr(void);
-
-/* missing declaration in lwIP */
-void lwip_init();
-
-#if LWIP_IPV6==0
-#if LWIP_DHCP==1
-extern volatile int dhcp_timoutcntr;
-err_t dhcp_start(struct netif *netif);
-#endif
-#endif
-
-extern volatile int TcpFastTmrFlag;
-extern volatile int TcpSlowTmrFlag;
-static struct netif server_netif;
-struct netif *echo_netif;
-
-#if LWIP_IPV6==1
-void print_ip6(char *msg, ip_addr_t *ip)
-{
-	print(msg);
-	xil_printf(" %x:%x:%x:%x:%x:%x:%x:%x\n\r",
-			IP6_ADDR_BLOCK1(&ip->u_addr.ip6),
-			IP6_ADDR_BLOCK2(&ip->u_addr.ip6),
-			IP6_ADDR_BLOCK3(&ip->u_addr.ip6),
-			IP6_ADDR_BLOCK4(&ip->u_addr.ip6),
-			IP6_ADDR_BLOCK5(&ip->u_addr.ip6),
-			IP6_ADDR_BLOCK6(&ip->u_addr.ip6),
-			IP6_ADDR_BLOCK7(&ip->u_addr.ip6),
-			IP6_ADDR_BLOCK8(&ip->u_addr.ip6));
-
-}
-#else
-void
-print_ip(char *msg, ip_addr_t *ip)
-{
-	print(msg);
-	xil_printf("%d.%d.%d.%d\n\r", ip4_addr1(ip), ip4_addr2(ip),
-			ip4_addr3(ip), ip4_addr4(ip));
-}
-
-void
-print_ip_settings(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
-{
-
-	print_ip("Board IP: ", ip);
-	print_ip("Netmask : ", mask);
-	print_ip("Gateway : ", gw);
-}
-#endif
-
-#if defined (__arm__) && !defined (ARMR5)
-#if XPAR_GIGE_PCS_PMA_SGMII_CORE_PRESENT == 1 || XPAR_GIGE_PCS_PMA_1000BASEX_CORE_PRESENT == 1
-int ProgramSi5324(void);
-int ProgramSfpPhy(void);
-#endif
-#endif
-
-#ifdef XPS_BOARD_ZCU102
-#ifdef XPAR_XIICPS_0_DEVICE_ID
-int IicPhyReset(void);
-#endif
-#endif
+struct WRTIE_TCP_DATA GLOBAL_WRITE_TCP_DATA;
+struct TCP_FUNCTION_DATA GLOBAL_FN_TCP_DATA;
+struct SM_DATA GLOBAL_SM_DATA;
+struct LINEAR_DATA GLOBAL_LINEAR_DATA;
+struct CONVOLUTION_DATA GLOBAL_CONVOLUTION_DATA;
 
 int main()
 {
+//Add all initializations inside this
+initialise_FPGA();
+//ETHERNET CODE STARTS HERE
+#if(1)
+
 #if LWIP_IPV6==0
 	ip_addr_t ipaddr, netmask, gw;
 
 #endif
-	/* the mac address of the board. this should be unique per board */
+	/* the MAC address of the board. this should be unique per board */
 	unsigned char mac_ethernet_address[] =
 	{ 0x00, 0x0a, 0x35, 0x00, 0x01, 0x02 };
 
@@ -152,7 +88,7 @@ int main()
 	gw.addr = 0;
 	netmask.addr = 0;
 #else
-	/* initliaze IP addresses to be used */
+	/* initialize IP addresses to be used */
 	IP4_ADDR(&ipaddr,  192, 168,   1, 10);
 	IP4_ADDR(&netmask, 255, 255, 255,  0);
 	IP4_ADDR(&gw,      192, 168,   1,  1);
@@ -223,25 +159,36 @@ int main()
 	print_ip_settings(&ipaddr, &netmask, &gw);
 
 #endif
-	/* start the application (web server, rxtest, txtest, etc..) */
-	start_application();
 
-	/* receive and process packets */
-	while (1) {
-		if (TcpFastTmrFlag) {
-			tcp_fasttmr();
-			TcpFastTmrFlag = 0;
-		}
-		if (TcpSlowTmrFlag) {
-			tcp_slowtmr();
-			TcpSlowTmrFlag = 0;
-		}
-		xemacif_input(echo_netif);
-		transfer_data();
+#endif
+//ETHERNET CODE ENDS HERE
+/* start the application (web server, rxtest, txtest, etc..) */
+start_application();
+/* receive and process packets */
+
+while (1) {
+	/********LWIP Timers ***********/
+	if (TcpFastTmrFlag) {
+		tcp_fasttmr();
+		TcpFastTmrFlag = 0;
 	}
+	if (TcpSlowTmrFlag) {
+		tcp_slowtmr();
+		TcpSlowTmrFlag = 0;
+	}
+	xemacif_input(echo_netif);
 
-	/* never reached */
-	cleanup_platform();
-
+	/********State Machine Loop ***********/
+	if(!GLOBAL_WRITE_TCP_DATA.Send_Data_Flag){ //Avoid state machine if sending some data. Timers need to run.
+		if(GLOBAL_FN_TCP_DATA.fn_ready_flag == 1){ // Enter state machine if function data is received fully.
+			DEBUG_PRINT("Entered State Machine\n");
+			DEBUG_PRINT("Function Name : %d Data Size : %d\n",GLOBAL_FN_TCP_DATA.fn_name,GLOBAL_FN_TCP_DATA.Data_Size);
+			process_fn(); //Process the function. Each function shall be responsible for clearing and resetting data.
+			//Send data must be reset before receiving next as it is not being freed.
+		}
+	}
+}
+/* never reached */
+cleanup_platform();
 	return 0;
 }

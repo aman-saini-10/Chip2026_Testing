@@ -1,23 +1,35 @@
-11:52:13 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+15:47:26 **** Auto Build of configuration Debug for project C_Controller_v1 ****
 make pre-build main-build 
 a9-linaro-pre-build-step
 ' '
-'Building file: ../src/echo.c'
+'Building file: ../src/main.c'
 'Invoking: ARM v7 gcc compiler'
-arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
-'Finished building: ../src/echo.c'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
 ' '
 'Building target: C_Controller_v1.elf'
 'Invoking: ARM v7 gcc linker'
 arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
-'Finished building target: C_Controller_v1.elf'
-' '
-'Invoking: ARM v7 Print Size'
-arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
-   text	   data	    bss	    dec	    hex	filename
- 110856	   3040	5364000	5477896	 539608	C_Controller_v1.elf
-'Finished building: C_Controller_v1.elf.size'
-' '
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:55: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:186: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
 
-11:52:14 Build Finished (took 1s.187ms)
+15:47:27 Build Finished (took 997ms)
 

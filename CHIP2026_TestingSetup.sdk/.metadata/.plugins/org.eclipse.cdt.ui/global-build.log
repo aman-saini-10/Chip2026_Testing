@@ -256,3 +256,2144 @@ arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
  110856	   3040	5364000	5477896	 539608	C_Controller_v1.elf
 'Finished building: C_Controller_v1.elf.size'
 ' '
+14:01:48 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+../src/echo.c:37:10: fatal error: utils_func.h: No such file or directory
+ #include "utils_func.h"
+          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [src/subdir.mk:53: src/echo.o] Error 1
+14:02:03 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+../src/echo.c:37:10: fatal error: utils_func.h: No such file or directory
+ #include "utils_func.h"
+          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [src/subdir.mk:53: src/echo.o] Error 1
+14:02:08 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+../src/echo.c:37:10: fatal error: utils_func.h: No such file or directory
+ #include "utils_func.h"
+          ^~~~~~~~~~~~~~
+compilation terminated.
+make: *** [src/subdir.mk:53: src/echo.o] Error 1
+14:03:16 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+../src/echo.c:37:10: fatal error: utils.h: No such file or directory
+ #include "utils.h"
+          ^~~~~~~~~
+compilation terminated.
+make: *** [src/subdir.mk:53: src/echo.o] Error 1
+14:03:43 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+../src/echo.c: In function 'print_app_header':
+../src/echo.c:47:2: warning: implicit declaration of function 'DEBUG_PRINT' [-Wimplicit-function-declaration]
+  DEBUG_PRINT("\n\r\n\r-----lwIP TCP echo server ------\n\r");
+  ^~~~~~~~~~~
+../src/echo.c: In function 'push_data':
+../src/echo.c:91:2: error: 'GLOBAL_WRITE_TCP_DATA' undeclared (first use in this function)
+  GLOBAL_WRITE_TCP_DATA.Send_Data_Flag = 1;
+  ^~~~~~~~~~~~~~~~~~~~~
+../src/echo.c:91:2: note: each undeclared identifier is reported only once for each function it appears in
+../src/echo.c:102:47: error: 'MAX_SEND_BUFF' undeclared (first use in this function); did you mean 'TCP_SND_BUF'?
+  if(GLOBAL_WRITE_TCP_DATA.Data_Size_To_Send > MAX_SEND_BUFF){
+                                               ^~~~~~~~~~~~~
+                                               TCP_SND_BUF
+../src/echo.c: In function 'recv_callback':
+../src/echo.c:142:6: warning: implicit declaration of function 'Xil_DCacheInvalidateRange' [-Wimplicit-function-declaration]
+      Xil_DCacheInvalidateRange((UINTPTR)q->payload, q->len);
+      ^~~~~~~~~~~~~~~~~~~~~~~~~
+../src/echo.c:146:5: error: 'GLOBAL_FN_TCP_DATA' undeclared (first use in this function)
+  if(GLOBAL_FN_TCP_DATA.fn_data_mode == 0){
+     ^~~~~~~~~~~~~~~~~~
+../src/echo.c:148:12: warning: implicit declaration of function 'process_fn_data' [-Wimplicit-function-declaration]
+   u8 err = process_fn_data(p->payload);
+            ^~~~~~~~~~~~~~~
+../src/echo.c:170:15: error: 'SUCCESS_REPLY' undeclared (first use in this function)
+    u8 reply = SUCCESS_REPLY;
+               ^~~~~~~~~~~~~
+../src/echo.c:171:4: warning: implicit declaration of function 'transfer_data' [-Wimplicit-function-declaration]
+    transfer_data(&reply, 1);
+    ^~~~~~~~~~~~~
+../src/echo.c: In function 'accept_callback':
+../src/echo.c:214:2: error: 'GLOBAL_WRITE_TCP_DATA' undeclared (first use in this function)
+  GLOBAL_WRITE_TCP_DATA.pcb = newpcb;
+  ^~~~~~~~~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/echo.o] Error 1
+14:10:38 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+../src/echo.c: In function 'recv_callback':
+../src/echo.c:142:6: warning: implicit declaration of function 'Xil_DCacheInvalidateRange' [-Wimplicit-function-declaration]
+      Xil_DCacheInvalidateRange((UINTPTR)q->payload, q->len);
+      ^~~~~~~~~~~~~~~~~~~~~~~~~
+'Finished building: ../src/echo.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/main.o: In function `print_ip':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:92: multiple definition of `print_ip'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: first defined here
+./src/main.o: In function `print_ip_settings':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:100: multiple definition of `print_ip_settings'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: first defined here
+./src/echo.o: In function `push_data':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:91: undefined reference to `GLOBAL_WRITE_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:91: undefined reference to `GLOBAL_WRITE_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:95: undefined reference to `GLOBAL_WRITE_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:95: undefined reference to `GLOBAL_WRITE_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:97: undefined reference to `GLOBAL_WRITE_TCP_DATA'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:97: more undefined references to `GLOBAL_WRITE_TCP_DATA' follow
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:146: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:146: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:153: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:153: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:161: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:161: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:161: undefined reference to `GLOBAL_FN_TCP_DATA'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:161: more undefined references to `GLOBAL_FN_TCP_DATA' follow
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:172: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:172: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:173: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:173: undefined reference to `GLOBAL_FN_TCP_DATA'
+./src/echo.o: In function `accept_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:214: undefined reference to `GLOBAL_WRITE_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:214: undefined reference to `GLOBAL_WRITE_TCP_DATA'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:240: undefined reference to `transfer_data'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+14:17:10 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:190:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/echo.o: In function `push_data':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:91: undefined reference to `GLOBAL_WRITE_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:91: undefined reference to `GLOBAL_WRITE_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:95: undefined reference to `GLOBAL_WRITE_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:95: undefined reference to `GLOBAL_WRITE_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:97: undefined reference to `GLOBAL_WRITE_TCP_DATA'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:97: more undefined references to `GLOBAL_WRITE_TCP_DATA' follow
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:146: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:146: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:153: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:153: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:161: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:161: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:161: undefined reference to `GLOBAL_FN_TCP_DATA'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:161: more undefined references to `GLOBAL_FN_TCP_DATA' follow
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:172: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:172: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:173: undefined reference to `GLOBAL_FN_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:173: undefined reference to `GLOBAL_FN_TCP_DATA'
+./src/echo.o: In function `accept_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:214: undefined reference to `GLOBAL_WRITE_TCP_DATA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:214: undefined reference to `GLOBAL_WRITE_TCP_DATA'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:207: undefined reference to `transfer_data'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+14:18:54 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:196:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:88:23: error: storage size of 'GLOBAL_WRITE_TCP_DATA' isn't known
+ struct WRTIE_TCP_DATA GLOBAL_WRITE_TCP_DATA;
+                       ^~~~~~~~~~~~~~~~~~~~~
+../src/main.c:89:26: error: storage size of 'GLOBAL_FN_TCP_DATA' isn't known
+ struct TCP_FUNCTION_DATA GLOBAL_FN_TCP_DATA;
+                          ^~~~~~~~~~~~~~~~~~
+../src/main.c:90:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+../src/main.c:91:20: error: storage size of 'GLOBAL_LINEAR_DATA' isn't known
+ struct LINEAR_DATA GLOBAL_LINEAR_DATA;
+                    ^~~~~~~~~~~~~~~~~~
+../src/main.c:92:25: error: storage size of 'GLOBAL_CONVOLUTION_DATA' isn't known
+ struct CONVOLUTION_DATA GLOBAL_CONVOLUTION_DATA;
+                         ^~~~~~~~~~~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:19:51 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c:56:5: error: conflicting types for 'transfer_data'
+ int transfer_data();
+     ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: previous declaration of 'transfer_data' was here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:22:08 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:22:46 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:22:57 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:29:20 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:29:36 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:31:31 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:32:59 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:33:05 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:33:14 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:34:22 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:34:27 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:34:36 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:34:49 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:34:52 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:37:05 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:37:19 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:38:31 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:39:03 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:39:06 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:39:09 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:39:43 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:40:23 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:42:59 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:45:42 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:52:04 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:53:48 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+../src/echo.c: In function 'recv_callback':
+../src/echo.c:142:6: warning: implicit declaration of function 'Xil_DCacheInvalidateRange' [-Wimplicit-function-declaration]
+      Xil_DCacheInvalidateRange((UINTPTR)q->payload, q->len);
+      ^~~~~~~~~~~~~~~~~~~~~~~~~
+'Finished building: ../src/echo.c'
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:55:00 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+../src/echo.c: In function 'recv_callback':
+../src/echo.c:142:6: warning: implicit declaration of function 'Xil_DCacheInvalidateRange' [-Wimplicit-function-declaration]
+      Xil_DCacheInvalidateRange((UINTPTR)q->payload, q->len);
+      ^~~~~~~~~~~~~~~~~~~~~~~~~
+'Finished building: ../src/echo.c'
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:55:46 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+14:57:34 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:02:55 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:08:20 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:08:30 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:09:30 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:09:48 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:10:06 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:11:58 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:12:07 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:14:25 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:14:47 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:14:50 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:15:01 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:15:31 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:17:10 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:17:27 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:17:44 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:20:33 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:20:36 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:20:40 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:197:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+../src/main.c:214:3: error: too few arguments to function 'transfer_data'
+   transfer_data();
+   ^~~~~~~~~~~~~
+In file included from ../src/main.c:43:0:
+../src/utils.h:124:7: note: declared here
+ err_t transfer_data(u8* data, u32 len);
+       ^~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:91:16: error: storage size of 'GLOBAL_SM_DATA' isn't known
+ struct SM_DATA GLOBAL_SM_DATA;
+                ^~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:30:28 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:6,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c:44:10: fatal error: echo.h: No such file or directory
+ #include "echo.h"
+          ^~~~~~~~
+compilation terminated.
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:32:38 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:6,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:68:2: error: 'echo_netif' undeclared (first use in this function); did you mean 'netif'?
+  echo_netif = &server_netif;
+  ^~~~~~~~~~
+  netif
+../src/main.c:68:2: note: each undeclared identifier is reported only once for each function it appears in
+../src/main.c:68:16: error: 'server_netif' undeclared (first use in this function); did you mean 'echo_netif'?
+  echo_netif = &server_netif;
+                ^~~~~~~~~~~~
+                echo_netif
+../src/main.c:100:2: warning: implicit declaration of function 'lwip_init'; did you mean 'ip_init'? [-Wimplicit-function-declaration]
+  lwip_init();
+  ^~~~~~~~~
+  ip_init
+../src/main.c:139:2: warning: implicit declaration of function 'dhcp_start'; did you mean 'va_start'? [-Wimplicit-function-declaration]
+  dhcp_start(echo_netif);
+  ^~~~~~~~~~
+  va_start
+../src/main.c:140:2: error: 'dhcp_timoutcntr' undeclared (first use in this function)
+  dhcp_timoutcntr = 24;
+  ^~~~~~~~~~~~~~~
+../src/main.c:172:6: error: 'TcpFastTmrFlag' undeclared (first use in this function)
+  if (TcpFastTmrFlag) {
+      ^~~~~~~~~~~~~~
+../src/main.c:173:3: warning: implicit declaration of function 'tcp_fasttmr'; did you mean 'tcp_listen'? [-Wimplicit-function-declaration]
+   tcp_fasttmr();
+   ^~~~~~~~~~~
+   tcp_listen
+../src/main.c:176:6: error: 'TcpSlowTmrFlag' undeclared (first use in this function); did you mean 'TcpFastTmrFlag'?
+  if (TcpSlowTmrFlag) {
+      ^~~~~~~~~~~~~~
+      TcpFastTmrFlag
+../src/main.c:177:3: warning: implicit declaration of function 'tcp_slowtmr'; did you mean 'tcp_close'? [-Wimplicit-function-declaration]
+   tcp_slowtmr();
+   ^~~~~~~~~~~
+   tcp_close
+make: *** [src/subdir.mk:53: src/main.o] Error 1
+15:33:06 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:6,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/main.o: In function `print_app_header':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: multiple definition of `print_app_header'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: first defined here
+./src/main.o: In function `print_ip':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: multiple definition of `print_ip'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: first defined here
+./src/main.o: In function `print_ip_settings':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: multiple definition of `print_ip_settings'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: first defined here
+./src/main.o: In function `push_data':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: multiple definition of `push_data'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: first defined here
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: multiple definition of `recv_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: first defined here
+./src/main.o: In function `accept_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: multiple definition of `accept_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: first defined here
+./src/main.o: In function `start_application':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: multiple definition of `start_application'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: first defined here
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:55: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:187: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+15:33:54 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:6,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/main.o: In function `print_app_header':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: multiple definition of `print_app_header'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: first defined here
+./src/main.o: In function `print_ip':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: multiple definition of `print_ip'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: first defined here
+./src/main.o: In function `print_ip_settings':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: multiple definition of `print_ip_settings'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: first defined here
+./src/main.o: In function `push_data':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: multiple definition of `push_data'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: first defined here
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: multiple definition of `recv_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: first defined here
+./src/main.o: In function `accept_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: multiple definition of `accept_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: first defined here
+./src/main.o: In function `start_application':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: multiple definition of `start_application'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: first defined here
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:55: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:187: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+15:34:23 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:6,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/main.o: In function `print_app_header':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: multiple definition of `print_app_header'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: first defined here
+./src/main.o: In function `print_ip':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: multiple definition of `print_ip'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: first defined here
+./src/main.o: In function `print_ip_settings':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: multiple definition of `print_ip_settings'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: first defined here
+./src/main.o: In function `push_data':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: multiple definition of `push_data'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: first defined here
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: multiple definition of `recv_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: first defined here
+./src/main.o: In function `accept_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: multiple definition of `accept_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: first defined here
+./src/main.o: In function `start_application':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: multiple definition of `start_application'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: first defined here
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:55: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:187: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+15:34:33 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:6,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/main.o: In function `print_app_header':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: multiple definition of `print_app_header'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: first defined here
+./src/main.o: In function `print_ip':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: multiple definition of `print_ip'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: first defined here
+./src/main.o: In function `print_ip_settings':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: multiple definition of `print_ip_settings'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: first defined here
+./src/main.o: In function `push_data':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: multiple definition of `push_data'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: first defined here
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: multiple definition of `recv_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: first defined here
+./src/main.o: In function `accept_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: multiple definition of `accept_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: first defined here
+./src/main.o: In function `start_application':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: multiple definition of `start_application'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: first defined here
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:55: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:187: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+15:34:37 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:6,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/main.o: In function `print_app_header':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: multiple definition of `print_app_header'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: first defined here
+./src/main.o: In function `print_ip':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: multiple definition of `print_ip'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: first defined here
+./src/main.o: In function `print_ip_settings':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: multiple definition of `print_ip_settings'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: first defined here
+./src/main.o: In function `push_data':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: multiple definition of `push_data'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: first defined here
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: multiple definition of `recv_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: first defined here
+./src/main.o: In function `accept_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: multiple definition of `accept_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: first defined here
+./src/main.o: In function `start_application':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: multiple definition of `start_application'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: first defined here
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:55: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:187: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+15:34:54 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:6,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/main.o: In function `print_app_header':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: multiple definition of `print_app_header'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: first defined here
+./src/main.o: In function `print_ip':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: multiple definition of `print_ip'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: first defined here
+./src/main.o: In function `print_ip_settings':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: multiple definition of `print_ip_settings'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: first defined here
+./src/main.o: In function `push_data':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: multiple definition of `push_data'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: first defined here
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: multiple definition of `recv_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: first defined here
+./src/main.o: In function `accept_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: multiple definition of `accept_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: first defined here
+./src/main.o: In function `start_application':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: multiple definition of `start_application'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: first defined here
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:186: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+15:37:12 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:6,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/main.o: In function `print_app_header':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: multiple definition of `print_app_header'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: first defined here
+./src/main.o: In function `print_ip':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: multiple definition of `print_ip'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: first defined here
+./src/main.o: In function `print_ip_settings':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: multiple definition of `print_ip_settings'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: first defined here
+./src/main.o: In function `push_data':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: multiple definition of `push_data'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: first defined here
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: multiple definition of `recv_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: first defined here
+./src/main.o: In function `accept_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: multiple definition of `accept_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: first defined here
+./src/main.o: In function `start_application':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: multiple definition of `start_application'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: first defined here
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:55: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:186: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+15:38:18 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+../src/echo.c: In function 'print_app_header':
+../src/echo.c:47:2: warning: implicit declaration of function 'DEBUG_PRINT' [-Wimplicit-function-declaration]
+  DEBUG_PRINT("\n\r\n\r-----lwIP TCP echo server ------\n\r");
+  ^~~~~~~~~~~
+../src/echo.c: In function 'push_data':
+../src/echo.c:91:2: error: 'GLOBAL_WRITE_TCP_DATA' undeclared (first use in this function)
+  GLOBAL_WRITE_TCP_DATA.Send_Data_Flag = 1;
+  ^~~~~~~~~~~~~~~~~~~~~
+../src/echo.c:91:2: note: each undeclared identifier is reported only once for each function it appears in
+../src/echo.c:102:47: error: 'MAX_SEND_BUFF' undeclared (first use in this function); did you mean 'TCP_SND_BUF'?
+  if(GLOBAL_WRITE_TCP_DATA.Data_Size_To_Send > MAX_SEND_BUFF){
+                                               ^~~~~~~~~~~~~
+                                               TCP_SND_BUF
+../src/echo.c: In function 'recv_callback':
+../src/echo.c:142:6: warning: implicit declaration of function 'Xil_DCacheInvalidateRange' [-Wimplicit-function-declaration]
+      Xil_DCacheInvalidateRange((UINTPTR)q->payload, q->len);
+      ^~~~~~~~~~~~~~~~~~~~~~~~~
+../src/echo.c:146:5: error: 'GLOBAL_FN_TCP_DATA' undeclared (first use in this function)
+  if(GLOBAL_FN_TCP_DATA.fn_data_mode == 0){
+     ^~~~~~~~~~~~~~~~~~
+../src/echo.c:148:12: warning: implicit declaration of function 'process_fn_data' [-Wimplicit-function-declaration]
+   u8 err = process_fn_data(p->payload);
+            ^~~~~~~~~~~~~~~
+../src/echo.c:170:15: error: 'SUCCESS_REPLY' undeclared (first use in this function)
+    u8 reply = SUCCESS_REPLY;
+               ^~~~~~~~~~~~~
+../src/echo.c:171:4: warning: implicit declaration of function 'transfer_data' [-Wimplicit-function-declaration]
+    transfer_data(&reply, 1);
+    ^~~~~~~~~~~~~
+../src/echo.c: In function 'accept_callback':
+../src/echo.c:214:2: error: 'GLOBAL_WRITE_TCP_DATA' undeclared (first use in this function)
+  GLOBAL_WRITE_TCP_DATA.pcb = newpcb;
+  ^~~~~~~~~~~~~~~~~~~~~
+make: *** [src/subdir.mk:53: src/echo.o] Error 1
+15:38:26 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+../src/echo.c: In function 'recv_callback':
+../src/echo.c:142:6: warning: implicit declaration of function 'Xil_DCacheInvalidateRange' [-Wimplicit-function-declaration]
+      Xil_DCacheInvalidateRange((UINTPTR)q->payload, q->len);
+      ^~~~~~~~~~~~~~~~~~~~~~~~~
+'Finished building: ../src/echo.c'
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:6,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/main.o: In function `print_app_header':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: multiple definition of `print_app_header'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: first defined here
+./src/main.o: In function `print_ip':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: multiple definition of `print_ip'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: first defined here
+./src/main.o: In function `print_ip_settings':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: multiple definition of `print_ip_settings'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: first defined here
+./src/main.o: In function `push_data':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: multiple definition of `push_data'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: first defined here
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: multiple definition of `recv_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: first defined here
+./src/main.o: In function `accept_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: multiple definition of `accept_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: first defined here
+./src/main.o: In function `start_application':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: multiple definition of `start_application'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: first defined here
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:55: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:186: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+15:39:17 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:6,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/main.o: In function `print_app_header':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: multiple definition of `print_app_header'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:45: first defined here
+./src/main.o: In function `print_ip':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: multiple definition of `print_ip'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:71: first defined here
+./src/main.o: In function `print_ip_settings':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: multiple definition of `print_ip_settings'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:78: first defined here
+./src/main.o: In function `push_data':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: multiple definition of `push_data'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:88: first defined here
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: multiple definition of `recv_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:132: first defined here
+./src/main.o: In function `accept_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: multiple definition of `accept_callback'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:201: first defined here
+./src/main.o: In function `start_application':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: multiple definition of `start_application'
+./src/echo.o:C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:224: first defined here
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:56: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:187: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+15:39:40 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:6,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:160:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:56: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:187: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+15:39:48 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:6,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:55: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:186: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+15:40:14 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:8,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:55: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:186: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+15:40:26 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:55: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:186: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+15:40:38 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:55: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:186: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+15:47:26 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/echo.o: In function `recv_callback':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:148: undefined reference to `process_fn_data'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/echo.c:171: undefined reference to `transfer_data'
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:55: undefined reference to `initialise_FPGA'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:186: undefined reference to `process_fn'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
