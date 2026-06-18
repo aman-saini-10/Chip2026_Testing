@@ -46,3 +46,7 @@
 # PART OF THIS FILE AT ALL TIMES.
 #
 ################################################################################
+ 
+create_clock -period 100.0 -name s_sc_aclk [get_ports s_sc_aclk]
+ 
+

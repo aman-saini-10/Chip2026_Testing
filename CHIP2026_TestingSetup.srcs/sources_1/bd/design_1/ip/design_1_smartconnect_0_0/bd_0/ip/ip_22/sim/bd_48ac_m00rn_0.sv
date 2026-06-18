@@ -106,7 +106,7 @@ output wire [83 : 0] m_sc_payld;
   sc_node_v1_0_10_top #(
     .C_FAMILY("zynq"),
     .C_FIFO_IP(0),
-    .C_DISABLE_IP(1),
+    .C_DISABLE_IP(0),
     .C_FIFO_SIZE(5),
     .C_FIFO_TYPE(0),
     .C_FIFO_OUTPUT_REG(1),

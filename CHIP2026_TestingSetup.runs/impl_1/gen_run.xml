@@ -1,73 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1781699659">
-  <File Type="BITSTR-BMM" Name="Verilog_Controller_bd.bmm"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="Verilog_Controller_methodology_drc_opted.rpt"/>
-  <File Type="INIT-TIMING" Name="Verilog_Controller_timing_summary_init.rpt"/>
-  <File Type="ROUTE-PWR" Name="Verilog_Controller_power_routed.rpt"/>
-  <File Type="PA-TCL" Name="Verilog_Controller.tcl"/>
-  <File Type="OPT-TIMING" Name="Verilog_Controller_timing_summary_opted.rpt"/>
-  <File Type="OPT-DCP" Name="Verilog_Controller_opt.dcp"/>
-  <File Type="ROUTE-PWR-SUM" Name="Verilog_Controller_power_summary_routed.pb"/>
-  <File Type="REPORTS-TCL" Name="Verilog_Controller_reports.tcl"/>
-  <File Type="OPT-DRC" Name="Verilog_Controller_drc_opted.rpt"/>
-  <File Type="OPT-HWDEF" Name="Verilog_Controller.hwdef"/>
-  <File Type="PWROPT-DCP" Name="Verilog_Controller_pwropt.dcp"/>
-  <File Type="PWROPT-DRC" Name="Verilog_Controller_drc_pwropted.rpt"/>
-  <File Type="PWROPT-TIMING" Name="Verilog_Controller_timing_summary_pwropted.rpt"/>
-  <File Type="PLACE-DCP" Name="Verilog_Controller_placed.dcp"/>
-  <File Type="PLACE-IO" Name="Verilog_Controller_io_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="Verilog_Controller_clock_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL" Name="Verilog_Controller_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="Verilog_Controller_utilization_placed.pb"/>
-  <File Type="PLACE-CTRL" Name="Verilog_Controller_control_sets_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="Verilog_Controller_incremental_reuse_placed.rpt"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="Verilog_Controller_incremental_reuse_pre_placed.rpt"/>
-  <File Type="BG-BGN" Name="Verilog_Controller.bgn"/>
-  <File Type="PLACE-TIMING" Name="Verilog_Controller_timing_summary_placed.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="Verilog_Controller_postplace_pwropt.dcp"/>
-  <File Type="BG-BIN" Name="Verilog_Controller.bin"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="Verilog_Controller_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="Verilog_Controller_physopt.dcp"/>
-  <File Type="PHYSOPT-DRC" Name="Verilog_Controller_drc_physopted.rpt"/>
-  <File Type="BITSTR-MSK" Name="Verilog_Controller.msk"/>
-  <File Type="PHYSOPT-TIMING" Name="Verilog_Controller_timing_summary_physopted.rpt"/>
-  <File Type="ROUTE-ERROR-DCP" Name="Verilog_Controller_routed_error.dcp"/>
-  <File Type="ROUTE-DCP" Name="Verilog_Controller_routed.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="Verilog_Controller_routed_bb.dcp"/>
-  <File Type="ROUTE-DRC" Name="Verilog_Controller_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-PB" Name="Verilog_Controller_drc_routed.pb"/>
+<GenRun Id="impl_1" LaunchPart="xc7z020clg484-1" LaunchTime="1781702998">
+  <File Type="BITSTR-BMM" Name="design_1_bd.bmm"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="design_1_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="design_1_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR" Name="design_1_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="design_1.tcl"/>
+  <File Type="OPT-TIMING" Name="design_1_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="design_1_opt.dcp"/>
+  <File Type="ROUTE-PWR-SUM" Name="design_1_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="design_1_reports.tcl"/>
+  <File Type="OPT-DRC" Name="design_1_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="design_1.hwdef"/>
+  <File Type="PWROPT-DCP" Name="design_1_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="design_1_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="design_1_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="design_1_placed.dcp"/>
+  <File Type="PLACE-IO" Name="design_1_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="design_1_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="design_1_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="design_1_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="design_1_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="design_1_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="design_1_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BGN" Name="design_1.bgn"/>
+  <File Type="PLACE-TIMING" Name="design_1_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="design_1_postplace_pwropt.dcp"/>
+  <File Type="BG-BIN" Name="design_1.bin"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="design_1_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="design_1_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="design_1_drc_physopted.rpt"/>
+  <File Type="BITSTR-MSK" Name="design_1.msk"/>
+  <File Type="PHYSOPT-TIMING" Name="design_1_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="design_1_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="design_1_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="design_1_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="design_1_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="design_1_drc_routed.pb"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="Verilog_Controller.ltx"/>
-  <File Type="ROUTE-DRC-RPX" Name="Verilog_Controller_drc_routed.rpx"/>
-  <File Type="BITSTR-MMI" Name="Verilog_Controller.mmi"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="Verilog_Controller_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="Verilog_Controller_methodology_drc_routed.rpx"/>
-  <File Type="BITSTR-SYSDEF" Name="Verilog_Controller.sysdef"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="Verilog_Controller_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-PWR-RPX" Name="Verilog_Controller_power_routed.rpx"/>
-  <File Type="ROUTE-STATUS" Name="Verilog_Controller_route_status.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="Verilog_Controller_route_status.pb"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="Verilog_Controller_timing_summary_routed.rpt"/>
-  <File Type="ROUTE-TIMING-PB" Name="Verilog_Controller_timing_summary_routed.pb"/>
-  <File Type="ROUTE-TIMING-RPX" Name="Verilog_Controller_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-SIMILARITY" Name="Verilog_Controller_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="Verilog_Controller_clock_utilization_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW" Name="Verilog_Controller_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="Verilog_Controller_bus_skew_routed.pb"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="Verilog_Controller_bus_skew_routed.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="Verilog_Controller_postroute_physopt.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="Verilog_Controller_postroute_physopt_bb.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="Verilog_Controller_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="Verilog_Controller_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="Verilog_Controller_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="Verilog_Controller_bus_skew_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="Verilog_Controller_bus_skew_postroute_physopted.pb"/>
-  <File Type="BG-BIT" Name="Verilog_Controller.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="Verilog_Controller_bus_skew_postroute_physopted.rpx"/>
-  <File Type="BITSTR-RBT" Name="Verilog_Controller.rbt"/>
-  <File Type="BITSTR-NKY" Name="Verilog_Controller.nky"/>
-  <File Type="BG-DRC" Name="Verilog_Controller.drc"/>
-  <File Type="RDI-RDI" Name="Verilog_Controller.vdi"/>
+  <File Type="BITSTR-LTX" Name="design_1.ltx"/>
+  <File Type="ROUTE-DRC-RPX" Name="design_1_drc_routed.rpx"/>
+  <File Type="BITSTR-MMI" Name="design_1.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="design_1_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="design_1_methodology_drc_routed.rpx"/>
+  <File Type="BITSTR-SYSDEF" Name="design_1.sysdef"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="design_1_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="design_1_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="design_1_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="design_1_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="design_1_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="design_1_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="design_1_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="design_1_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="design_1_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="design_1_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="design_1_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="design_1_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="design_1_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="design_1_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="design_1_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="design_1_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="design_1_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="design_1_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="design_1_bus_skew_postroute_physopted.pb"/>
+  <File Type="BG-BIT" Name="design_1.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="design_1_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-RBT" Name="design_1.rbt"/>
+  <File Type="BITSTR-NKY" Name="design_1.nky"/>
+  <File Type="BG-DRC" Name="design_1.drc"/>
+  <File Type="RDI-RDI" Name="design_1.vdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
@@ -129,7 +129,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/Unbundle_AXI_Bus.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -137,7 +136,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/TO_FMC.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -145,7 +143,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/bd/design_1/design_1.bd">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -153,10 +150,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="Verilog_Controller"/>
-      <Option Name="TopLib" Val="xil_defaultlib"/>
-      <Option Name="TopRTLFile" Val="$PSRCDIR/sources_1/new/Verilog_Controller.v"/>
-      <Option Name="TopAutoSet" Val="TRUE"/>
+      <Option Name="TopModule" Val="design_1"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
@@ -178,17 +172,23 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
-      <Desc>Default settings for Implementation.</Desc>
+    <StratHandle Name="Performance_ExtraTimingOpt" Flow="Vivado Implementation 2018">
+      <Desc>Includes alternate algorithms for timing-driven optimization</Desc>
     </StratHandle>
     <Step Id="init_design"/>
     <Step Id="opt_design"/>
     <Step Id="power_opt_design"/>
-    <Step Id="place_design"/>
+    <Step Id="place_design">
+      <Option Id="Directive">8</Option>
+    </Step>
     <Step Id="post_place_power_opt_design"/>
-    <Step Id="phys_opt_design"/>
-    <Step Id="route_design"/>
-    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="phys_opt_design" EnableStepBool="1">
+      <Option Id="Directive">2</Option>
+    </Step>
+    <Step Id="route_design">
+      <Option Id="Directive">1</Option>
+    </Step>
+    <Step Id="post_route_phys_opt_design" EnableStepBool="1"/>
     <Step Id="write_bitstream"/>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="design_1_proc_sys_reset_0_0"/>
@@ -204,6 +204,5 @@
   <BlockFileSet Type="BlockSrcs" Name="design_1_smartconnect_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_TO_FMC_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="design_1_processing_system7_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_auto_pc_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="design_1_s00_mmu_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="design_1_Verilog_Controller_0_0"/>
 </GenRun>

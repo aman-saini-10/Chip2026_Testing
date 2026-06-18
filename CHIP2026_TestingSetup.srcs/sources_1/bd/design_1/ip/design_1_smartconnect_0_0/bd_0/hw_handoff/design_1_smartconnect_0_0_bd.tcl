@@ -180,8 +180,8 @@ proc create_hier_cell_switchboards { parentCell nameHier } {
   # Create instance: ar_switchboard, and set properties
   set ar_switchboard [ create_bd_cell -type ip -vlnv xilinx.com:ip:sc_switchboard:1.0 ar_switchboard ]
   set_property -dict [ list \
-   CONFIG.M00_S00_CONNECTIVITY {0} \
-   CONFIG.M00_S01_CONNECTIVITY {0} \
+   CONFIG.M00_S00_CONNECTIVITY {1} \
+   CONFIG.M00_S01_CONNECTIVITY {1} \
    CONFIG.M_PIPELINES {1} \
    CONFIG.NUM_MI {1} \
    CONFIG.NUM_SI {2} \
@@ -193,8 +193,8 @@ proc create_hier_cell_switchboards { parentCell nameHier } {
   # Create instance: aw_switchboard, and set properties
   set aw_switchboard [ create_bd_cell -type ip -vlnv xilinx.com:ip:sc_switchboard:1.0 aw_switchboard ]
   set_property -dict [ list \
-   CONFIG.M00_S00_CONNECTIVITY {0} \
-   CONFIG.M00_S01_CONNECTIVITY {0} \
+   CONFIG.M00_S00_CONNECTIVITY {1} \
+   CONFIG.M00_S01_CONNECTIVITY {1} \
    CONFIG.M_PIPELINES {1} \
    CONFIG.NUM_MI {1} \
    CONFIG.NUM_SI {2} \
@@ -206,8 +206,8 @@ proc create_hier_cell_switchboards { parentCell nameHier } {
   # Create instance: b_switchboard, and set properties
   set b_switchboard [ create_bd_cell -type ip -vlnv xilinx.com:ip:sc_switchboard:1.0 b_switchboard ]
   set_property -dict [ list \
-   CONFIG.M00_S00_CONNECTIVITY {0} \
-   CONFIG.M01_S00_CONNECTIVITY {0} \
+   CONFIG.M00_S00_CONNECTIVITY {1} \
+   CONFIG.M01_S00_CONNECTIVITY {1} \
    CONFIG.M_PIPELINES {1} \
    CONFIG.NUM_MI {2} \
    CONFIG.NUM_SI {1} \
@@ -219,8 +219,8 @@ proc create_hier_cell_switchboards { parentCell nameHier } {
   # Create instance: r_switchboard, and set properties
   set r_switchboard [ create_bd_cell -type ip -vlnv xilinx.com:ip:sc_switchboard:1.0 r_switchboard ]
   set_property -dict [ list \
-   CONFIG.M00_S00_CONNECTIVITY {0} \
-   CONFIG.M01_S00_CONNECTIVITY {0} \
+   CONFIG.M00_S00_CONNECTIVITY {1} \
+   CONFIG.M01_S00_CONNECTIVITY {1} \
    CONFIG.M_PIPELINES {1} \
    CONFIG.NUM_MI {2} \
    CONFIG.NUM_SI {1} \
@@ -232,8 +232,8 @@ proc create_hier_cell_switchboards { parentCell nameHier } {
   # Create instance: w_switchboard, and set properties
   set w_switchboard [ create_bd_cell -type ip -vlnv xilinx.com:ip:sc_switchboard:1.0 w_switchboard ]
   set_property -dict [ list \
-   CONFIG.M00_S00_CONNECTIVITY {0} \
-   CONFIG.M00_S01_CONNECTIVITY {0} \
+   CONFIG.M00_S00_CONNECTIVITY {1} \
+   CONFIG.M00_S01_CONNECTIVITY {1} \
    CONFIG.M_PIPELINES {1} \
    CONFIG.NUM_MI {1} \
    CONFIG.NUM_SI {2} \
@@ -535,11 +535,19 @@ proc create_hier_cell_s01_entry_pipeline { parentCell nameHier } {
    CONFIG.MSC_ROUTE_WIDTH {1} \
    CONFIG.NUM_MSC {1} \
    CONFIG.NUM_READ_OUTSTANDING {2} \
-   CONFIG.NUM_SEG {0} \
+   CONFIG.NUM_SEG {1} \
    CONFIG.NUM_WRITE_OUTSTANDING {16} \
    CONFIG.RDATA_WIDTH {32} \
    CONFIG.READ_WRITE_MODE {WRITE_ONLY} \
+   CONFIG.SEG000_BASE_ADDR {0x0000000000000000} \
+   CONFIG.SEG000_SECURE_READ {0} \
+   CONFIG.SEG000_SECURE_WRITE {0} \
+   CONFIG.SEG000_SEP_ROUTE {0b0000000000000000000000000000000000000000000000000000000000000000} \
+   CONFIG.SEG000_SIZE {29} \
+   CONFIG.SEG000_SUPPORTS_READ {1} \
+   CONFIG.SEG000_SUPPORTS_WRITE {1} \
    CONFIG.SUPPORTS_NARROW {0} \
+   CONFIG.SUPPORTS_WRITE_DECERR {1} \
    CONFIG.S_AWUSER_WIDTH {0} \
    CONFIG.S_BUSER_WIDTH {0} \
    CONFIG.S_PROTOCOL {AXI4} \
@@ -565,11 +573,14 @@ proc create_hier_cell_s01_entry_pipeline { parentCell nameHier } {
    CONFIG.NUM_MSC {1} \
    CONFIG.NUM_READ_OUTSTANDING {2} \
    CONFIG.NUM_READ_THREADS {1} \
-   CONFIG.NUM_SEG {0} \
+   CONFIG.NUM_SEG {1} \
    CONFIG.NUM_WRITE_OUTSTANDING {16} \
    CONFIG.NUM_WRITE_THREADS {1} \
    CONFIG.RDATA_WIDTH {32} \
    CONFIG.READ_WRITE_MODE {WRITE_ONLY} \
+   CONFIG.SEP000_PROTOCOL {AXI3} \
+   CONFIG.SEP000_RDATA_WIDTH {64} \
+   CONFIG.SEP000_WDATA_WIDTH {64} \
    CONFIG.SUPPORTS_NARROW {0} \
    CONFIG.S_RUSER_BITS_PER_BYTE {0} \
    CONFIG.S_WUSER_BITS_PER_BYTE {0} \
@@ -587,7 +598,7 @@ proc create_hier_cell_s01_entry_pipeline { parentCell nameHier } {
    CONFIG.NUM_WRITE_OUTSTANDING {16} \
    CONFIG.RDATA_WIDTH {32} \
    CONFIG.READ_WRITE_MODE {WRITE_ONLY} \
-   CONFIG.SEP_ROUTE_WIDTH {0} \
+   CONFIG.SEP_ROUTE_WIDTH {1} \
    CONFIG.SUPPORTS_READ_DEADLOCK {0} \
    CONFIG.SUPPORTS_WRITE_DEADLOCK {0} \
    CONFIG.S_ID_WIDTH {0} \
@@ -823,11 +834,19 @@ proc create_hier_cell_s00_entry_pipeline { parentCell nameHier } {
    CONFIG.MSC_ROUTE_WIDTH {1} \
    CONFIG.NUM_MSC {1} \
    CONFIG.NUM_READ_OUTSTANDING {16} \
-   CONFIG.NUM_SEG {0} \
+   CONFIG.NUM_SEG {1} \
    CONFIG.NUM_WRITE_OUTSTANDING {2} \
    CONFIG.RDATA_WIDTH {32} \
    CONFIG.READ_WRITE_MODE {READ_ONLY} \
+   CONFIG.SEG000_BASE_ADDR {0x0000000000000000} \
+   CONFIG.SEG000_SECURE_READ {0} \
+   CONFIG.SEG000_SECURE_WRITE {0} \
+   CONFIG.SEG000_SEP_ROUTE {0b0000000000000000000000000000000000000000000000000000000000000000} \
+   CONFIG.SEG000_SIZE {29} \
+   CONFIG.SEG000_SUPPORTS_READ {1} \
+   CONFIG.SEG000_SUPPORTS_WRITE {1} \
    CONFIG.SUPPORTS_NARROW {0} \
+   CONFIG.SUPPORTS_READ_DECERR {1} \
    CONFIG.S_ARUSER_WIDTH {0} \
    CONFIG.S_PROTOCOL {AXI4} \
    CONFIG.S_RUSER_WIDTH {0} \
@@ -852,11 +871,14 @@ proc create_hier_cell_s00_entry_pipeline { parentCell nameHier } {
    CONFIG.NUM_MSC {1} \
    CONFIG.NUM_READ_OUTSTANDING {16} \
    CONFIG.NUM_READ_THREADS {1} \
-   CONFIG.NUM_SEG {0} \
+   CONFIG.NUM_SEG {1} \
    CONFIG.NUM_WRITE_OUTSTANDING {2} \
    CONFIG.NUM_WRITE_THREADS {1} \
    CONFIG.RDATA_WIDTH {32} \
    CONFIG.READ_WRITE_MODE {READ_ONLY} \
+   CONFIG.SEP000_PROTOCOL {AXI3} \
+   CONFIG.SEP000_RDATA_WIDTH {64} \
+   CONFIG.SEP000_WDATA_WIDTH {64} \
    CONFIG.SUPPORTS_NARROW {0} \
    CONFIG.S_RUSER_BITS_PER_BYTE {0} \
    CONFIG.S_WUSER_BITS_PER_BYTE {0} \
@@ -874,7 +896,7 @@ proc create_hier_cell_s00_entry_pipeline { parentCell nameHier } {
    CONFIG.NUM_WRITE_OUTSTANDING {2} \
    CONFIG.RDATA_WIDTH {32} \
    CONFIG.READ_WRITE_MODE {READ_ONLY} \
-   CONFIG.SEP_ROUTE_WIDTH {0} \
+   CONFIG.SEP_ROUTE_WIDTH {1} \
    CONFIG.SUPPORTS_READ_DEADLOCK {0} \
    CONFIG.SUPPORTS_WRITE_DEADLOCK {0} \
    CONFIG.S_ID_WIDTH {0} \
@@ -953,7 +975,6 @@ proc create_hier_cell_m00_nodes { parentCell nameHier } {
    CONFIG.ACLK_RELATIONSHIP {1} \
    CONFIG.ADDR_WIDTH {32} \
    CONFIG.CHANNEL {2} \
-   CONFIG.DISABLE_IP {1} \
    CONFIG.ID_WIDTH {1} \
    CONFIG.M00_NUM_BYTES {8} \
    CONFIG.M01_NUM_BYTES {8} \
@@ -1004,7 +1025,6 @@ proc create_hier_cell_m00_nodes { parentCell nameHier } {
    CONFIG.ACLK_RELATIONSHIP {1} \
    CONFIG.ADDR_WIDTH {32} \
    CONFIG.CHANNEL {3} \
-   CONFIG.DISABLE_IP {1} \
    CONFIG.ID_WIDTH {1} \
    CONFIG.M00_NUM_BYTES {8} \
    CONFIG.M01_NUM_BYTES {8} \
@@ -1055,7 +1075,6 @@ proc create_hier_cell_m00_nodes { parentCell nameHier } {
    CONFIG.ACLK_RELATIONSHIP {1} \
    CONFIG.ADDR_WIDTH {32} \
    CONFIG.CHANNEL {4} \
-   CONFIG.DISABLE_IP {1} \
    CONFIG.ID_WIDTH {1} \
    CONFIG.M00_NUM_BYTES {8} \
    CONFIG.M01_NUM_BYTES {8} \
@@ -1105,7 +1124,6 @@ proc create_hier_cell_m00_nodes { parentCell nameHier } {
    CONFIG.ACLK_RELATIONSHIP {1} \
    CONFIG.ADDR_WIDTH {32} \
    CONFIG.CHANNEL {0} \
-   CONFIG.DISABLE_IP {1} \
    CONFIG.ID_WIDTH {1} \
    CONFIG.M00_NUM_BYTES {8} \
    CONFIG.M01_NUM_BYTES {8} \
@@ -1156,7 +1174,6 @@ proc create_hier_cell_m00_nodes { parentCell nameHier } {
    CONFIG.ACLK_RELATIONSHIP {1} \
    CONFIG.ADDR_WIDTH {32} \
    CONFIG.CHANNEL {1} \
-   CONFIG.DISABLE_IP {1} \
    CONFIG.ID_WIDTH {1} \
    CONFIG.M00_NUM_BYTES {8} \
    CONFIG.M01_NUM_BYTES {8} \

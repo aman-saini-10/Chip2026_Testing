@@ -68,10 +68,10 @@ preplace netloc FMC_C17_1 1 6 1 2440J
 preplace netloc Unbundle_AXI_Bus_0_IN_EN_C 1 5 1 N
 preplace netloc TO_FMC_0_FMC_R19 1 7 1 NJ
 preplace netloc Unbundle_AXI_Bus_0_CS_C 1 5 1 N
-preplace netloc processing_system7_0_FIXED_IO 1 1 1 500J
-preplace netloc TO_FMC_0_DIG_DEBUG_AXI_OUT_0 1 4 4 1600J 900 1970J 1110 NJ 1110 2860
-preplace netloc axi_gpio_1_gpio_io_o 1 4 1 1590
-preplace netloc TO_FMC_0_DIG_DEBUG_AXI_OUT_1 1 4 4 1580J 910 1960J 1120 NJ 1120 2850
+preplace netloc processing_system7_0_FIXED_IO 1 1 1 470J
+preplace netloc TO_FMC_0_DIG_DEBUG_AXI_OUT_0 1 4 4 1570J 240 NJ 240 2430J 1110 2860
+preplace netloc axi_gpio_1_gpio_io_o 1 4 1 1580
+preplace netloc TO_FMC_0_DIG_DEBUG_AXI_OUT_1 1 4 4 1570J 1120 NJ 1120 NJ 1120 2850
 preplace netloc TO_FMC_0_FMC_D15 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_L21 1 7 1 NJ
 preplace netloc Verilog_Controller_0_TDC_RST 1 6 1 N
@@ -84,7 +84,7 @@ preplace netloc Unbundle_AXI_Bus_0_SCN_IN_C 1 5 1 N
 preplace netloc TO_FMC_0_FMC_B17 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_F18 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_K20 1 7 1 NJ
-preplace netloc xlconcat_0_dout 1 4 3 NJ 1130 NJ 1130 2430
+preplace netloc xlconcat_0_dout 1 4 3 NJ 1130 NJ 1130 2420
 preplace netloc TO_FMC_0_FMC_F19 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_G20 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_B19 1 7 1 NJ
@@ -101,11 +101,11 @@ preplace netloc TO_FMC_0_FMC_R20 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_G19 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_R21 1 7 1 NJ
 preplace netloc Unbundle_AXI_Bus_0_CTRL_EN_C 1 5 1 N
-preplace netloc processing_system7_0_DDR 1 1 1 490J
+preplace netloc processing_system7_0_DDR 1 1 1 450J
 preplace netloc Verilog_Controller_0_VTC_EN 1 6 1 N
 preplace netloc Verilog_Controller_0_CTRL_VBN 1 6 1 N
-preplace netloc axi_interconnect_0_M02_AXI 1 2 2 880 380 NJ
-preplace netloc axi_interconnect_0_M01_AXI 1 2 2 860 240 NJ
+preplace netloc axi_interconnect_0_M02_AXI 1 2 2 840 380 NJ
+preplace netloc axi_interconnect_0_M01_AXI 1 2 2 820 240 NJ
 preplace netloc Unbundle_AXI_Bus_0_CTRL_VBP_C 1 5 1 N
 preplace netloc Verilog_Controller_0_CTRL_VBP 1 6 1 N
 preplace netloc Verilog_Controller_0_SA_EN 1 6 1 N
@@ -118,27 +118,27 @@ preplace netloc Verilog_Controller_0_SCN_SEL 1 6 1 N
 preplace netloc TO_FMC_0_FMC_D20 1 7 1 NJ
 preplace netloc Verilog_Controller_0_WL_EN 1 6 1 N
 preplace netloc Verilog_Controller_0_CTRL_VB 1 6 1 N
-preplace netloc axi_dma_0_M_AXIS_MM2S 1 3 3 1250J 170 NJ 170 2000
-preplace netloc smartconnect_0_M00_AXI 1 0 5 30 160 NJ 160 NJ 160 NJ 160 1580
+preplace netloc axi_dma_0_M_AXIS_MM2S 1 3 3 1200J 180 NJ 180 1950
+preplace netloc smartconnect_0_M00_AXI 1 0 5 -20 160 NJ 160 NJ 160 NJ 160 1560
 preplace netloc TO_FMC_0_FMC_P22 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_D21 1 7 1 NJ
 preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 1 N
 preplace netloc Verilog_Controller_0_InputEN_DAC 1 6 1 N
 preplace netloc TO_FMC_0_FMC_C20 1 7 1 NJ
-preplace netloc axi_interconnect_0_M05_AXI 1 2 2 NJ 840 1260J
+preplace netloc axi_interconnect_0_M05_AXI 1 2 2 NJ 840 1210J
 preplace netloc TO_FMC_0_FMC_D22 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_M17 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_C22 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_J21 1 7 1 NJ
-preplace netloc proc_sys_reset_0_peripheral_aresetn 1 1 3 520 560 890 620 1300
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 1 3 470 550 850 370 1250
 preplace netloc Unbundle_AXI_Bus_0_SCN_SEL_C 1 5 1 N
 preplace netloc TO_FMC_0_FMC_J22 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_M19 1 7 1 NJ
 preplace netloc Verilog_Controller_0_WRITE_EN 1 6 1 N
-preplace netloc axi_dma_0_M_AXI_MM2S 1 3 1 1290
+preplace netloc axi_dma_0_M_AXI_MM2S 1 3 1 1240
 preplace netloc Unbundle_AXI_Bus_0_TDC_EN_C 1 5 1 N
 preplace netloc Verilog_Controller_0_TDC_EN 1 6 1 N
-preplace netloc axi_dma_0_M_AXI_S2MM 1 3 1 1280
+preplace netloc axi_dma_0_M_AXI_S2MM 1 3 1 1230
 preplace netloc TO_FMC_0_FMC_N19 1 7 1 NJ
 preplace netloc Verilog_Controller_0_CHG_EN 1 6 1 N
 preplace netloc Verilog_Controller_0_CLK_A 1 6 1 N
@@ -150,13 +150,13 @@ preplace netloc Verilog_Controller_0_CLK_B 1 6 1 N
 preplace netloc Unbundle_AXI_Bus_0_VTC_EN_C 1 5 1 N
 preplace netloc Unbundle_AXI_Bus_0_SA_EN_C 1 5 1 N
 preplace netloc Unbundle_AXI_Bus_0_DFF_RST_C 1 5 1 N
-preplace netloc TO_FMC_0_DIG_AXI_OUT_0 1 5 3 2000 1100 NJ 1100 2870
+preplace netloc TO_FMC_0_DIG_AXI_OUT_0 1 5 3 1970 1100 NJ 1100 2870
 preplace netloc FMC_C18_1 1 6 1 2450
 preplace netloc Unbundle_AXI_Bus_0_WRITE_EN_C 1 5 1 N
 preplace netloc TO_FMC_0_FMC_E18 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_B20 1 7 1 NJ
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 6 20 150 510 500 900J 630 1270 180 NJ 180 1990
-preplace netloc axi_interconnect_0_M06_AXI 1 2 2 NJ 860 1250J
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 6 -20 440 460 500 860J 620 1220 1200 1590J 980 1960
+preplace netloc axi_interconnect_0_M06_AXI 1 2 2 NJ 860 1200J
 preplace netloc TO_FMC_0_FMC_B21 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_T19 1 7 1 NJ
 preplace netloc TO_FMC_0_FMC_B22 1 7 1 NJ
@@ -164,27 +164,27 @@ preplace netloc Verilog_Controller_0_CTRL_EN 1 6 1 N
 preplace netloc Verilog_Controller_0_VDAC_CTRL 1 6 1 N
 preplace netloc Unbundle_AXI_Bus_0_CLK_B_C 1 5 1 N
 preplace netloc Unbundle_AXI_Bus_0_TDC_COMPUTE_C 1 5 1 N
-preplace netloc Verilog_Controller_0_SCAN_DONE_FLAGS 1 5 2 2010 960 2430
+preplace netloc Verilog_Controller_0_SCAN_DONE_FLAGS 1 5 2 1980 960 2420
 preplace netloc TO_FMC_0_FMC_N20 1 7 1 NJ
 preplace netloc Unbundle_AXI_Bus_0_BANK_SEL_C 1 5 1 N
 preplace netloc TO_FMC_0_FMC_N22 1 7 1 NJ
 preplace netloc Verilog_Controller_0_SCN_IN 1 6 1 N
 preplace netloc Unbundle_AXI_Bus_0_BL_PCHG_C 1 5 1 N
 preplace netloc Unbundle_AXI_Bus_0_CHG_EN_C 1 5 1 N
-preplace netloc axi_gpio_4_gpio_io_o 1 4 2 NJ 990 1980
+preplace netloc axi_gpio_4_gpio_io_o 1 4 2 NJ 990 1950
 preplace netloc TO_FMC_0_FMC_L17 1 7 1 NJ
 preplace netloc Verilog_Controller_0_RST_CAP_B 1 6 1 N
-preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 490
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 450
 preplace netloc TO_FMC_0_FMC_M20 1 7 1 NJ
 preplace netloc Unbundle_AXI_Bus_0_RST_CAP_B_C 1 5 1 N
 preplace netloc Verilog_Controller_0_CS 1 6 1 N
-preplace netloc axi_gpio_0_gpio_io_o 1 4 1 1600
+preplace netloc axi_gpio_0_gpio_io_o 1 4 1 1590
 preplace netloc Unbundle_AXI_Bus_0_CTRL_VB_C 1 5 1 N
 preplace netloc Verilog_Controller_0_BANK_SEL 1 6 1 N
-preplace netloc Verilog_Controller_0_out 1 2 5 900 150 NJ 150 NJ 150 NJ 150 2430
-preplace netloc axi_interconnect_0_M03_AXI 1 2 2 900J 680 NJ
-preplace netloc axi_interconnect_0_M00_AXI 1 2 1 870
-levelinfo -pg 1 0 260 690 1080 1440 1780 2220 2650 2890 -top 0 -bot 1200
+preplace netloc Verilog_Controller_0_out 1 2 5 860 170 NJ 170 NJ 170 NJ 170 2420
+preplace netloc axi_interconnect_0_M03_AXI 1 2 2 860J 680 NJ
+preplace netloc axi_interconnect_0_M00_AXI 1 2 1 830
+levelinfo -pg 1 -40 220 650 1030 1420 1770 2210 2650 2890 -top 0 -bot 1540
 "
 }
 {
