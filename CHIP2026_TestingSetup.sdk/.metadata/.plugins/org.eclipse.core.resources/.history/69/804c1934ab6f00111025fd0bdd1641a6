@@ -1,0 +1,355 @@
+/*
+ * Copyright (C) 2009 - 2018 Xilinx, Inc.
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ * 3. The name of the author may not be used to endorse or promote products
+ *    derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED
+ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
+ * SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+ * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+ * OF SUCH DAMAGE.
+ *
+ */
+
+#include <stdio.h>
+#include <string.h>
+
+#include "lwip/err.h"
+#include "lwip/tcp.h"
+#if defined (__arm__) || defined (__aarch64__)
+#include "xil_printf.h"
+#endif
+#include "utils.h"
+#define CACHE_LINE_SIZE 32
+
+#include "xil_cache.h"
+#include "lwip/err.h"   // for err_t codes
+
+
+void print_app_header()
+{
+#if (LWIP_IPV6==0)
+	DEBUG_PRINT("\n\r\n\r-----lwIP TCP echo server ------\n\r");
+#else
+	DEBUG_PRINT("\n\r\n\r-----lwIPv6 TCP echo server ------\n\r");
+#endif
+	DEBUG_PRINT("TCP packets sent to port 6001 will be echoed back\n\r");
+}
+
+#if LWIP_IPV6==1
+void print_ip6(char *msg, ip_addr_t *ip)
+{
+	print(msg);
+	xil_printf(" %x:%x:%x:%x:%x:%x:%x:%x\n\r",
+			IP6_ADDR_BLOCK1(&ip->u_addr.ip6),
+			IP6_ADDR_BLOCK2(&ip->u_addr.ip6),
+			IP6_ADDR_BLOCK3(&ip->u_addr.ip6),
+			IP6_ADDR_BLOCK4(&ip->u_addr.ip6),
+			IP6_ADDR_BLOCK5(&ip->u_addr.ip6),
+			IP6_ADDR_BLOCK6(&ip->u_addr.ip6),
+			IP6_ADDR_BLOCK7(&ip->u_addr.ip6),
+			IP6_ADDR_BLOCK8(&ip->u_addr.ip6));
+
+}
+#else
+void print_ip(char *msg, ip_addr_t *ip)
+{
+	print(msg);
+	xil_printf("%d.%d.%d.%d\n\r", ip4_addr1(ip), ip4_addr2(ip),
+			ip4_addr3(ip), ip4_addr4(ip));
+}
+
+void print_ip_settings(ip_addr_t *ip, ip_addr_t *mask, ip_addr_t *gw)
+{
+
+	print_ip("Board IP: ", ip);
+	print_ip("Netmask : ", mask);
+	print_ip("Gateway : ", gw);
+}
+#endif
+
+/*************** Send Data Callback ********************/
+//This will be called every time ACK is sent by receive buff. This has logic to send more data than MAX_SEND_BUFF
+err_t push_data(void *arg,struct tcp_pcb *tpcb, u16_t len){
+	err_t err;
+	int packet_size = 0;
+	GLOBAL_WRITE_TCP_DATA.Send_Data_Flag = 1;
+	//xil_printf("Data_Size before = %d, Packet_Size = %d\n",GLOBAL_WRITE_TCP_DATA.Data_Size_To_Send,packet_size );
+
+	//If All data has been sent successfully then do not call write. Make send data flag low.
+	if(GLOBAL_WRITE_TCP_DATA.Data_Size_To_Send == 0){
+		DEBUG_PRINT("ALL DATA SENT\n");
+		GLOBAL_WRITE_TCP_DATA.Send_Data_Flag = 0;
+		return ERR_OK;
+	}
+
+	//Chunk the data packets properly
+	if(GLOBAL_WRITE_TCP_DATA.Data_Size_To_Send > MAX_SEND_BUFF){
+		packet_size = MAX_SEND_BUFF;
+	}
+	else{
+		packet_size = GLOBAL_WRITE_TCP_DATA.Data_Size_To_Send;
+	}
+
+	//wait for buffer to be empty this almost never occures
+	while(tcp_sndbuf(tpcb) == 0){DEBUG_PRINT("Waiting...\n");}
+
+	//Call Write. This puts data in buffer. Does not send it. To send timer needs to be executed.
+	err = tcp_write(tpcb, GLOBAL_WRITE_TCP_DATA.Data_Ptr, packet_size, TCP_WRITE_FLAG_COPY);
+	if(err!=0){
+		DEBUG_PRINT("ERROR IN WRITE %d\n",err); //could not write so don't increment sent data.
+	}
+	else{
+		//xil_printf("Data_Size after = %d, Packet_Size = %d\n",GLOBAL_WRITE_TCP_DATA.Data_Size_To_Send,packet_size );
+		GLOBAL_WRITE_TCP_DATA.Data_Size_To_Send -= packet_size;
+		if(GLOBAL_WRITE_TCP_DATA.Data_Size_To_Send != 0){
+			GLOBAL_WRITE_TCP_DATA.Data_Ptr += packet_size;
+		}
+	}
+	return err;
+}
+
+
+///***************** Receive Callback ***************************/
+////This function is interrupt handler when data is received from sender. Has logic to receive data more than MAX_SEND_BUFF/2
+//err_t recv_callback(void *arg, struct tcp_pcb *tpcb,
+//                               struct pbuf *p, err_t err)
+//{
+//
+//	/* do not read the packet if we are not in ESTABLISHED state */
+//	if (!p) {
+//		xil_printf("\nConnection closed cuz not in established state\n");
+//		tcp_close(tpcb);
+//		tcp_recv(tpcb, NULL);
+//		return ERR_OK;
+//	}
+//	xil_printf("\nStarted Running Routine recv_callback() | Len: %d\n", p->tot_len);
+//
+//	//Dcache the receive buffer. It was mis aligning the received data sometimes.
+//	for (struct pbuf *q = p; q != NULL; q = q->next) {
+//		xil_printf("\nInvalidating the Dcache Range\n");
+//	    Xil_DCacheInvalidateRange((UINTPTR)q->payload, q->len);
+//	}
+//
+//	//type cast the received pay load to u8 type.
+//	if(GLOBAL_FN_TCP_DATA.fn_data_mode == 0){
+//		//decode fn packet here. It shall allocate data buffer of data size in TCP_FUNCTION_DATA struct and map function to execute.
+//		xil_printf("\nDecoding the function Data (Routine: process_fn_data())\n");
+//		u8 err = process_fn_data(p->payload);
+//		if(err != 0){
+//			DEBUG_PRINT("ERROR IN PROCESS FUNCTION DATA\n");
+//		}
+//	}
+//	else if(GLOBAL_FN_TCP_DATA.fn_data_mode == 1){
+//		xil_printf("\nData Receive Mode\n");
+//		// Always handle possible pbuf chains
+//		if (p->tot_len != p->len) {
+//			xil_printf("LEN MISMATCH: tot_len=%d len=%d\n", p->tot_len, p->len);
+//		}
+//		// Walk the PBUF chain and copy each segment
+//		struct pbuf *q = p;
+//		while (q != NULL) {
+//			xil_printf("\nIs it Stuck in this loop??\n");
+//			memcpy(GLOBAL_FN_TCP_DATA.Data_Ptr + GLOBAL_FN_TCP_DATA.Data_Recved_Size,
+//				   q->payload, q->len);
+//			GLOBAL_FN_TCP_DATA.Data_Recved_Size += q->len;
+//			q = q->next;
+//		}
+//
+//		// Check if we have received the full expected data
+//		if (GLOBAL_FN_TCP_DATA.Data_Recved_Size >= GLOBAL_FN_TCP_DATA.Data_Size) {
+//			xil_printf("\nsending reply to client saying all ok. data received.\n");
+//			u8 reply = SUCCESS_REPLY;
+//			transfer_data(&reply, 1);
+//			GLOBAL_FN_TCP_DATA.fn_ready_flag = 1; // Make function ready flag high
+//			GLOBAL_FN_TCP_DATA.fn_data_mode = 0;  // Put TCP receive back in fn mode
+//		}
+//	}
+//
+//	//this state is not being used
+//	/*
+//	else if((((u8*)(p->payload))[0] == SUCCESS_REPLY) | (((u8*)(p->payload))[0] == FAIL_REPLY)){
+//		if(((u8*)(p->payload))[0] == SUCCESS_REPLY){
+//			DEBUG_PRINT("Success\n"); //need to channel it to proper function id
+//		}
+//		else{
+//			DEBUG_PRINT("Error\n");
+//		}
+//	}
+//	*/
+//	//Any other kinda packet.
+//	else{
+//		DEBUG_PRINT("Received Data We Don't Care\n");
+//	}
+//
+//	/* indicate that the packet has been received */
+//	tcp_recved(tpcb, p->tot_len);
+//	pbuf_free(p);
+//	return ERR_OK;
+//
+//}
+
+/***************** Receive Callback ***************************/
+//This function is interrupt handler when data is received from sender. Has logic to receive data more than MAX_SEND_BUFF/2
+err_t recv_callback(void *arg, struct tcp_pcb *tpcb,
+                               struct pbuf *p, err_t err)
+{
+
+	/* do not read the packet if we are not in ESTABLISHED state */
+	if (!p) {
+		xil_printf("\nConnection closed cuz not in established state\n");
+		tcp_close(tpcb);
+		tcp_recv(tpcb, NULL);
+		return ERR_OK;
+	}
+	xil_printf("\nStarted Running Routine recv_callback() | Len: %d\n", p->tot_len);
+
+	//Dcache the receive buffer. It was mis aligning the received data sometimes.
+	i = 0;
+	for (struct pbuf *q = p; q != NULL; q = q->next) {
+		i++;
+		xil_printf("\nInvalidating the Dcache Range\n");
+	    Xil_DCacheInvalidateRange((UINTPTR)q->payload, q->len);
+	} print("\nnumber of fragments: %d\n", i);
+
+	//type cast the received pay load to u8 type.
+	if(GLOBAL_FN_TCP_DATA.fn_data_mode == 0){
+		//decode fn packet here. It shall allocate data buffer of data size in TCP_FUNCTION_DATA struct and map function to execute.
+		xil_printf("\nDecoding the function Data (Routine: process_fn_data())\n");
+		u8 err = process_fn_data(p->payload);
+		if(err != 0){
+			DEBUG_PRINT("ERROR IN PROCESS FUNCTION DATA\n");
+		}
+	}
+	else if(GLOBAL_FN_TCP_DATA.fn_data_mode == 1){
+		xil_printf("\nData Receive Mode\n");
+		// Always handle possible pbuf chains
+		if (p->tot_len != p->len) {
+			xil_printf("LEN MISMATCH: tot_len=%d len=%d\n", p->tot_len, p->len);
+		}
+		// Walk the PBUF chain and copy each segment
+		struct pbuf *q = p;
+		while (q != NULL) {
+			xil_printf("\nIs it Stuck in this loop?? len = %d\n", q->len);
+			memcpy(GLOBAL_FN_TCP_DATA.Data_Ptr + GLOBAL_FN_TCP_DATA.Data_Recved_Size,
+				   q->payload, q->len);
+			xil_printf("\nSuccessfully copied\n");
+			GLOBAL_FN_TCP_DATA.Data_Recved_Size += q->len;
+			q = q->next;
+		}
+
+		// ========= ADDED DATA TRACKING LOGS =========
+		xil_printf("[Progress] Received: %d / Expected: %d bytes\n",
+		           GLOBAL_FN_TCP_DATA.Data_Recved_Size,
+		           GLOBAL_FN_TCP_DATA.Data_Size);
+		// ============================================
+
+		// Check if we have received the full expected data
+		if (GLOBAL_FN_TCP_DATA.Data_Recved_Size >= GLOBAL_FN_TCP_DATA.Data_Size) {
+			xil_printf("\nsending reply to client saying all ok. data received.\n");
+			u8 reply = SUCCESS_REPLY;
+			transfer_data(&reply, 1);
+			GLOBAL_FN_TCP_DATA.fn_ready_flag = 1; // Make function ready flag high
+			GLOBAL_FN_TCP_DATA.fn_data_mode = 0;  // Put TCP receive back in fn mode
+		}
+	}
+
+	//this state is not being used
+	/*
+	else if((((u8*)(p->payload))[0] == SUCCESS_REPLY) | (((u8*)(p->payload))[0] == FAIL_REPLY)){
+		if(((u8*)(p->payload))[0] == SUCCESS_REPLY){
+			DEBUG_PRINT("Success\n"); //need to channel it to proper function id
+		}
+		else{
+			DEBUG_PRINT("Error\n");
+		}
+	}
+	*/
+	//Any other kinda packet.
+	else{
+		DEBUG_PRINT("Received Data We Don't Care\n");
+	}
+
+	/* indicate that the packet has been received */
+	tcp_recved(tpcb, p->tot_len);
+	pbuf_free(p);
+	return ERR_OK;
+
+}
+
+
+err_t accept_callback(void *arg, struct tcp_pcb *newpcb, err_t err)
+{
+	static int connection = 1;
+
+	/* set the receive callback for this connection */
+	tcp_recv(newpcb, recv_callback);
+
+	/* set the send callback for this connection */
+	tcp_sent(newpcb, push_data);
+
+	/* just use an integer number indicating the connection id as the
+	   callback argument */
+	tcp_arg(newpcb, (void*)(UINTPTR)connection);
+
+	GLOBAL_WRITE_TCP_DATA.pcb = newpcb;
+	/* increment for subsequent accepted connections */
+	connection++;
+	printf("Conn = %d\n",connection);
+
+	return ERR_OK;
+}
+
+
+int start_application()
+{
+	struct tcp_pcb *pcb;
+	err_t err;
+	unsigned port = 7;
+
+	/* create new TCP PCB structure */
+	pcb = tcp_new_ip_type(IPADDR_TYPE_ANY);
+	if (!pcb) {
+		DEBUG_PRINT("Error creating PCB. Out of Memory\n\r");
+		return -1;
+	}
+
+	/* bind to specified @port */
+	err = tcp_bind(pcb, IP_ANY_TYPE, port);
+	if (err != ERR_OK) {
+		DEBUG_PRINT("Unable to bind to port %d: err = %d\n\r", port, err);
+		return -2;
+	}
+
+	/* we do not need any arguments to callback functions */
+	tcp_arg(pcb, NULL);
+
+	/* listen for connections*/
+	pcb = tcp_listen(pcb);
+	if (!pcb) {
+		DEBUG_PRINT("Out of memory while tcp_listen\n\r");
+		return -3;
+	}
+
+	/* specify callback to use for incoming connections */
+	tcp_accept(pcb, accept_callback);
+
+	xil_printf("TCP echo server started @ port %d\n\r", port);
+
+	return 0;
+}

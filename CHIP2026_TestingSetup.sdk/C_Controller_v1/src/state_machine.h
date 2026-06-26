@@ -44,8 +44,8 @@
 #define SCN_IN		30
 #define CTRL_VB		31
 /********** Signal Index for Dig AXI IN Bus 1 **********/
-#define CTRL_VBP	0
-#define CTRL_VBN	1
+#define CTRL_VBP	32
+#define CTRL_VBN	33
 
 /********** Signal Index for Output AXI Bus **********/
 #define SCN_OUT 0

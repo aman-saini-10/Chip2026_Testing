@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
 // Date        : Wed Jun 17 17:55:45 2026
 // Host        : aman-PC running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               C:/Chip2026_Testing/CHIP2026_TestingSetup/CHIP2026_TestingSetup.srcs/sources_1/bd/design_1/ip/design_1_axi_gpio_0_0/design_1_axi_gpio_0_0_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top design_1_axi_gpio_0_0 -prefix
+//               design_1_axi_gpio_0_0_ design_1_axi_gpio_0_0_stub.v
 // Design      : design_1_axi_gpio_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg484-1

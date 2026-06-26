@@ -1,0 +1,1601 @@
+
+#include "utils.h"
+#include "state_machine.h"
+#include <math.h>
+
+#include <malloc.h>
+
+void print_heap_info() {
+    struct mallinfo mi = mallinfo();
+
+    printf("Total space: %d\n", mi.arena);
+    printf("Free space : %d\n", mi.fordblks);
+    printf("Used space : %d\n", mi.uordblks);
+}
+
+float bytes_to_float(u8* bytes) {
+    float value;
+    memcpy(&value, bytes, sizeof(float));
+    return value;
+}
+
+u8 process_fn_data(u8* data){
+	//Clear any previous write data buffer before starting new function
+	set_write_data_to_default();
+	GLOBAL_FN_TCP_DATA.fn_data_mode = 1; //Put TCP Receive in data mode.
+	GLOBAL_FN_TCP_DATA.fn_name = data[0];
+	GLOBAL_FN_TCP_DATA.Data_Size = ((u32)data[4] << 24) | ((u32)data[3] << 16) | ((u32)data[2] << 8) | (u32)data[1];
+	GLOBAL_FN_TCP_DATA.Data_Ptr = (u8*)calloc(GLOBAL_FN_TCP_DATA.Data_Size,sizeof(u8)); //Each function shall take the responsibility to free
+	GLOBAL_FN_TCP_DATA.Data_Recved_Size = 0;
+
+	DEBUG_PRINT("%d %d\n",GLOBAL_FN_TCP_DATA.fn_name,GLOBAL_FN_TCP_DATA.Data_Size);
+	//send reply to client saying all ok. ask for data.
+	u8 reply = SUCCESS_REPLY;
+	transfer_data(&reply,1);
+	return 0;
+}
+
+//Use this function to send data for more than MAX_SEND_BUFF
+err_t transfer_data(u8* data, u32 len){
+	err_t err;
+	GLOBAL_WRITE_TCP_DATA.Data_Size_To_Send = len;
+	GLOBAL_WRITE_TCP_DATA.Data_Ptr = data;
+	err = push_data(NULL,GLOBAL_WRITE_TCP_DATA.pcb,0);
+	return err;
+}
+
+//Call this after function is done
+u8 set_fn_data_to_default(){
+	//Check memory stats here.
+	//print_heap_info();
+	free(GLOBAL_FN_TCP_DATA.Data_Ptr);
+	GLOBAL_FN_TCP_DATA.Data_Size = 0;
+	GLOBAL_FN_TCP_DATA.Data_Recved_Size = 0;
+	GLOBAL_FN_TCP_DATA.fn_ready_flag = 0;
+	//Check memory stats here.
+	//print_heap_info();
+	return 0;
+}
+
+//This needs to be called before next function comes
+u8 set_write_data_to_default(){
+	/*
+	if((GLOBAL_FN_TCP_DATA.fn_name == linear) | (GLOBAL_FN_TCP_DATA.fn_name == convolution) ){
+		if(GLOBAL_WRITE_TCP_DATA.Data_Ptr != NULL){
+			free(GLOBAL_WRITE_TCP_DATA.Data_Ptr);
+			GLOBAL_WRITE_TCP_DATA.Data_Ptr = NULL;
+		}
+	}*/
+	GLOBAL_WRITE_TCP_DATA.Data_Size_To_Send = 0;
+	GLOBAL_WRITE_TCP_DATA.Send_Data_Flag = 0;
+	return 0;
+}
+
+//Initialize AXI buses
+u8 initialise_AXI(){
+	u8 status;
+	status = XGpio_Initialize(&GLOBAL_SM_DATA.AXI_INPUT_BUS_0, XPAR_AXI_GPIO_0_DEVICE_ID);
+	status = XGpio_Initialize(&GLOBAL_SM_DATA.AXI_INPUT_BUS_1, XPAR_AXI_GPIO_1_DEVICE_ID);
+	status = XGpio_Initialize(&GLOBAL_SM_DATA.AXI_OUTPUT_BUS, XPAR_DIG_AXI_OUT_BUS_DEVICE_ID);
+	status = XGpio_Initialize(&GLOBAL_SM_DATA.AXI_DEBUG_OUTPUT_BUS_0, XPAR_DIG_DEBUG_AXI_OUT_BUS_0_DEVICE_ID);
+	status = XGpio_Initialize(&GLOBAL_SM_DATA.AXI_DEBUG_OUTPUT_BUS_1, XPAR_DIG_DEBUG_AXI_OUT_BUS_1_DEVICE_ID);
+	status = XGpio_Initialize(&GLOBAL_SM_DATA.AXI_SCAN_MODE_SETTINGS_BUS, XPAR_SCAN_MODE_SETTINGS_AXI_BUS_DEVICE_ID);
+
+	XAxiDma_Config *CfgPtr = XAxiDma_LookupConfig(XPAR_AXI_DMA_0_DEVICE_ID);
+	status = XAxiDma_CfgInitialize(&GLOBAL_SM_DATA.AxiDma, CfgPtr);
+	 if (status != XST_SUCCESS) {
+		printf("DMA initialization failed with %d\n",status);
+		return 1;
+	 }
+
+	// Disable interrupts (polling mode)
+	XAxiDma_IntrDisable(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DMA_TO_DEVICE);
+	XAxiDma_IntrDisable(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DEVICE_TO_DMA);
+	return status;
+}
+
+//Startup Code
+u8 initialise_FPGA(){
+	//Assign Default values to the Digital Signals
+	//This  shall be done from python as set default function before calling anything else.
+	u8 default_values[DIG_IN_SIG_LEN] = {0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1}; //Edit here to change default values
+	u16 scan_len[10] = {900, 900, 90, 90, 1164, 270, 270, 105, 1152, 1152};
+	memcpy(GLOBAL_SM_DATA.default_signal_values, default_values, sizeof(default_values));
+	memcpy(GLOBAL_SM_DATA.signal_values, default_values, sizeof(default_values)); //This is just initialise. It will be modified everytime set_ChipIO() is called
+	memcpy(GLOBAL_SM_DATA.scan_len, scan_len, sizeof(scan_len));
+	memset(GLOBAL_SM_DATA.dma_scanout_buffer,0,sizeof(GLOBAL_SM_DATA.dma_scanout_buffer));
+	memset(GLOBAL_SM_DATA.dma_imcout_buffer,0,sizeof(GLOBAL_SM_DATA.dma_imcout_buffer));
+	memset(GLOBAL_SM_DATA.sram_write_buffer,0,sizeof(GLOBAL_SM_DATA.sram_write_buffer));
+	u8 mode_default_values[32] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	memcpy(GLOBAL_SM_DATA.mode_default_signal_values, mode_default_values, sizeof(mode_default_values));
+	memcpy(GLOBAL_SM_DATA.mode_signal_values, mode_default_values, sizeof(mode_default_values));
+
+	//Initialize calibration word-lines index
+	u16 calib_wl[132] = {288, 289, 290, 291, 292, 293, 870, 871, 872, 873, 874, 875};
+
+	memcpy(GLOBAL_SM_DATA.calib_wl, calib_wl, sizeof(calib_wl));
+
+	//Initialize AXI Buses
+	initialise_AXI();
+	//Set Chip IO to default. This can be done from python by calling set_ChipIO() with default values as and when needed
+	set_ChipIO_to_Default();
+	//Set Mode IO to default.
+	set_ModeIO_to_Default();
+	//Add AXI_MODE_CONTROL defaults here as well
+	GLOBAL_FN_TCP_DATA.fn_data_mode = 0;
+	GLOBAL_FN_TCP_DATA.fn_ready_flag  = 0; //this flag will be made high in receive callback
+	GLOBAL_WRITE_TCP_DATA.Send_Data_Flag = 0;
+	printf("TCP Receive set in FN Mode\n");
+	sleep(1); //Let the IOs.
+	return 0;
+}
+
+//Read the AXI data
+u32 get_AXI_Bits(u8 AXI_ID){
+	u32 readData;
+	switch(AXI_ID){
+	case 0:
+		readData = (u32)XGpio_DiscreteRead(&GLOBAL_SM_DATA.AXI_OUTPUT_BUS,1);
+		break;
+	case 1:
+		readData = (u32)XGpio_DiscreteRead(&GLOBAL_SM_DATA.AXI_DEBUG_OUTPUT_BUS_0,1);
+		break;
+	case 2:
+		readData = (u32)XGpio_DiscreteRead(&GLOBAL_SM_DATA.AXI_DEBUG_OUTPUT_BUS_1,1);
+		break;
+	default:
+		break;
+	}
+	return readData;
+}
+
+//Get Scan Out Bit from AXI
+u8 get_scan_out_bit(){
+	u8 bit;
+	bit = (get_AXI_Bits(0) & (u8)1); //{0000...,IMC_DONE,SCN_OUT} & with 1
+	return bit;
+}
+
+//Write data on AXI
+u8 set_AXI_Bits(u8* signals, u8 signal_len, u8* signal_values ){
+	//update the global signal values.
+	u8 signal;
+	u8 value;
+	for(u32 i = 0; i < signal_len; i++){
+		signal = signals[i];
+		value = signal_values[i];
+		GLOBAL_SM_DATA.signal_values[signal] = value; //this being global is important as it should conserve other signals.
+	}
+	//now set the AXI data accordingly. (Only Input Bus)
+	u32 data1 = 0, data2 = 0;
+	for (int i = 0; i < 32; i++) {
+	    data1 |= ((u32)(GLOBAL_SM_DATA.signal_values[i] & 1)) << i;
+	}
+	for (int i = 0; i < 2; i++) {
+	    data2 |= ((u32)(GLOBAL_SM_DATA.signal_values[i+32] & 1)) << i;
+	}
+	XGpio_DiscreteWrite(&GLOBAL_SM_DATA.AXI_INPUT_BUS_0,1,data1);
+	XGpio_DiscreteWrite(&GLOBAL_SM_DATA.AXI_INPUT_BUS_1,1,data2);
+	return 0;
+}
+
+//Write data on AXI
+u8 set_MODE_AXI_Bits(u8* signals, u8 signal_len, u8* signal_values ){
+	//update the global signal values.
+	u8 signal;
+	u8 value;
+	for(u32 i = 0; i < signal_len; i++){
+		signal = signals[i];
+		value = signal_values[i];
+		GLOBAL_SM_DATA.mode_signal_values[signal] = value; //this being global is important as it should conserve other signals.
+	}
+	//now set the AXI data accordingly. (Only Input Bus)
+	u32 data = 0;
+	for (int i = 0; i < 32; i++) {
+	    data |= ((u32)(GLOBAL_SM_DATA.mode_signal_values[i] & 1)) << i;
+	}
+	XGpio_DiscreteWrite(&GLOBAL_SM_DATA.AXI_SCAN_MODE_SETTINGS_BUS,1,data);
+	return 0;
+}
+
+//Set ChipIO to default after fpga wakes up.
+u8 set_ChipIO_to_Default(){
+	u8 signals[DIG_IN_SIG_LEN];
+	for(u8 i = 0; i < DIG_IN_SIG_LEN; i++){
+		signals[i] = i;
+	}
+	set_AXI_Bits(signals,DIG_IN_SIG_LEN,GLOBAL_SM_DATA.default_signal_values);
+	printf("IO set to Default\n");
+	return 0;
+}
+
+//Set ModeIO to default after fpga wakes up.
+u8 set_ModeIO_to_Default(){
+	u8 signals[32];
+	for(u8 i = 0; i < 32; i++){
+		signals[i] = i;
+	}
+	set_MODE_AXI_Bits(signals,32,GLOBAL_SM_DATA.mode_default_signal_values);
+	printf("Mode IO set to Default\n");
+	return 0;
+}
+
+u8 set_ScanID(u8 scan_id){
+	u8 signal_array[3]= {SCN_SEL_0,SCN_SEL_1,SCN_SEL_2, SCN_SEL_3};
+	u8 value_array[3] = {0, 0 ,0, 0};
+	switch(scan_id){
+	case TDC_OUT_SC_LM:
+		value_array[3] = 0;value_array[2] = 0;value_array[1] = 0;value_array[0] = 0;
+		break;
+	case TDC_OUT_SC_RM:
+		value_array[3] = 0;value_array[2] = 0;value_array[1] = 0;value_array[0] = 1;
+		break;
+	case CL_EN_SC_LM:
+		value_array[3] = 0;value_array[2] = 0;value_array[1] = 1;value_array[0] = 0;
+		break;
+	case CL_EN_SC_RM:
+		value_array[3] = 0;value_array[2] = 0;value_array[1] = 1;value_array[0] = 1;
+		break;
+	case WL_SC:
+		value_array[3] = 0;value_array[2] = 1;value_array[1] = 0;value_array[0] = 0;
+		break;
+	case SA_OUT_SC:
+		value_array[3] = 0;value_array[2] = 1;value_array[1] = 0;value_array[0] = 1;
+		break;
+	case WRITE_DATA_SC:
+		value_array[3] = 0;value_array[2] = 1;value_array[1] = 1;value_array[0] = 0;
+		break;
+	case CONTROL_LOGIC_SC:
+		value_array[3] = 0;value_array[2] = 1;value_array[1] = 1;value_array[0] = 1;
+		break;
+	case XIN_SCN_QUADV:
+		value_array[3] = 1;value_array[2] = 0;value_array[1] = 0;value_array[0] = 0;
+		break;
+	case XIN_SC_UNITV:
+		value_array[3] = 1;value_array[2] = 0;value_array[1] = 0;value_array[0] = 1;
+		break;
+	default:
+		value_array[3] = 0;value_array[2] = 0;value_array[1] = 0;value_array[0] = 0;
+		break;
+	}
+	u8 ret = set_AXI_Bits(signal_array,4,value_array);
+	return ret;
+}
+
+//Set Scan ID for Fast Scan IN
+u8 set_ScanID_Verilog(u8 scan_id){
+	u8 signal_array[3]= {SCAN_SEL_0_V,SCAN_SEL_1_V,SCAN_SEL_2_V};
+	u8 value_array[3] = {0, 0 ,0};
+	switch(scan_id){
+	case TDC_OUT_SC_LM:
+		value_array[3] = 0;value_array[2] = 0;value_array[1] = 0;value_array[0] = 0;
+		break;
+	case TDC_OUT_SC_RM:
+		value_array[3] = 0;value_array[2] = 0;value_array[1] = 0;value_array[0] = 1;
+		break;
+	case CL_EN_SC_LM:
+		value_array[3] = 0;value_array[2] = 0;value_array[1] = 1;value_array[0] = 0;
+		break;
+	case CL_EN_SC_RM:
+		value_array[3] = 0;value_array[2] = 0;value_array[1] = 1;value_array[0] = 1;
+		break;
+	case WL_SC:
+		value_array[3] = 0;value_array[2] = 1;value_array[1] = 0;value_array[0] = 0;
+		break;
+	case SA_OUT_SC:
+		value_array[3] = 0;value_array[2] = 1;value_array[1] = 0;value_array[0] = 1;
+		break;
+	case WRITE_DATA_SC:
+		value_array[3] = 0;value_array[2] = 1;value_array[1] = 1;value_array[0] = 0;
+		break;
+	case CONTROL_LOGIC_SC:
+		value_array[3] = 0;value_array[2] = 1;value_array[1] = 1;value_array[0] = 1;
+		break;
+	case XIN_SCN_QUADV:
+		value_array[3] = 1;value_array[2] = 0;value_array[1] = 0;value_array[0] = 0;
+		break;
+	case XIN_SC_UNITV:
+		value_array[3] = 1;value_array[2] = 0;value_array[1] = 0;value_array[0] = 1;
+		break;
+	default:
+		value_array[3] = 0;value_array[2] = 0;value_array[1] = 0;value_array[0] = 0;
+		break;
+	}
+	u8 ret = set_MODE_AXI_Bits(signal_array,3,value_array);
+	//DEBUG_PRINT("Scan ID Verilog SET\n");
+	return ret;
+}
+
+//C function to scan in data into given scan chain with given len. Note it may be requirement not to scan all data.
+u8 c_scan_in(u8* scan_data, u8 scan_id,u16 scan_len){
+
+	set_ScanID(scan_id);
+	u32 byte_length = floor((scan_len + 31) / 32)*4; //AXI DMA needs 4 byte packet each. So maintain 4 byte padding everywhere
+	u32 bits_set = 0;
+	u8 breakOuter = 0;
+	for (u32 i = 0; i < byte_length; ++i) {
+		for (int bit = 0; bit <= 7; bit++) {
+			u8 scan_in_bit= (scan_data[i] >> bit) & 1;
+			//DEBUG_PRINT("%d Scan IN = %d\n",bits_set+1,scan_in_bit);
+			{
+				//Set SCN_IN = scan_in_bit and CLK_A = 1, CLK_B = 0
+				u8 signals[3] = {SCN_IN,CLK_A,CLK_B};
+				u8 values[3] = {scan_in_bit,1,0};
+				set_AXI_Bits(signals,3,values);
+				//usleep(200000); //100ms sleep. This needs to be parameter
+			} {
+				//Turn off CLK_A keep scan in bit and CLK_B = 0
+				u8 signals[1] = {CLK_A};
+				u8 values[1] = {0};
+				set_AXI_Bits(signals,1,values);
+				//usleep(200000);
+			} {
+				//Turn on CLK_B
+				u8 signals[1] = {CLK_B};
+				u8 values[1] = {1};
+				set_AXI_Bits(signals,1,values);
+				//usleep(200000);
+			} {
+				//Turn off CLK_B
+				u8 signals[1] = {CLK_B};
+				u8 values[1] = {0};
+				set_AXI_Bits(signals,1,values);
+				//usleep(200000);
+			}
+			bits_set+=1;
+			if(bits_set==scan_len){
+				breakOuter = 1;
+				break;
+			}
+		}
+		if (breakOuter) break; // breaks outer loop
+	}
+	set_ScanID(0);
+	return 0;
+}
+
+//Scan out function for C. It is callers responsibility to ensure SCN_IN, IN_EN and the toggle related disbales are set before calling this. Eg, Control_EN = 0 before calling scan out to avoid toggle.
+u32 c_scan_out(u8 scan_id, u16 scan_len){
+	//Select the scan chain that needs to be scanned out
+	set_ScanID(scan_id);
+	//Total bytes required
+	u32 num_bytes = floor((scan_len + 31) / 32)*4; //AXI DMA needs 4 byte packet each. So maintain 4 byte padding everywhere
+	for (u32 i = 0; i < scan_len; ++i) {
+		u32 byte_index = i / 8;
+		u32 bit_index = i % 8;
+
+		{
+			//Set CLK_B = 1
+			u8 signals[2] = {CLK_A,CLK_B};
+			u8 values[2] = {0,1};
+			set_AXI_Bits(signals,2,values);
+			//usleep(200000); //100ms sleep. This needs to be parameter
+		}
+	    //Read Scan Out Data
+		u32 bit = get_scan_out_bit();
+		{
+			//Set CLK_B = 0
+			u8 signals[1] = {CLK_B};
+			u8 values[1] = {0};
+			set_AXI_Bits(signals,1,values);
+			//usleep(200000); //100ms sleep. This needs to be parameter
+		} {
+			//Set CLK_A = 1
+			u8 signals[1] = {CLK_A};
+			u8 values[1] = {1};
+			set_AXI_Bits(signals,1,values);
+			//usleep(200000); //100ms sleep. This needs to be parameter
+		} {
+			//Set CLK_A = 0
+			u8 signals[1] = {CLK_A};
+			u8 values[1] = {0};
+			set_AXI_Bits(signals,1,values);
+			//usleep(200000); //100ms sleep. This needs to be parameter
+		}
+	    // Clear the bit location first (just to be safe)
+		GLOBAL_SM_DATA.dma_scanout_buffer[byte_index] &= ~(1 <<(bit_index));
+
+		// Set the bit if needed
+		GLOBAL_SM_DATA.dma_scanout_buffer[byte_index] |= (bit <<(bit_index));
+	}
+	set_ScanID(0);
+	return num_bytes;
+}
+
+//Debug function
+int verify_data(u8 *tx, u8 *rx, int size) {
+    for (int i = 0; i < size; i++) {
+        printf("byte %d:\n", i);
+        printf("  Sent     : ");
+        for (int b = 0; b < 8; b++) {
+            printf("%d", (tx[i] >> b) & 1);
+        }
+        printf("\n");
+
+        printf("  Received : ");
+        for (int b = 0; b < 8; b++) {
+            printf("%d", (rx[i] >> b) & 1);
+        }
+        printf("\n");
+
+        if (tx[i] != rx[i]) {
+            printf("  Mismatch Detected!\n");
+            return -1;
+        } else {
+            printf("  Match OK.\n");
+        }
+    }
+    return 0;
+}
+
+u8 dma_send_recv_test(u8 scan_id,u16 scan_len){
+	u8 status;
+	//Send Scan_ID to verilog Controller. It should know how much to scan in.
+	set_ScanID_Verilog(scan_id);
+	//Total bytes required
+	u32 num_bytes = floor((scan_len + 31) / 32)*4; //AXI DMA needs 4 byte packet each. So maintain 4 byte padding everywhere
+	//EN Recv_Data of verilog controller also set test mode to receive same thing back
+	{
+		u8 signals[2] = {SCAN_IN_RECV_V,Test_DMA_V};
+		u8 values[2] = {1,1};
+		set_MODE_AXI_Bits(signals,2,values);
+	}
+	//Send the data-> copy it from your FN array into aligned buffer. This is not required in C code.
+	memcpy(GLOBAL_SM_DATA.dma_scan_in_buffer,GLOBAL_FN_TCP_DATA.Data_Ptr+3,num_bytes);
+	Xil_DCacheFlushRange((UINTPTR)GLOBAL_SM_DATA.dma_scan_in_buffer, num_bytes);
+	status = XAxiDma_SimpleTransfer(&GLOBAL_SM_DATA.AxiDma,(UINTPTR)GLOBAL_SM_DATA.dma_scan_in_buffer, num_bytes, XAXIDMA_DMA_TO_DEVICE);
+	if (status != XST_SUCCESS) {
+		DEBUG_PRINT("MM2S transfer failed with %d\n",status);
+		return -1;
+	}
+	// Wait for MM2S completion
+	while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+	//EN low Recv_Data of verilog controller
+	{
+		u8 signals[1] = {SCAN_IN_RECV_V};
+		u8 values[1] = {0};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	DEBUG_PRINT("Transfered SCAN_IN Data to Verilog Controller\n");
+
+	//Call Scan IN Verilog Enable Here. And wait for it to complete.
+
+	//Debug whether data has been received by calling receive function
+	//EN Send_Data of verilog controller
+	{
+		u8 signals[1] = {SCAN_IN_SEND_V};
+		u8 values[1] = {1};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	// Start S2MM: Receive data back from FPGA
+	Xil_DCacheFlushRange((UINTPTR)GLOBAL_SM_DATA.dma_scanout_buffer, num_bytes);
+	status = XAxiDma_SimpleTransfer(&GLOBAL_SM_DATA.AxiDma, (UINTPTR)GLOBAL_SM_DATA.dma_scanout_buffer, num_bytes, XAXIDMA_DEVICE_TO_DMA);
+	if (status != XST_SUCCESS) {
+		DEBUG_PRINT("S2MM transfer failed\n");
+		return -1;
+	}
+	// Wait for S2MM completion
+	while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+	DEBUG_PRINT("Received SCAN_Out Data from Verilog Controller\n");
+	//EN low Send_Data of verilog controller also turn of test mode
+	{
+		u8 signals[2] = {SCAN_IN_SEND_V,Test_DMA_V};
+		u8 values[2] = {0,0};
+		set_MODE_AXI_Bits(signals,2,values);
+	}
+	// Verify the result
+	if (verify_data(GLOBAL_SM_DATA.dma_scan_in_buffer,GLOBAL_SM_DATA.dma_scanout_buffer, num_bytes) == 0) {
+		printf("Transfer successful! Data matches.\n");
+	} else {
+		printf("Transfer failed. Data mismatch.\n");
+	}
+	set_ModeIO_to_Default();
+	return status;
+}
+
+
+//This is fast scan in function
+u8 verilog_scan_in(u8* scan_data, u8 scan_id, u16 scan_len){
+	u8 status;
+	//Send Scan_ID to verilog Controller. It should know how much to scan in.
+	set_ScanID_Verilog(scan_id);
+	//Total bytes required
+	u32 num_bytes = floor((scan_len + 31) / 32)*4; //AXI DMA needs 4 byte packet each. So maintain 4 byte padding everywhere
+	//EN Recv_Data of verilog controller
+	{
+		u8 signals[1] = {SCAN_IN_RECV_V};
+		u8 values[1] = {1};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	//Send the data-> copy it from your FN array into aligned buffer. This is not required in C code.
+	memcpy(GLOBAL_SM_DATA.dma_scan_in_buffer,scan_data,num_bytes);
+	Xil_DCacheFlushRange((UINTPTR)GLOBAL_SM_DATA.dma_scan_in_buffer, num_bytes);
+	status = XAxiDma_SimpleTransfer(&GLOBAL_SM_DATA.AxiDma,(UINTPTR)GLOBAL_SM_DATA.dma_scan_in_buffer, num_bytes, XAXIDMA_DMA_TO_DEVICE);
+	if (status != XST_SUCCESS) {
+		DEBUG_PRINT("MM2S transfer failed with %d\n",status);
+		return -1;
+	}
+	// Wait for MM2S completion
+	while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+	//EN low Recv_Data of verilog controller
+	{
+		u8 signals[1] = {SCAN_IN_RECV_V};
+		u8 values[1] = {0};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	//DEBUG_PRINT("Transfered SCAN_IN Data to Verilog Controller\n");
+
+	//Call Scan IN Verilog Enable Here. And wait for it to complete.
+	//set verilog scan = 1 and NCLK = 255
+	{
+		u8 signals[10] = {VERILOG_C_SCAN,NCLK_0_V,NCLK_1_V,NCLK_2_V,NCLK_3_V,NCLK_4_V,NCLK_5_V,NCLK_6_V,NCLK_7_V,Test_DMA_V};
+		u8 values[10] = {1,1,0,0,0,0,0,0,0,0};
+		set_MODE_AXI_Bits(signals,9,values);
+	}
+	//Enable SCAN_IN
+	{
+		u8 signals[1] = {SCAN_IN_EN_V};
+		u8 values[1] = {1};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	//Wait for SCAN_IN_DONE to go high
+	while(!(get_AXI_Bits(0) & (u8)4));
+	//Disable SCAN_IN
+	{
+		u8 signals[1] = {SCAN_IN_EN_V};
+		u8 values[1] = {0};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	//DEBUG_PRINT("Verilog SCAN_IN Done\n");
+	set_ModeIO_to_Default();
+	return status;
+}
+
+//This is fast scan out fn
+u32 verilog_scan_out(u8 scan_id,u16 scan_len){
+	u8 status;
+	//Send Scan_ID to verilog Controller. It should know how much to scan in.
+	set_ScanID_Verilog(scan_id);
+	//Total bytes required
+	u32 num_bytes = floor((scan_len + 31) / 32)*4; //AXI DMA needs 4 byte packet each. So maintain 4 byte padding everywhere
+
+	//Call Scan out Verilog Enable Here. And wait for it to complete.
+	//set verilog scan = 1 and NCLK = 255
+	{
+		u8 signals[10] = {VERILOG_C_SCAN,NCLK_0_V,NCLK_1_V,NCLK_2_V,NCLK_3_V,NCLK_4_V,NCLK_5_V,NCLK_6_V,NCLK_7_V,Test_DMA_V};
+		u8 values[10] = {1,1,0,0,0,0,0,0,0,0};
+		set_MODE_AXI_Bits(signals,10,values);
+	}
+	//Enable SCAN_OUT
+	{
+		u8 signals[1] = {SCAN_OUT_EN_V};
+		u8 values[1] = {1};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	//Wait for SCAN_OUT_DONE to go high
+	while(!(get_AXI_Bits(0) & (u8)8));
+	//Disable SCAN_OUT
+	{
+		u8 signals[1] = {SCAN_OUT_EN_V};
+		u8 values[1] = {0};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	//DEBUG_PRINT("Verilog SCAN_OUT Done\n");
+
+	//calling receive function
+	//EN Send_Data of verilog controller
+	{
+		u8 signals[1] = {SCAN_IN_SEND_V};
+		u8 values[1] = {1};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	// Start S2MM: Receive data back from FPGA
+	Xil_DCacheFlushRange((UINTPTR)GLOBAL_SM_DATA.dma_scanout_buffer, num_bytes);
+	status = XAxiDma_SimpleTransfer(&GLOBAL_SM_DATA.AxiDma, (UINTPTR)GLOBAL_SM_DATA.dma_scanout_buffer, num_bytes, XAXIDMA_DEVICE_TO_DMA);
+	if (status != XST_SUCCESS) {
+		DEBUG_PRINT("S2MM transfer failed\n");
+		return -1;
+	}
+	// Wait for S2MM completion
+	while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+	//DEBUG_PRINT("Received SCAN_Out Data from Verilog Controller\n");
+	//EN low Send_Data of verilog controller
+	{
+		u8 signals[2] = {SCAN_IN_SEND_V,VERILOG_C_SCAN};
+		u8 values[2] = {0,0};
+		set_MODE_AXI_Bits(signals,2,values);
+	}
+	set_ModeIO_to_Default();
+	return num_bytes;
+}
+
+//Flush WL Scan Chain.And insert one 1.This needs to be done before Write.
+u8 flush_wl_sc(){
+	u8 flush_array[148] = {0};
+	flush_array[144] = 8;
+	verilog_scan_in(flush_array,WL_SC,GLOBAL_SM_DATA.scan_len[WL_SC]);
+	/* Alternative (Slower) C-Scan-In
+	set_ScanID(WL_SC); //select the Word-Line scan chain
+	{
+		//set SCN_IN = 0; CLK_A = 1; CLK_B = 1; WL_EN = 0; Open the scan chain.
+		u8 signals[4] = {SCN_IN,CLK_A,CLK_B,WL_EN};
+		u8 values[4] = {0,1,1,0};
+		set_AXI_Bits(signals,4,values);
+	}
+	sleep(3);
+	{
+		//set  CLK_A = 0; CLK_B = 0; close the scan chain.
+		u8 signals[2] = {CLK_A,CLK_B};
+		u8 values[2] = {0,0};
+		set_AXI_Bits(signals,2,values);
+	}
+	//Now scan in one at first WL
+	{
+		u8 signals[1] = {SCN_IN};
+		u8 values[1] = {1};
+		set_AXI_Bits(signals,1,values);
+	}
+	{
+		u8 signals[1] = {CLK_A};
+		u8 values[1] = {1};
+		set_AXI_Bits(signals,1,values);
+	}
+	{
+		u8 signals[1] = {CLK_A};
+		u8 values[1] = {0};
+		set_AXI_Bits(signals,1,values);
+	}
+	{
+		u8 signals[1] = {CLK_B};
+		u8 values[1] = {1};
+		set_AXI_Bits(signals,1,values);
+	}
+	*/
+	{
+		u8 signals[2] = {SCN_IN}; //Important to keep scanin at 0
+		u8 values[2] = {0};
+		set_AXI_Bits(signals,1,values);
+	}
+	return 0;
+}
+
+u8 write_SRAM_WL(u16 wl, u8* write_data){
+	//Write data into write scan chain => 270bits => 34 bytes
+	verilog_scan_in(write_data,WRITE_DATA_SC,GLOBAL_SM_DATA.scan_len[WRITE_DATA_SC]);
+	//Do Write EN
+	{
+		u8 signals[1] = {WRITE_EN};
+		u8 values[1] = {1};
+		set_AXI_Bits(signals,1,values);
+	}
+	//Do WL_EN
+	{
+		u8 signals[1] = {WL_EN};
+		u8 values[1] = {1};
+		set_AXI_Bits(signals,1,values);
+	}
+	//turn off WL_EN
+	{
+		u8 signals[1] = {WL_EN};
+		u8 values[1] = {0};
+		set_AXI_Bits(signals,1,values);
+	}
+	//turn off WRITE_EN
+	{
+		u8 signals[1] = {WRITE_EN};
+		u8 values[1] = {0};
+		set_AXI_Bits(signals,1,values);
+	}
+	return 0;
+}
+
+u8 write_SRAM_WL_Verilog(u16 wl, u8* write_data){
+	//Write data into write scan chain => 296bits => 40 bytes
+	verilog_scan_in(write_data,WRITE_DATA_SC,GLOBAL_SM_DATA.scan_len[WRITE_DATA_SC]);
+	//Do Verilog Write EN
+	{
+		u8 signals[1] = {WRITE_SRAM_EN_V};
+		u8 values[1] = {1};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+
+	//Wait for it to finish
+	while(!(get_AXI_Bits(0) & (u8)16));
+
+	//disable verilog Write
+	{
+		u8 signals[1] = {WRITE_SRAM_EN_V};
+		u8 values[1] = {0};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	return 0;
+}
+
+u8 move_WL_SC(){
+	//Set scan ID back to WL
+	set_ScanID(WL_SC);
+	//Put SCN_IN = 0.
+	{
+		u8 signals[1] = {SCN_IN};
+		u8 values[1] = {0};
+		set_AXI_Bits(signals,1,values);
+	}
+	//Move one to next wl for next WL write
+	{
+		u8 signals[1] = {CLK_A};
+		u8 values[1] = {1};
+		set_AXI_Bits(signals,1,values);
+	}
+	{
+		u8 signals[1] = {CLK_A};
+		u8 values[1] = {0};
+		set_AXI_Bits(signals,1,values);
+	}
+	{
+		u8 signals[1] = {CLK_B};
+		u8 values[1] = {1};
+		set_AXI_Bits(signals,1,values);
+	}
+	{
+		u8 signals[1] = {CLK_B};
+		u8 values[1] = {0};
+		set_AXI_Bits(signals,1,values);
+	}
+	return 0;
+}
+
+u8 write_SRAM_Full(u8* write_data){
+	//Float the Bitlines - > Active LOW
+	{
+		u8 signals[1] = {BL_PCHG};
+		u8 values[1] = {1};
+		set_AXI_Bits(signals,1,values);
+	}
+	//Flush the wordline scan chain.
+	flush_wl_sc();
+	//Write data will be in packets of 40bytes * 1156(number of wordlines). Ensure this in python
+	for(u16 wl = 0; wl < NUM_WL; wl++){
+		//Write one WL
+		write_SRAM_WL_Verilog(wl,write_data+wl*40);
+		//Move WL by 1
+		move_WL_SC();
+		//Last iteration will have WL_SCAN chain flushed out
+	}
+	return 0;
+}
+
+//This does not write data on calib wl
+u8 write_SRAM_Masked(u8* write_data){
+	//Flush the wordline scan chain.
+	flush_wl_sc();
+	//Write data will be in packets of 40bytes * 1156(number of wordlines). Ensure this in python
+	u16 mac_wl = 0;
+	u16 calib_wl_ndx = 0;
+	for(u16 wl = 0; wl < NUM_WL; wl++){
+		if(wl != GLOBAL_SM_DATA.calib_wl[calib_wl_ndx])
+		{
+			//Write one WL
+			DEBUG_PRINT("Written WL = %d\n",wl);
+			write_SRAM_WL_Verilog(wl,write_data+mac_wl*40);
+			mac_wl ++;
+		}
+		else{
+			DEBUG_PRINT("Skipped WL = %d\n",wl);
+			calib_wl_ndx++;
+		}
+		//Move WL by 1
+		move_WL_SC();
+		//Last iteration will have WL_SCAN chain flushed out
+	}
+	//printf("Calibwlndx = %d\n",calib_wl_ndx);
+	return 0;
+}
+
+
+u8 set_CS(u8 coulmn_id){
+	u8 signal_array[2]= {CS_0,CS_1};
+	u8 value_array[2] = {0, 0};
+	switch(coulmn_id){
+	case 0:
+		value_array[1] = 0;value_array[0] = 0;
+		break;
+	case 1:
+		value_array[1] = 0;value_array[0] = 1;
+		break;
+	case 2:
+		value_array[1] = 1;value_array[0] = 0;
+		break;
+	case 3:
+		value_array[1] = 1;value_array[0] = 1;
+		break;
+	}
+	u8 ret = set_AXI_Bits(signal_array,2,value_array);
+	//DEBUG_PRINT("CS SET\n");
+	return ret;
+}
+u16 read_SRAM_WL(u16 wl){
+	for(u8 cs = 0; cs < 3; cs++){
+		//Set CS
+		set_CS(cs);
+		//Precharge the BLs (BL_PCHG is active low)
+		{
+			u8 signals[1] = {BL_PCHG};
+			u8 values[1] = {0};
+			set_AXI_Bits(signals,1,values);
+		}
+		//Set BLs floating and activate WL
+		{
+			u8 signals[2] = {BL_PCHG,WL_EN};
+			u8 values[2] = {1,1};
+			set_AXI_Bits(signals,2,values);
+		}
+		//Turn on SA (Active Low)
+		{
+			u8 signals[1] = {SA_EN};
+			u8 values[1] = {0};
+			set_AXI_Bits(signals,1,values);
+		}
+		//Turn off WL and Give CLK_SA to sample the output -> Active Low
+		{
+			u8 signals[2] = {WL_EN,CLK_SA};
+			u8 values[2] = {0,0};
+			set_AXI_Bits(signals,2,values);
+		}
+		//Turn off SA and CLK_SAMPLE both active low
+		{
+			u8 signals[2] = {SA_EN,CLK_SA};
+			u8 values[2] = {1,1};
+			set_AXI_Bits(signals,2,values);
+		}
+	}
+	//Select Scan Chain
+	set_ScanID(SA_OUT_SC);
+	//Latch Sampled SA_OUT onto scan chain CLK_A can be high.
+	{
+		u8 signals[3] = {IN_EN,CLK_A,SCN_IN};
+		u8 values[3] = {1,1,0};
+		set_AXI_Bits(signals,3,values);
+	}
+	//Turn off CLK_A and after that Disable IN_EN
+	{
+		u8 signals[1] = {CLK_A};
+		u8 values[1] = {0};
+		set_AXI_Bits(signals,1,values);
+	}
+	{
+		u8 signals[1] = {IN_EN};
+		u8 values[1] = {0};
+		set_AXI_Bits(signals,1,values);
+	}
+
+	//Now we are all set to scan out
+	u16 scanned_bytes = verilog_scan_out(SA_OUT_SC,GLOBAL_SM_DATA.scan_len[SA_OUT_SC]); //This stores read data in dma_buffer
+	return scanned_bytes;
+}
+
+u8 read_SRAM_Full(){
+	//Flush the wordline scan chain.
+	flush_wl_sc();
+	//Set READ_EN = 1
+	{
+		u8 signals[1] = {READ_EN};
+		u8 values[1] = {1};
+		set_AXI_Bits(signals,1,values);
+	}
+	//
+	for(u16 wl = 0; wl < NUM_WL; wl++){
+		u16 scanned_bytes = read_SRAM_WL(wl);
+		//Copy the scanned bytes from scan_out buffer to read_sram_buffer
+		memcpy(GLOBAL_SM_DATA.sram_read_buffer + wl*scanned_bytes,GLOBAL_SM_DATA.dma_scanout_buffer,scanned_bytes);
+		//Move WL by 1
+		move_WL_SC();
+		//Last iteration will have WL_SCAN chain flushed out
+	}
+	//Set READ_EN = 0
+	{
+		u8 signals[1] = {READ_EN};
+		u8 values[1] = {0};
+		set_AXI_Bits(signals,1,values);
+	}
+	set_CS(0);
+	set_ScanID(0);
+	return 0;
+}
+
+u8 fast_IMC(u8 TIME_CHARGE){
+	//Turn on required signals
+	//printf("T_C? = %d\n",TIME_CHARGE);
+	{
+		u8 signals[3] = {CTRL_EN,InputEN_DAC,ENTIME};
+		u8 values[3] = {1,1,TIME_CHARGE};
+		set_AXI_Bits(signals,3,values);
+	}
+	//Enable FAST_IMC
+	{
+		u8 signals[1] = {FAST_IMC_EN_V};
+		u8 values[1] = {1};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	//Wait for FAST_IMC_DONE to go high
+	while(!(get_AXI_Bits(0) & (u8)32));
+	//sleep(1); //Dummy sleep
+	//Disable FAST_IMC
+	{
+		u8 signals[1] = {FAST_IMC_EN_V};
+		u8 values[1] = {0};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	//Turn off required signals
+	{
+		u8 signals[3] = {CTRL_EN,InputEN_DAC,ENTIME};
+		u8 values[3] = {0,0,0};
+		set_AXI_Bits(signals,3,values);
+	}
+	//DEBUG_PRINT("Verilog FAST_IMC Done\n");
+
+	//calling receive function
+	//EN SEND_IMC_DATA_V of verilog controller
+	{
+		u8 signals[1] = {SEND_IMC_DATA_V};
+		u8 values[1] = {1};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	// Start S2MM: Receive data back from FPGA
+	u8 status;
+	Xil_DCacheFlushRange((UINTPTR)GLOBAL_SM_DATA.dma_imcout_buffer, 1280);
+	status = XAxiDma_SimpleTransfer(&GLOBAL_SM_DATA.AxiDma, (UINTPTR)GLOBAL_SM_DATA.dma_imcout_buffer, 1280, XAXIDMA_DEVICE_TO_DMA);
+	if (status != XST_SUCCESS) {
+		DEBUG_PRINT("S2MM transfer failed\n");
+		return -1;
+	}
+
+	// Wait for S2MM completion
+	while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+	//DEBUG_PRINT("Received SCAN_Out Data from Verilog Controller\n");
+
+	//EN low Send_Data of verilog controller
+	{
+		u8 signals[2] = {SEND_IMC_DATA_V};
+		u8 values[2] = {0};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	set_ModeIO_to_Default();
+	TDC_OUT_u8_to_dec();
+	/*
+	for(int i = 0; i < 1024; i++){
+		int value = round(GLOBAL_SM_DATA.imc_out_mac[i] * GLOBAL_SM_DATA.Correction_Data[0][(int)(i/256)][(int)(i/64)%4][i%64] + GLOBAL_SM_DATA.Correction_Data[1][(int)(i/256)][(int)(i/64)%4][i%64]);
+		printf("%d  ",value);
+		if(i%64 == 63 && i != 0){
+			printf("\n\n");
+		}
+	}
+	*/
+	return 0;
+}
+
+//Compare the data for marching pattern
+//remember the data is in bytes not bits so all 0 -> 0 all 1 -> 255
+u8 compare_data(u8* data, u16 len, u8 key){
+	u8 matches = 1;
+	for(u16 i = 0; i < len; i++){
+		if(data[i] != key){
+			matches = 0;
+		}
+	}
+	return matches;
+}
+
+//Write all 0, Read 0 write 1 read 1 and move on.
+u8 marching_Pattern_SRAM(){
+	u8 zero_sram_array[34*1156] = {0}; //Zero array to initialize SRAM.
+	u8 one_wl_array[34]; //All ones array to write in WL
+	memset(one_wl_array, 0xFF, 34); // Fill with 255
+	//Call Write SRAM -> Initialize to zero
+	write_SRAM_Full(zero_sram_array);
+	flush_wl_sc();
+
+	//Now for each WL read 0, Write 1 and read 1
+	printf("WL0 -> WL1155\n");
+	for(u16 wl = 0; wl < NUM_WL; wl++){
+		//Read the data and check if all zeros
+		u16 scanned_bytes = read_SRAM_WL(wl);
+
+		GLOBAL_SM_DATA.dma_scanout_buffer[33] &= 0xFC;
+		u8 zero_match = compare_data(GLOBAL_SM_DATA.dma_scanout_buffer,GLOBAL_SM_DATA.scan_len[SA_OUT_SC]/8,0);
+		if(!zero_match){
+			printf("Zero read doesn't match for WL = %d\n",wl);
+		}
+
+		//Write one in same WL
+		write_SRAM_WL(wl,one_wl_array);
+
+		//Read one from WL and check if all ones
+		scanned_bytes = read_SRAM_WL(wl);
+
+		GLOBAL_SM_DATA.dma_scanout_buffer[33] |= 0x03; // set the last 2 bits to 1
+		u8 one_match = compare_data(GLOBAL_SM_DATA.dma_scanout_buffer,(GLOBAL_SM_DATA.scan_len[SA_OUT_SC]+2)/8,255);
+		if(!one_match){
+			printf("One read doesn't match for WL = %d\n",wl);
+		}
+		//move WL by 1
+		move_WL_SC();
+	}
+	set_CS(0);
+	set_ScanID(0);
+	return 0;
+}
+
+
+//Replicate Linear IMC functionality
+/*
+u8 replicateLINIMCHW(u8 oc,u8 c,u8 wb,u8 b,u8 xb,float* LIN_OUT){
+	u32 x_exp_offset = GLOBAL_LINEAR_DATA.sizes_data + GLOBAL_LINEAR_DATA.x_tensor_size + GLOBAL_LINEAR_DATA.w_tensor_size;
+	u32 w_exp_offset = x_exp_offset + GLOBAL_LINEAR_DATA.x_exp_size;
+	u32 offset = 0;
+
+	for(u8 kn = oc;kn < oc+ GLOBAL_LINEAR_DATA.WDL; kn++){//For set of W_Features
+		for(u8 ch = c; ch < c + GLOBAL_LINEAR_DATA.NUM_CHUNK;ch++){
+			offset = w_exp_offset + kn*GLOBAL_LINEAR_DATA.w_chunks*4 + ch*4;
+			u32 W_Weight = ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+3] << 24) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+2] << 16) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+1] << 8) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset]);
+			//printf("%d\n",offset);
+			//printf("%d\n",W_Weight);
+			for(u8 bt = b; bt < b + GLOBAL_LINEAR_DATA.XDL; bt ++){//For batch
+				offset = x_exp_offset + bt*GLOBAL_LINEAR_DATA.x_chunks*4 + ch*4;
+				u32 X_Weight = ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+3] << 24) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+2] << 16) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+1] << 8) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset]);
+				for(uint16_t n = 0; n < GLOBAL_LINEAR_DATA.MAC_LEN; n++){//For wordline
+					for(u8 i = wb; i < wb + GLOBAL_LINEAR_DATA.WBL;i++){//For weight bit
+						for(u8 j = xb; j < xb + GLOBAL_LINEAR_DATA.XBL; j++){// For image bit
+							int power = W_Weight+X_Weight+i+j;
+							float weight  = ((i == (GLOBAL_LINEAR_DATA.MANTISSA-1)) ^ (j==(GLOBAL_LINEAR_DATA.MANTISSA-1)))? (-1*pow(2,power)) : pow(2,power);
+							u8 x_bit = GLOBAL_FN_TCP_DATA.Data_Ptr[GLOBAL_LINEAR_DATA.sizes_data + bt*GLOBAL_LINEAR_DATA.x_chunks*GLOBAL_LINEAR_DATA.MAC_LEN*GLOBAL_LINEAR_DATA.x_bits + ch*GLOBAL_LINEAR_DATA.MAC_LEN*GLOBAL_LINEAR_DATA.x_bits + n*GLOBAL_LINEAR_DATA.x_bits + j];
+							u8 w_bit = GLOBAL_FN_TCP_DATA.Data_Ptr[GLOBAL_LINEAR_DATA.sizes_data + GLOBAL_LINEAR_DATA.x_tensor_size + kn*GLOBAL_LINEAR_DATA.w_chunks*GLOBAL_LINEAR_DATA.MAC_LEN*GLOBAL_LINEAR_DATA.w_bits + ch*GLOBAL_LINEAR_DATA.MAC_LEN*GLOBAL_LINEAR_DATA.w_bits + n*GLOBAL_LINEAR_DATA.w_bits + i];
+							LIN_OUT[bt*GLOBAL_LINEAR_DATA.w_batch + kn] += (x_bit * w_bit * weight);
+						}
+					}
+				}
+			}
+		}
+	}
+	return 0;
+}
+*/
+u8 LINIMCHW(u8 oc, u8 c, u8 wb, u8 b, u8 xb, float* LIN_OUT) {
+	const u32 sizes_data       = GLOBAL_LINEAR_DATA.sizes_data;
+	const u32 x_tensor_size    = GLOBAL_LINEAR_DATA.x_tensor_size;
+	const u32 w_tensor_size    = GLOBAL_LINEAR_DATA.w_tensor_size;
+	const u32 x_exp_size       = GLOBAL_LINEAR_DATA.x_exp_size;
+	const u32 x_exp_offset     = sizes_data + x_tensor_size + w_tensor_size;
+	const u32 w_exp_offset     = x_exp_offset + x_exp_size;
+	const u8  WDL              = GLOBAL_LINEAR_DATA.WDL;
+	const u8  NUM_CHUNK        = GLOBAL_LINEAR_DATA.NUM_CHUNK;
+	const u8  XDL              = GLOBAL_LINEAR_DATA.XDL;
+	const u16 MAC_LEN          = GLOBAL_LINEAR_DATA.MAC_LEN;
+	const u8  w_chunks         = GLOBAL_LINEAR_DATA.w_chunks;
+	const u8  x_chunks         = GLOBAL_LINEAR_DATA.x_chunks;
+	const u8  x_bits           = GLOBAL_LINEAR_DATA.x_bits;
+	const u8  w_bits           = GLOBAL_LINEAR_DATA.w_bits;
+	const u8  WBL              = GLOBAL_LINEAR_DATA.WBL;
+	const u8  XBL              = GLOBAL_LINEAR_DATA.XBL;
+	const u8  MANTISSA         = GLOBAL_LINEAR_DATA.MANTISSA;
+	const u32 w_batch          = GLOBAL_LINEAR_DATA.w_batch;
+
+	u8* data_ptr = GLOBAL_FN_TCP_DATA.Data_Ptr;
+
+	for (u8 kn = oc; kn < oc + WDL; kn++) {
+		if(kn < GLOBAL_LINEAR_DATA.w_batch_unpadded){
+			u8 dl = kn%64;
+			for (u8 ch = c; ch < c + NUM_CHUNK; ch++) {
+				if(ch < GLOBAL_LINEAR_DATA.chunks_unpadded){
+
+					u8 bank = ch%4;
+					u32 w_exp_idx = w_exp_offset + kn * w_chunks * 4 + ch * 4;
+					u32 W_Weight = ((u32)data_ptr[w_exp_idx + 3] << 24) |
+								   ((u32)data_ptr[w_exp_idx + 2] << 16) |
+								   ((u32)data_ptr[w_exp_idx + 1] << 8)  |
+								   ((u32)data_ptr[w_exp_idx]);
+
+					for (u8 bt = b; bt < b + XDL; bt++) {
+						u32 x_exp_idx = x_exp_offset + bt * x_chunks * 4 + ch * 4;
+						u32 X_Weight = ((u32)data_ptr[x_exp_idx + 3] << 24) |
+									   ((u32)data_ptr[x_exp_idx + 2] << 16) |
+									   ((u32)data_ptr[x_exp_idx + 1] << 8)  |
+									   ((u32)data_ptr[x_exp_idx]);
+
+						u32 x_data_base = sizes_data +
+										  bt * x_chunks * MAC_LEN * x_bits +
+										  ch * MAC_LEN * x_bits;
+
+						u32 w_data_base = sizes_data + x_tensor_size +
+										  kn * w_chunks * MAC_LEN * w_bits +
+										  ch * MAC_LEN * w_bits;
+						for (u8 i = wb; i < wb + WBL; i++) {
+							u8 bl = 2 - 2*(i%2);  //if wb%2 0 -> 2,3 if 1-> 0,1
+							int OUT1 = GLOBAL_SM_DATA.imc_out_mac[bank*4*64 + bl*64 + dl];
+							int OUT2 = GLOBAL_SM_DATA.imc_out_mac[bank*4*64 + (bl+1)*64 + dl];
+							float Slope = (GLOBAL_SM_DATA.Correction_Data[0][bank][bl][dl] + GLOBAL_SM_DATA.Correction_Data[0][bank][bl+1][dl])/2;
+							float Bias = (GLOBAL_SM_DATA.Correction_Data[1][bank][bl][dl] + GLOBAL_SM_DATA.Correction_Data[1][bank][bl+1][dl])/2;
+
+							for (u8 j = xb; j < xb + XBL; j++) {
+								int power = W_Weight + X_Weight + i + j;
+								float weight = ((i == (MANTISSA - 1)) ^ (j == (MANTISSA - 1)))
+											 ? (-1 * pow(2, power))
+											 : (pow(2, power));
+								if((i > (MANTISSA - 1)) | (j > (MANTISSA - 1)) )
+									weight = 0;
+								int temp = 0;
+								for (u16 n = 0; n < MAC_LEN; n++) {
+									u32 x_n_offset = x_data_base + n * x_bits;
+									u32 w_n_offset = w_data_base + n * w_bits;
+									u8 x_bit = data_ptr[x_n_offset + j];
+									u8 w_bit = data_ptr[w_n_offset + i];
+									//LIN_OUT[bt * w_batch + kn] += x_bit * w_bit * weight;
+									temp += x_bit * w_bit;
+								}
+
+							    float OUT;
+							    if(abs(OUT1-OUT2) > 10){
+							    	printf("This happened %d %d %d %d %d\n",OUT1,OUT2,bank,bl,dl);
+							    	OUT = (-150<OUT1 && OUT1<10) ? OUT1 : OUT2;
+							    }
+							    else{
+							    	OUT = (OUT1 + OUT2)/2;
+							    }
+							    int MAC = temp < 3 ? temp : round(OUT*Slope + Bias);
+							    //int MAC = round(OUT*Slope + Bias);
+								LIN_OUT[bt * w_batch + kn] += MAC * weight;
+								//printf("Expected: %d Got: %d Bank: %d BL: %d DL: %d \n",temp,MAC,bank,bl,dl);
+								//printf("%d %f %f  %d %f %f \n" ,GLOBAL_SM_DATA.imc_out_mac[bank*4*64 + bl*64 + dl],GLOBAL_SM_DATA.Correction_Data[0][bank][bl][dl],GLOBAL_SM_DATA.Correction_Data[1][bank][bl][dl],
+								//		GLOBAL_SM_DATA.imc_out_mac[bank*4*64 + (bl+1)*64 + dl],GLOBAL_SM_DATA.Correction_Data[0][bank][bl+1][dl],GLOBAL_SM_DATA.Correction_Data[1][bank][bl+1][dl]);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return 0;
+}
+/*
+u8 replicateCONVIMCHW(u8 oc,u8 c,u8 wb,u16 s, u8 b,u8 xb,float* CONV_OUT){
+	u32 x_exp_offset = GLOBAL_CONVOLUTION_DATA.sizes_data + GLOBAL_CONVOLUTION_DATA.x_tensor_size + GLOBAL_CONVOLUTION_DATA.w_tensor_size;
+	u32 w_exp_offset = x_exp_offset + GLOBAL_CONVOLUTION_DATA.x_exp_size;
+	u32 offset = 0;
+
+	for(u8 kn = oc;kn < oc+ GLOBAL_CONVOLUTION_DATA.WDL; kn++){//For set of W_Features
+		for(u8 ch = c; ch < c + GLOBAL_CONVOLUTION_DATA.NUM_CHUNK;ch++){
+			offset = w_exp_offset + kn*GLOBAL_CONVOLUTION_DATA.w_chunks*4 + ch*4; //Note w_stride is always 1 so it doesn't contribute
+			u32 W_Weight = ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+3] << 24) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+2] << 16) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+1] << 8) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset]);
+			for(u8 bt = b; bt < b + GLOBAL_CONVOLUTION_DATA.XDL; bt ++){//For batch
+				offset = x_exp_offset + bt*GLOBAL_CONVOLUTION_DATA.x_stride*GLOBAL_CONVOLUTION_DATA.x_chunks*4 + s*GLOBAL_CONVOLUTION_DATA.x_chunks*4 + ch*4;
+				u32 X_Weight = ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+3] << 24) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+2] << 16) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+1] << 8) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset]);
+				for(uint16_t n = 0; n < GLOBAL_CONVOLUTION_DATA.MAC_LEN; n++){//For wordline
+					for(u8 i = wb; i < wb + GLOBAL_CONVOLUTION_DATA.WBL;i++){//For weight bit
+						for(u8 j = xb; j < xb + GLOBAL_CONVOLUTION_DATA.XBL; j++){// For image bit
+							int power = W_Weight+X_Weight+i+j;
+							float weight  = ((i == (GLOBAL_CONVOLUTION_DATA.MANTISSA-1)) ^ (j==(GLOBAL_CONVOLUTION_DATA.MANTISSA-1)))? (-1*pow(2,power)) : pow(2,power);
+							u8 x_bit = GLOBAL_FN_TCP_DATA.Data_Ptr[GLOBAL_CONVOLUTION_DATA.sizes_data + bt*GLOBAL_CONVOLUTION_DATA.x_stride*GLOBAL_CONVOLUTION_DATA.x_chunks*GLOBAL_CONVOLUTION_DATA.MAC_LEN*GLOBAL_CONVOLUTION_DATA.x_bits + s*GLOBAL_CONVOLUTION_DATA.x_chunks*GLOBAL_CONVOLUTION_DATA.MAC_LEN*GLOBAL_CONVOLUTION_DATA.x_bits +ch*GLOBAL_CONVOLUTION_DATA.MAC_LEN*GLOBAL_CONVOLUTION_DATA.x_bits + n*GLOBAL_CONVOLUTION_DATA.x_bits + j];
+							u8 w_bit = GLOBAL_FN_TCP_DATA.Data_Ptr[GLOBAL_CONVOLUTION_DATA.sizes_data + GLOBAL_CONVOLUTION_DATA.x_tensor_size + kn*GLOBAL_CONVOLUTION_DATA.w_chunks*GLOBAL_CONVOLUTION_DATA.MAC_LEN*GLOBAL_CONVOLUTION_DATA.w_bits + ch*GLOBAL_CONVOLUTION_DATA.MAC_LEN*GLOBAL_CONVOLUTION_DATA.w_bits + n*GLOBAL_CONVOLUTION_DATA.w_bits + i];
+							CONV_OUT[bt*GLOBAL_CONVOLUTION_DATA.w_batch*GLOBAL_CONVOLUTION_DATA.tot_strides + kn*GLOBAL_CONVOLUTION_DATA.tot_strides + s] += (x_bit * w_bit * weight);
+						}
+					}
+				}
+			}
+		}
+	}
+	return 0;
+}
+*/
+
+
+u8 CONVIMCHW(u8 oc, u8 c, u8 wb, u16 s, u8 b, u8 xb, float* CONV_OUT) {
+	u32 x_exp_offset = GLOBAL_CONVOLUTION_DATA.sizes_data
+	                 + GLOBAL_CONVOLUTION_DATA.x_tensor_size
+	                 + GLOBAL_CONVOLUTION_DATA.w_tensor_size;
+
+	u32 w_exp_offset = x_exp_offset + GLOBAL_CONVOLUTION_DATA.x_exp_size;
+
+	const u8 MANTISSA = GLOBAL_CONVOLUTION_DATA.MANTISSA;
+	const u8 WDL = GLOBAL_CONVOLUTION_DATA.WDL;
+	const u8 NUM_STRIDE = GLOBAL_CONVOLUTION_DATA.NUM_STRIDE;
+	const u8 XDL = GLOBAL_CONVOLUTION_DATA.XDL;
+	const u16 MAC_LEN = GLOBAL_CONVOLUTION_DATA.MAC_LEN;
+	const u8 WBL = GLOBAL_CONVOLUTION_DATA.WBL;
+	const u8 XBL = GLOBAL_CONVOLUTION_DATA.XBL;
+
+	const u32 x_stride = GLOBAL_CONVOLUTION_DATA.x_stride;
+	const u32 x_chunks = GLOBAL_CONVOLUTION_DATA.x_chunks;
+	const u32 w_chunks = GLOBAL_CONVOLUTION_DATA.w_chunks;
+
+	const u32 x_bits = GLOBAL_CONVOLUTION_DATA.x_bits;
+	const u32 w_bits = GLOBAL_CONVOLUTION_DATA.w_bits;
+
+	const u32 w_batch = GLOBAL_CONVOLUTION_DATA.w_batch;
+	const u32 padded_strides = GLOBAL_CONVOLUTION_DATA.padded_strides;
+
+	u8* data = GLOBAL_FN_TCP_DATA.Data_Ptr;
+	u32 sizes_data = GLOBAL_CONVOLUTION_DATA.sizes_data;
+	u32 x_tensor_size = GLOBAL_CONVOLUTION_DATA.x_tensor_size;
+
+	for (u8 kn = oc; kn < oc + WDL; kn++) {
+		if(kn < GLOBAL_CONVOLUTION_DATA.w_batch_unpadded){
+			u8 dl = kn%64;
+
+			// Read W_Weight once per kn, ch
+			u32 w_offset = w_exp_offset + kn * w_chunks * 4 + c * 4;
+			u32 W_Weight = ((u32)data[w_offset + 3] << 24) |
+						   ((u32)data[w_offset + 2] << 16) |
+						   ((u32)data[w_offset + 1] << 8)  |
+						   ((u32)data[w_offset]);
+
+			for (u8 bt = b; bt < b + XDL; bt++) {
+				for (u16 st = s; st < s + NUM_STRIDE; st++) {
+					if(st < GLOBAL_CONVOLUTION_DATA.strides_unpadded){
+						u8 bank = st%4;
+
+						// Read X_Weight once per bt, ch
+						u32 xw_offset = x_exp_offset + bt * x_stride * x_chunks * 4 + st * x_chunks * 4 + c * 4;
+						u32 X_Weight = ((u32)data[xw_offset + 3] << 24) |
+									   ((u32)data[xw_offset + 2] << 16) |
+									   ((u32)data[xw_offset + 1] << 8)  |
+									   ((u32)data[xw_offset]);
+
+						// Pointers to x_bit and w_bit base
+						u32 xbit_base = sizes_data + bt * x_stride * x_chunks * MAC_LEN * x_bits
+									  + st * x_chunks * MAC_LEN * x_bits
+									  + c * MAC_LEN * x_bits;
+
+						u32 wbit_base = sizes_data + x_tensor_size
+									  + kn * w_chunks * MAC_LEN * w_bits
+									  + c * MAC_LEN * w_bits;
+
+						// Output index base
+						u32 out_idx = bt * w_batch * padded_strides + kn * padded_strides + st;
+
+						for (u8 i = wb; i < wb + WBL; i++) {
+							u8 bl = 2 - 2*(i%2);  //if wb%2 0 -> 2,3 if 1-> 0,1
+							int OUT1 = GLOBAL_SM_DATA.imc_out_mac[bank*4*64 + bl*64 + dl];
+							int OUT2 = GLOBAL_SM_DATA.imc_out_mac[bank*4*64 + (bl+1)*64 + dl];
+							float Slope = (GLOBAL_SM_DATA.Correction_Data[0][bank][bl][dl] + GLOBAL_SM_DATA.Correction_Data[0][bank][bl+1][dl])/2;
+							float Bias = (GLOBAL_SM_DATA.Correction_Data[1][bank][bl][dl] + GLOBAL_SM_DATA.Correction_Data[1][bank][bl+1][dl])/2;
+
+							for (u8 j = xb; j < xb + XBL; j++) {
+								int power = W_Weight + X_Weight + i + j;
+
+								float weight = ((i == MANTISSA - 1) ^ (j == MANTISSA - 1))
+											   ? -powf(2.0f, power)
+											   : powf(2.0f, power);
+								if( (i > MANTISSA - 1) | (j > MANTISSA - 1))
+									weight = 0;
+
+								int temp = 0;
+								for (u16 n = 0; n < MAC_LEN; n++) {
+									u8 x_bit = data[xbit_base + n * x_bits + j];
+									u8 w_bit = data[wbit_base + n * w_bits + i];
+									//CONV_OUT[out_idx] += (x_bit * w_bit * weight);
+									temp += (x_bit * w_bit);
+								}
+								float OUT;
+								if(abs(OUT1-OUT2) > 10){
+									printf("This happened %d %d %d %d %d\n",OUT1,OUT2,bank,bl,dl);
+									OUT = (-150<OUT1 && OUT1<10) ? OUT1 : OUT2;
+								}
+								else{
+									OUT = (OUT1 + OUT2)/2;
+								}
+								int MAC = temp < 3 ? temp : round(OUT*Slope + Bias);
+								CONV_OUT[out_idx] += MAC * weight;
+								//printf("Expected: %d Got: %d Bank: %d BL: %d DL: %d \n",temp,MAC,bank,bl,dl);
+								//printf("%d %f %f  %d %f %f \n" ,GLOBAL_SM_DATA.imc_out_mac[bank*4*64 + bl*64 + dl],GLOBAL_SM_DATA.Correction_Data[0][bank][bl][dl],GLOBAL_SM_DATA.Correction_Data[1][bank][bl][dl],
+								//		GLOBAL_SM_DATA.imc_out_mac[bank*4*64 + (bl+1)*64 + dl],GLOBAL_SM_DATA.Correction_Data[0][bank][bl+1][dl],GLOBAL_SM_DATA.Correction_Data[1][bank][bl+1][dl]);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return 0;
+}
+
+void set_nth_bit(u8 *array, u8 n) {
+    size_t byte_index = n / 8;
+    uint8_t bit_position = n % 8;
+    array[byte_index] |= (1 << bit_position);
+}
+
+u8 WeightData_To_SRAMBuff(u8 oc,u8 c,u8 wb,u32 w_offset, u8 w_chunks, u16 mac_len, u8 w_bits){
+	//This does not write the refline data and input image dac data into array. Call specific functions for it.
+	//Weight bits are written in to 2 BLns to elimination meta-stability that may happen in TDC
+	//Reset the buffer to 0 to eliminate last written weights. It is imprtant as bitwise or is done.
+	memset(GLOBAL_SM_DATA.sram_write_buffer,0,sizeof(GLOBAL_SM_DATA.sram_write_buffer));
+	u32 kn_offset = w_chunks*mac_len*w_bits;
+	u32 chunk_offset = mac_len*w_bits;
+	for(u16 wl = 0; wl < 1024; wl++){ // 1024 -> BANK 0 -> Chunk 0
+		u8 chunk =  3 - floor(wl/256); // get chunk id here
+		u16 MAC = wl%256; // get MAC id here
+		u16 kn = 0;
+		u16 ref_ndx = 0;
+		for(u16 bl = 8; bl < 296; bl++){ //Reflines are also included which needs to be skipped. Also need to encode it in bytes.
+			if(bl == GLOBAL_SM_DATA.RefLine_Index[ref_ndx%32]){ // Skip the refline
+				ref_ndx++;
+				GLOBAL_SM_DATA.sram_write_buffer[wl*40 + (int)(bl/8)] |= (1 << (bl%8)); //Write all references to be 1;
+			}
+			else{ //Encode the weight bits into SRAM_WRITE_DATA array. Hard-coded for Wb = 2
+
+				u8 wbit = GLOBAL_FN_TCP_DATA.Data_Ptr[w_offset + (oc+(int)(kn/4))*kn_offset + (c+chunk)*chunk_offset + MAC*w_bits + (int)floor((kn%4)/2) + wb]; //((int)((kn%4)/2)
+				GLOBAL_SM_DATA.sram_write_buffer[wl*40 + (int)(bl/8)] |= ((wbit) << (bl%8));
+				kn++;
+			}
+		}
+	}
+
+	return 0;
+}
+
+u8 WeightData_To_SRAMBuff_Conv(u8 oc,u8 c,u8 wb,u32 w_offset, u8 w_chunks, u16 mac_len, u8 w_bits){
+	//This does not write the refline data and input image dac data into array. Call specific functions for it.
+	//Weight bits are written in to 2 BLns to elimination meta-stability that may happen in TDC
+	//Reset the buffer to 0 to eliminate last written weights. It is imprtant as bitwise or is done.
+	memset(GLOBAL_SM_DATA.sram_write_buffer,0,sizeof(GLOBAL_SM_DATA.sram_write_buffer));
+	u32 kn_offset = w_chunks*mac_len*w_bits;
+	u32 chunk_offset = mac_len*w_bits;
+	for(u16 wl = 0; wl < 1024; wl++){ // 1024 -> BANK 0 -> Chunk 0
+		//u8 chunk =  3 - floor(wl/256); // get chunk id here
+		u16 MAC = wl%256; // get MAC id here
+		u16 kn = 0;
+		u16 ref_ndx = 0;
+		for(u16 bl = 8; bl < 296; bl++){ //Reflines are also included which needs to be skipped. Also need to encode it in bytes.
+			if(bl == GLOBAL_SM_DATA.RefLine_Index[ref_ndx%32]){ // Skip the refline
+				ref_ndx++;
+				GLOBAL_SM_DATA.sram_write_buffer[wl*40 + (int)(bl/8)] |= (1 << (bl%8)); //Write all references to be 1;
+			}
+			else{ //Encode the weight bits into SRAM_WRITE_DATA array. Hard-coded for Wb = 2
+
+				u8 wbit = GLOBAL_FN_TCP_DATA.Data_Ptr[w_offset + (oc+(int)(kn/4))*kn_offset + c*chunk_offset + MAC*w_bits + (int)floor((kn%4)/2) + wb]; //((int)((kn%4)/2)
+				GLOBAL_SM_DATA.sram_write_buffer[wl*40 + (int)(bl/8)] |= ((wbit) << (bl%8));
+				kn++;
+			}
+		}
+	}
+
+	return 0;
+}
+
+u8 InputData_To_SRAMBuff(u8 b,u8 s,u8 c,u8 xb,u32 x_offset, u8 x_strides ,u8 x_chunks, u16 mac_len, u8 x_bits){
+	//There is no ref-line issue. If X_bit is one then write 4-7 bits of 0th byte as one. and rest to be 0 which gives 240. Else write 15 which will pass 0 from DAC
+	for(u16 wl = 0; wl < 1024; wl++){ // 1024 -> BANK 0 -> Chunk 0
+		u8 chunk =  3 - floor(wl/256); // get chunk id here
+		u16 MAC = wl%256; // get MAC id here
+		//Only 0th byte needs to be taken care of
+		u32 batch_offset = x_strides*x_chunks*mac_len*x_bits;
+		u32 stride_offset = x_chunks*mac_len*x_bits;
+		u32 chunk_offset = mac_len*x_bits;
+
+		u8 xbit = GLOBAL_FN_TCP_DATA.Data_Ptr[x_offset + b*batch_offset + s*stride_offset +(c+chunk)*chunk_offset + MAC*x_bits + xb];
+		if(xbit){
+			GLOBAL_SM_DATA.sram_write_buffer[wl*40] = 240;
+		}
+		else{
+			GLOBAL_SM_DATA.sram_write_buffer[wl*40] = 15;
+		}
+	}
+	return 0;
+}
+
+u8 InputData_To_SRAMBuff_Conv(u8 b,u8 s,u8 c,u8 xb,u32 x_offset, u8 x_strides ,u8 x_chunks, u16 mac_len, u8 x_bits){
+	//There is no ref-line issue. If X_bit is one then write 4-7 bits of 0th byte as one. and rest to be 0 which gives 240. Else write 15 which will pass 0 from DAC
+	for(u16 wl = 0; wl < 1024; wl++){ // 1024 -> BANK 0 -> Chunk 0
+		u8 stride =  3 - floor(wl/256); // get chunk id here
+		u16 MAC = wl%256; // get MAC id here
+		//Only 0th byte needs to be taken care of
+		u32 batch_offset = x_strides*x_chunks*mac_len*x_bits;
+		u32 stride_offset = x_chunks*mac_len*x_bits;
+		u32 chunk_offset = mac_len*x_bits;
+
+		u8 xbit = GLOBAL_FN_TCP_DATA.Data_Ptr[x_offset + b*batch_offset + (s+stride)*stride_offset +c*chunk_offset + MAC*x_bits + xb];
+		if(xbit){
+			GLOBAL_SM_DATA.sram_write_buffer[wl*40] = 240;
+		}
+		else{
+			GLOBAL_SM_DATA.sram_write_buffer[wl*40] = 15;
+		}
+	}
+	return 0;
+}
+
+u8 replicateLINIMCHW(u8 oc, u8 c, u8 wb, u8 b, u8 xb, float* LIN_OUT) {
+	const u32 sizes_data       = GLOBAL_LINEAR_DATA.sizes_data;
+	const u32 x_tensor_size    = GLOBAL_LINEAR_DATA.x_tensor_size;
+	const u32 w_tensor_size    = GLOBAL_LINEAR_DATA.w_tensor_size;
+	const u32 x_exp_size       = GLOBAL_LINEAR_DATA.x_exp_size;
+	const u32 x_exp_offset     = sizes_data + x_tensor_size + w_tensor_size;
+	const u32 w_exp_offset     = x_exp_offset + x_exp_size;
+	const u8  WDL              = GLOBAL_LINEAR_DATA.WDL;
+	const u8  NUM_CHUNK        = GLOBAL_LINEAR_DATA.NUM_CHUNK;
+	const u8  XDL              = GLOBAL_LINEAR_DATA.XDL;
+	const u16 MAC_LEN          = GLOBAL_LINEAR_DATA.MAC_LEN;
+	const u8  w_chunks         = GLOBAL_LINEAR_DATA.w_chunks;
+	const u8  x_chunks         = GLOBAL_LINEAR_DATA.x_chunks;
+	const u8  x_bits           = GLOBAL_LINEAR_DATA.x_bits;
+	const u8  w_bits           = GLOBAL_LINEAR_DATA.w_bits;
+	const u8  WBL              = GLOBAL_LINEAR_DATA.WBL;
+	const u8  XBL              = GLOBAL_LINEAR_DATA.XBL;
+	const u8  MANTISSA         = GLOBAL_LINEAR_DATA.MANTISSA;
+	const u32 w_batch          = GLOBAL_LINEAR_DATA.w_batch;
+
+	u8* data_ptr = GLOBAL_FN_TCP_DATA.Data_Ptr;
+
+	for (u8 kn = oc; kn < oc + WDL; kn++) {
+		if(kn < GLOBAL_LINEAR_DATA.w_batch_unpadded){
+			for (u8 ch = c; ch < c + NUM_CHUNK; ch++) {
+				if(ch < GLOBAL_LINEAR_DATA.chunks_unpadded){
+					u32 w_exp_idx = w_exp_offset + kn * w_chunks * 4 + ch * 4;
+					u32 W_Weight = ((u32)data_ptr[w_exp_idx + 3] << 24) |
+								   ((u32)data_ptr[w_exp_idx + 2] << 16) |
+								   ((u32)data_ptr[w_exp_idx + 1] << 8)  |
+								   ((u32)data_ptr[w_exp_idx]);
+
+					for (u8 bt = b; bt < b + XDL; bt++) {
+						u32 x_exp_idx = x_exp_offset + bt * x_chunks * 4 + ch * 4;
+						u32 X_Weight = ((u32)data_ptr[x_exp_idx + 3] << 24) |
+									   ((u32)data_ptr[x_exp_idx + 2] << 16) |
+									   ((u32)data_ptr[x_exp_idx + 1] << 8)  |
+									   ((u32)data_ptr[x_exp_idx]);
+
+						u32 x_data_base = sizes_data +
+										  bt * x_chunks * MAC_LEN * x_bits +
+										  ch * MAC_LEN * x_bits;
+
+						u32 w_data_base = sizes_data + x_tensor_size +
+										  kn * w_chunks * MAC_LEN * w_bits +
+										  ch * MAC_LEN * w_bits;
+
+						for (u16 n = 0; n < MAC_LEN; n++) {
+							u32 x_n_offset = x_data_base + n * x_bits;
+							u32 w_n_offset = w_data_base + n * w_bits;
+
+							for (u8 i = wb; i < wb + WBL; i++) {
+								for (u8 j = xb; j < xb + XBL; j++) {
+									int power = W_Weight + X_Weight + i + j;
+									float weight = ((i == (MANTISSA - 1)) ^ (j == (MANTISSA - 1)))
+												 ? (-1 * pow(2, power))
+												 : (pow(2, power));
+									if((i > (MANTISSA - 1)) | (j > (MANTISSA - 1)) )
+										weight = 0;
+									u8 x_bit = data_ptr[x_n_offset + j];
+									u8 w_bit = data_ptr[w_n_offset + i];
+
+									LIN_OUT[bt * w_batch + kn] += x_bit * w_bit * weight;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return 0;
+}
+
+u8 replicateCONVIMCHW(u8 oc, u8 c, u8 wb, u16 s, u8 b, u8 xb, float* CONV_OUT) {
+	u32 x_exp_offset = GLOBAL_CONVOLUTION_DATA.sizes_data
+					 + GLOBAL_CONVOLUTION_DATA.x_tensor_size
+					 + GLOBAL_CONVOLUTION_DATA.w_tensor_size;
+
+	u32 w_exp_offset = x_exp_offset + GLOBAL_CONVOLUTION_DATA.x_exp_size;
+
+	const u8 MANTISSA = GLOBAL_CONVOLUTION_DATA.MANTISSA;
+	const u8 WDL = GLOBAL_CONVOLUTION_DATA.WDL;
+	const u16 NUM_STRIDE = GLOBAL_CONVOLUTION_DATA.NUM_STRIDE;
+	const u8 XDL = GLOBAL_CONVOLUTION_DATA.XDL;
+	const u16 MAC_LEN = GLOBAL_CONVOLUTION_DATA.MAC_LEN;
+	const u8 WBL = GLOBAL_CONVOLUTION_DATA.WBL;
+	const u8 XBL = GLOBAL_CONVOLUTION_DATA.XBL;
+
+	const u32 x_stride = GLOBAL_CONVOLUTION_DATA.x_stride;
+	const u32 x_chunks = GLOBAL_CONVOLUTION_DATA.x_chunks;
+	const u32 w_chunks = GLOBAL_CONVOLUTION_DATA.w_chunks;
+
+	const u32 x_bits = GLOBAL_CONVOLUTION_DATA.x_bits;
+	const u32 w_bits = GLOBAL_CONVOLUTION_DATA.w_bits;
+
+	const u32 w_batch = GLOBAL_CONVOLUTION_DATA.w_batch;
+	const u32 padded_strides = GLOBAL_CONVOLUTION_DATA.padded_strides;
+
+	u8* data = GLOBAL_FN_TCP_DATA.Data_Ptr;
+	u32 sizes_data = GLOBAL_CONVOLUTION_DATA.sizes_data;
+	u32 x_tensor_size = GLOBAL_CONVOLUTION_DATA.x_tensor_size;
+
+	for (u8 kn = oc; kn < oc + WDL; kn++) {
+		if(kn < GLOBAL_CONVOLUTION_DATA.w_batch_unpadded){
+			// Read W_Weight once per kn, ch
+			u32 w_offset = w_exp_offset + kn * w_chunks * 4 + c * 4;
+			u32 W_Weight = ((u32)data[w_offset + 3] << 24) |
+						   ((u32)data[w_offset + 2] << 16) |
+						   ((u32)data[w_offset + 1] << 8)  |
+						   ((u32)data[w_offset]);
+
+			for (u8 bt = b; bt < b + XDL; bt++) {
+				for (u16 st = s; st < s + NUM_STRIDE; st++) {
+					if(st < GLOBAL_CONVOLUTION_DATA.strides_unpadded){
+						// Read X_Weight once per bt, ch
+						u32 xw_offset = x_exp_offset + bt * x_stride * x_chunks * 4 + st * x_chunks * 4 + c * 4;
+						u32 X_Weight = ((u32)data[xw_offset + 3] << 24) |
+									   ((u32)data[xw_offset + 2] << 16) |
+									   ((u32)data[xw_offset + 1] << 8)  |
+									   ((u32)data[xw_offset]);
+
+						// Pointers to x_bit and w_bit base
+						u32 xbit_base = sizes_data + bt * x_stride * x_chunks * MAC_LEN * x_bits
+									  + st * x_chunks * MAC_LEN * x_bits
+									  + c * MAC_LEN * x_bits;
+
+						u32 wbit_base = sizes_data + x_tensor_size
+									  + kn * w_chunks * MAC_LEN * w_bits
+									  + c * MAC_LEN * w_bits;
+
+						// Output index base
+						u32 out_idx = bt * w_batch * padded_strides + kn * padded_strides + st;
+
+						for (u16 n = 0; n < MAC_LEN; n++) {
+							for (u8 i = wb; i < wb + WBL; i++) {
+								for (u8 j = xb; j < xb + XBL; j++) {
+									int power = W_Weight + X_Weight + i + j;
+
+									float weight = ((i == MANTISSA - 1) ^ (j == MANTISSA - 1))
+												   ? -powf(2.0f, power)
+												   : powf(2.0f, power);
+									if( (i > MANTISSA - 1) | (j > MANTISSA - 1))
+										weight = 0;
+
+									u8 x_bit = data[xbit_base + n * x_bits + j];
+									u8 w_bit = data[wbit_base + n * w_bits + i];
+									CONV_OUT[out_idx] += (x_bit * w_bit * weight);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return 0;
+}
+
+// Reverse bits in a byte
+uint8_t reverse_bits(uint8_t byte) {
+    byte = (byte & 0xF0) >> 4 | (byte & 0x0F) << 4;
+    byte = (byte & 0xCC) >> 2 | (byte & 0x33) << 2;
+    byte = (byte & 0xAA) >> 1 | (byte & 0x55) << 1;
+    return byte;
+}
+
+// Convert 1280 bytes of u8 input to 1024 signed ints
+void TDC_OUT_u8_to_dec(){
+    uint32_t bit_buffer = 0;
+    int bit_count = 0;
+    int out_index = 0;
+
+    for (int i = 0; i < 1280; ++i) {
+        uint8_t rev = reverse_bits(GLOBAL_SM_DATA.dma_imcout_buffer[i]);
+
+        // Add 8 bits to buffer
+        bit_buffer = (bit_buffer << 8) | rev;
+        bit_count += 8;
+
+        // Extract 10-bit values
+        while (bit_count >= 10 && out_index < 1024) {
+            int shift = bit_count - 10;
+            uint16_t bits10 = (bit_buffer >> shift) & 0x3FF;
+            bit_count -= 10;
+
+            int sign = (bits10 >> 9) & 1;
+            int magnitude = bits10 & 0x1FF;
+
+            GLOBAL_SM_DATA.imc_out_mac[out_index++] = sign ? -magnitude : magnitude;
+        }
+    }
+}
+

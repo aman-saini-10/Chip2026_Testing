@@ -1,0 +1,160 @@
+#ifndef SRC_UTILS_FUNC_H_
+#define SRC_UTILS_FUNC_H_
+#include "xil_types.h"
+//TCP_WRITE_DATA stuff
+#include "lwip/tcp.h"
+#define DEBUG 1
+
+#if DEBUG
+    #define DEBUG_PRINT(...) printf(__VA_ARGS__)
+#else
+    #define DEBUG_PRINT(...)
+#endif
+
+//Write TCP data struct for global use.
+#define MAX_SEND_BUFF 1446*2 //Define the packet size
+#define SUCCESS_REPLY (u8)128
+#define FAIL_REPLY (u8)0
+#define DIG_IN_SIG_LEN 34
+
+struct WRTIE_TCP_DATA{
+	void* Data_Ptr; //Function send data pointer
+	int Data_Size_To_Send; //Used internally by push data.
+	int Send_Data_Flag; //Block the state machine until previous data is sent
+	struct tcp_pcb* pcb; //used this channel to write back
+};
+
+extern struct WRTIE_TCP_DATA GLOBAL_WRITE_TCP_DATA;
+
+//Global Data for linear function
+struct LINEAR_DATA{
+	u16 MAC_LEN;
+	u8 NUM_CHUNK;
+	u8 WDL;
+	u8 XDL;
+	u8 WBL;
+	u8 XBL;
+	u8 MANTISSA;
+	u8 x_batch;
+	u8 w_batch;
+	u8 x_chunks;
+	u8 w_chunks;
+	u8 x_bits;
+	u8 w_bits;
+	u8 w_batch_unpadded;
+	u8 chunks_unpadded;
+	u8 sizes_data;
+	//Shape of x_input_tesnsor = x_batch,x_chunks,MAC_LEN,x_bits
+	u32 x_tensor_size;
+	//Shape of w_input_tensor = w_batch,w_chunks,MAC_LEN,w_bits
+	u32 w_tensor_size;
+	//Shape of input_max_exp = x_batch,x_chunks 4bytes
+	u32 x_exp_size;
+	//Shape of weight_max_exp = w_batch,w_chunks 4bytes
+	u32 w_exp_size;
+};
+
+extern struct LINEAR_DATA GLOBAL_LINEAR_DATA;
+
+struct CONVOLUTION_DATA{
+	u16 MAC_LEN;
+	u8 NUM_STRIDE;
+	u8 WDL;
+	u8 XDL;
+	u8 WBL;
+	u8 XBL;
+	u8 MANTISSA;
+	u16 padded_strides;
+	u8 x_batch;
+	u8 w_batch;
+	u16 x_stride;
+	u16 w_stride;
+	u8 x_chunks;
+	u8 w_chunks;
+	u8 x_bits;
+	u8 w_bits;
+	u8 w_batch_unpadded;
+	u16 strides_unpadded;
+	u8 sizes_data;
+	//Shape of x_input_tesnsor = x_batch,x_stride,x_chunks,MAC_LEN,x_bits
+	u32 x_tensor_size;
+	//Shape of w_input_tensor = w_batch,w_stride(always 1),w_chunks,MAC_LEN,w_bits
+	u32 w_tensor_size;
+	//Shape of input_max_exp = x_batch,x_stride,x_chunks 4bytes
+	u32 x_exp_size;
+	//Shape of weight_max_exp = w_batch,w_stride,w_chunks 4bytes
+	u32 w_exp_size;
+};
+
+extern struct CONVOLUTION_DATA GLOBAL_CONVOLUTION_DATA;
+
+//TCP received data processing stuff
+typedef enum{
+	echo,
+	setChipIO,
+	getChipIO,
+	scanin,
+	scanout,
+	readsram,
+	writesram,
+	linear,
+	convolution,
+	marchingsram,
+	writesrammasked,
+	setModeIO,
+	fastCalib,
+	fastimc,
+	getcorrectiondata
+} C_FUNCTIONS;
+
+
+struct TCP_FUNCTION_DATA{
+	C_FUNCTIONS fn_name; //function state
+	u8* Data_Ptr; //Function Data pointer
+	u32 Data_Size; //Size of the data to be received
+	u32 Data_Recved_Size; // Size of the data actually received
+	int fn_ready_flag; //Received all data from client now process the function
+	int fn_data_mode; //Put TCP receive either in function or data packet mode. 0 is fn. By default it shall be in fn mode.
+};
+
+extern struct TCP_FUNCTION_DATA GLOBAL_FN_TCP_DATA;
+u8 process_fn_data(u8* data);
+u8 set_fn_data_to_default();
+u8 set_write_data_to_default();
+err_t transfer_data(u8* data, u32 len);
+u8 initialise_AXI();
+u8 set_AXI_Bits(u8* signals, u8 signal_len, u8* signal_values );
+u8 set_MODE_AXI_Bits(u8* signals, u8 signal_len, u8* signal_values );
+u8 set_ChipIO_to_Default();
+u8 set_ModeIO_to_Default();
+u8 c_scan_in(u8* scan_data, u8 scan_id,u16 scan_len);
+u32 c_scan_out(u8 scan_id, u16 scan_len);
+u8 get_scan_out_bit();
+u8 set_ScanID(u8 scan_id);
+u8 set_ScanID_Verilog(u8 scan_id);
+u8 initialise_FPGA();
+u8 dma_send_recv_test(u8 scan_id,u16 scan_len);
+u8 verilog_scan_in(u8* scan_data,u8 scan_id,u16 scan_len);
+u32 verilog_scan_out(u8 scan_id,u16 scan_len);
+u8 flush_wl_sc();
+u8 move_WL_SC();
+u8 write_SRAM_WL(u16 wl, u8* write_data);
+u8 write_SRAM_Full(u8* write_data);
+u8 write_SRAM_Masked(u8* write_data);
+u8 set_CS(u8 coulmn_id);
+u16 read_SRAM_WL(u16 wl);
+u8 read_SRAM_Full();
+u8 replicateLINIMCHW(u8 oc,u8 c,u8 wb,u8 b,u8 xb,float* LIN_OUT);
+u8 replicateCONVIMCHW(u8 oc,u8 c,u8 wb,u16 s,u8 b,u8 xb,float* CONV_OUT);
+u8 marching_Pattern_SRAM();
+u8 fast_IMC(u8 TIME_CHARGE);
+u8 WeightData_To_SRAMBuff(u8 oc,u8 c,u8 wb,u32 w_offset, u8 w_chunks, u16 mac_len, u8 w_bits);
+u8 InputData_To_SRAMBuff(u8 b,u8 s,u8 c,u8 xb,u32 x_offset, u8 x_strides ,u8 x_chunks, u16 mac_len, u8 x_bits);
+u8 WeightData_To_SRAMBuff_Conv(u8 oc,u8 c,u8 wb,u32 w_offset, u8 w_chunks, u16 mac_len, u8 w_bits);
+u8 InputData_To_SRAMBuff_Conv(u8 b,u8 s,u8 c,u8 xb,u32 x_offset, u8 x_strides ,u8 x_chunks, u16 mac_len, u8 x_bits);
+float bytes_to_float(u8* bytes);
+void set_nth_bit(u8 *array, u8 n);
+void TDC_OUT_u8_to_dec();
+u8 LINIMCHW(u8 oc, u8 c, u8 wb, u8 b, u8 xb, float* LIN_OUT);
+u8 CONVIMCHW(u8 oc, u8 c, u8 wb, u16 s, u8 b, u8 xb, float* CONV_OUT);
+#endif /* SRC_UTILS_FUNC_H_ */

@@ -37,7 +37,7 @@
 #include "utils.h"
 #define CACHE_LINE_SIZE 32
 
-
+#include "xil_cache.h"
 #include "lwip/err.h"   // for err_t codes
 
 
@@ -155,7 +155,7 @@ err_t recv_callback(void *arg, struct tcp_pcb *tpcb,
 		if (p->tot_len != p->len) {
 			DEBUG_PRINT("LEN MISMATCH: tot_len=%d len=%d\n", p->tot_len, p->len);
 		}
-		// Walk the PBUF chain and copy each segment
+		// Walk the pbuf chain and copy each segment
 		struct pbuf *q = p;
 		while (q != NULL) {
 			memcpy(GLOBAL_FN_TCP_DATA.Data_Ptr + GLOBAL_FN_TCP_DATA.Data_Recved_Size,
@@ -196,6 +196,95 @@ err_t recv_callback(void *arg, struct tcp_pcb *tpcb,
 	return ERR_OK;
 
 }
+
+///***************** Receive Callback ***************************/
+////This function is interrupt handler when data is received from sender. Has logic to receive data more than MAX_SEND_BUFF/2
+//err_t recv_callback(void *arg, struct tcp_pcb *tpcb,
+//                               struct pbuf *p, err_t err)
+//{
+//
+//	/* do not read the packet if we are not in ESTABLISHED state */
+//	if (!p) {
+//		xil_printf("\nConnection closed cuz not in established state\n");
+//		tcp_close(tpcb);
+//		tcp_recv(tpcb, NULL);
+//		return ERR_OK;
+//	}
+//	xil_printf("\nStarted Running Routine recv_callback() | Len: %d\n", p->tot_len);
+//
+//	//Dcache the receive buffer. It was mis aligning the received data sometimes.
+//	int i = 0;
+//	for (struct pbuf *q = p; q != NULL; q = q->next) {
+//		i = i+1;
+//		xil_printf("\nInvalidating the Dcache Range\n");
+//	    Xil_DCacheInvalidateRange((UINTPTR)q->payload, q->len);
+//	} xil_printf("\nnumber of fragments: %d\n", i);
+//
+//	//type cast the received pay load to u8 type.
+//	if(GLOBAL_FN_TCP_DATA.fn_data_mode == 0){
+//		//decode fn packet here. It shall allocate data buffer of data size in TCP_FUNCTION_DATA struct and map function to execute.
+//		xil_printf("\nDecoding the function Data (Routine: process_fn_data())\n");
+//		u8 err = process_fn_data(p->payload);
+//		if(err != 0){
+//			DEBUG_PRINT("ERROR IN PROCESS FUNCTION DATA\n");
+//		}
+//	}
+//	else if(GLOBAL_FN_TCP_DATA.fn_data_mode == 1){
+//		xil_printf("\nData Receive Mode\n");
+//		// Always handle possible pbuf chains
+//		if (p->tot_len != p->len) {
+//			xil_printf("LEN MISMATCH: tot_len=%d len=%d\n", p->tot_len, p->len);
+//		}
+//		// Walk the PBUF chain and copy each segment
+//		struct pbuf *q = p;
+//		while (q != NULL) {
+//			xil_printf("\nIs it Stuck in this loop?? len = %d\n", q->len);
+//			memcpy(GLOBAL_FN_TCP_DATA.Data_Ptr + GLOBAL_FN_TCP_DATA.Data_Recved_Size,
+//				   q->payload, q->len);
+//			xil_printf("\nSuccessfully copied\n");
+//			GLOBAL_FN_TCP_DATA.Data_Recved_Size += q->len;
+//			q = q->next;
+//		}
+//
+//		// ========= ADDED DATA TRACKING LOGS =========
+//		xil_printf("[Progress] Received: %d / Expected: %d bytes\n",
+//		           GLOBAL_FN_TCP_DATA.Data_Recved_Size,
+//		           GLOBAL_FN_TCP_DATA.Data_Size);
+//		// ============================================
+//
+//		// Check if we have received the full expected data
+//		if (GLOBAL_FN_TCP_DATA.Data_Recved_Size >= GLOBAL_FN_TCP_DATA.Data_Size) {
+//			xil_printf("\nsending reply to client saying all ok. data received.\n");
+//			u8 reply = SUCCESS_REPLY;
+//			transfer_data(&reply, 1);
+//			GLOBAL_FN_TCP_DATA.fn_ready_flag = 1; // Make function ready flag high
+//			GLOBAL_FN_TCP_DATA.fn_data_mode = 0;  // Put TCP receive back in fn mode
+//		}
+//	}
+//
+//	//this state is not being used
+//	/*
+//	else if((((u8*)(p->payload))[0] == SUCCESS_REPLY) | (((u8*)(p->payload))[0] == FAIL_REPLY)){
+//		if(((u8*)(p->payload))[0] == SUCCESS_REPLY){
+//			DEBUG_PRINT("Success\n"); //need to channel it to proper function id
+//		}
+//		else{
+//			DEBUG_PRINT("Error\n");
+//		}
+//	}
+//	*/
+//	//Any other kinda packet.
+//	else{
+//		DEBUG_PRINT("Received Data We Don't Care\n");
+//	}
+//
+//	/* indicate that the packet has been received */
+//	tcp_recved(tpcb, p->tot_len);
+//	pbuf_free(p);
+//	return ERR_OK;
+//
+//}
+
 
 err_t accept_callback(void *arg, struct tcp_pcb *newpcb, err_t err)
 {

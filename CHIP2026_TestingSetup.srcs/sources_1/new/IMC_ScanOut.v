@@ -42,8 +42,8 @@ module IMC_ScanOut(
     localparam Ncycles   = 1;
     
     reg [3:0] FSM_state; // state machine counter
-    reg [900*4-1:0] out_buf;
-    assign OUT = out_buf;
+    reg [899:0] out_buf[3:0];
+    assign OUT = {out_buf[3],out_buf[2],out_buf[1],out_buf[0]};
     
     ////////////// State Encodings //////////////
     localparam ST_IDLE          = 4'd0;
@@ -170,7 +170,7 @@ module IMC_ScanOut(
                 end
                 ST_SCAN_OUT: begin
                     if(submodule_scan_done) begin
-                        out_buf[scan_idx*N_bits +: N_bits] <= scanned_bits[N_bits-1:0];
+                        out_buf[scan_idx] <= scanned_bits;
                         scan_idx <= scan_idx + 1;
                         FSM_state <= ST_NEXT;
                     end

@@ -1,0 +1,560 @@
+/*
+ * state_machine.c
+ *
+ *  Created on: 11-May-2025
+ *      Author: 91880
+ */
+#include "state_machine.h"
+#include "xil_types.h"
+#include "xtime_l.h"
+
+err_t fn_echo(){
+	err_t err = 0;
+	DEBUG_PRINT("Started Running ECHO\n");
+
+	//Echo back the data
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = GLOBAL_FN_TCP_DATA.Data_Size;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	err = transfer_data(GLOBAL_FN_TCP_DATA.Data_Ptr, data_size);
+
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	DEBUG_PRINT("Finished Running ECHO\n");
+	return err;
+}
+
+err_t fn_setChipIO(){
+	//Data of this fn is structured as : signal_len,{signals ndx of len}, {values of len} => total 2len + 1.
+	DEBUG_PRINT("Started Running setChipIO\n");
+	err_t err = 0;
+	u8 signal_len = GLOBAL_FN_TCP_DATA.Data_Ptr[0];
+	u8* signals = (u8*)calloc(signal_len,sizeof(u8)); //create signal array
+	u8* signal_values = (u8*)calloc(signal_len,sizeof(u8)); //create values array
+
+	memcpy(signals,GLOBAL_FN_TCP_DATA.Data_Ptr + 1,signal_len); //Copy signals into signal array
+	memcpy(signal_values,GLOBAL_FN_TCP_DATA.Data_Ptr + signal_len + 1,signal_len); //Copy values into value array
+
+	//Call the set_AXI_Bits fn
+	err =  set_AXI_Bits(signals, signal_len, signal_values); //This will set the given values to given signals.
+
+	//Send expected reply
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = 1;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	u8 reply = SUCCESS_REPLY; //Send success reply
+	err = transfer_data(&reply, data_size);
+
+	free(signals);
+	free(signal_values);
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	DEBUG_PRINT("Finished Running setChipIO\n");
+	return err;
+}
+
+err_t fn_setModeIO(){
+	//Data of this fn is structured as : signal_len,{signals ndx of len}, {values of len} => total 2len + 1.
+	DEBUG_PRINT("Started Running setModeIO\n");
+	err_t err = 0;
+	u8 signal_len = GLOBAL_FN_TCP_DATA.Data_Ptr[0];
+	u8* signals = (u8*)calloc(signal_len,sizeof(u8)); //create signal array
+	u8* signal_values = (u8*)calloc(signal_len,sizeof(u8)); //create values array
+
+	memcpy(signals,GLOBAL_FN_TCP_DATA.Data_Ptr + 1,signal_len); //Copy signals into signal array
+	memcpy(signal_values,GLOBAL_FN_TCP_DATA.Data_Ptr + signal_len + 1,signal_len); //Copy values into value array
+
+	//Call the set_AXI_Bits fn
+	err =  set_MODE_AXI_Bits(signals, signal_len, signal_values); //This will set the given values to given signals.
+
+	//Send expected reply
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = 1;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	u8 reply = SUCCESS_REPLY; //Send success reply
+	err = transfer_data(&reply, data_size);
+
+	free(signals);
+	free(signal_values);
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	DEBUG_PRINT("Finished Running setModeIO\n");
+	return err;
+}
+
+err_t fn_scanin(){
+	//Data of this fn is structured as : scan_id,scan_len,(8bit combined and padded scan_data)
+	err_t err = 0;
+	DEBUG_PRINT("Started Running scanin\n");
+	u8 scan_id = GLOBAL_FN_TCP_DATA.Data_Ptr[0];
+	u16 scan_len = ((u16)GLOBAL_FN_TCP_DATA.Data_Ptr[2] << 8) | (u16)GLOBAL_FN_TCP_DATA.Data_Ptr[1];
+	DEBUG_PRINT("scanid = %d\n",scan_id);
+	DEBUG_PRINT("scanlen = %d\n",scan_len);
+	if(scan_len != GLOBAL_SM_DATA.scan_len[scan_id]){
+		printf("Partial Scan In will happen\n");
+	}
+
+	//Call Scan In Function
+	//c_scan_in(GLOBAL_FN_TCP_DATA.Data_Ptr + 3,scan_id,scan_len);
+	//dma_send_recv_test(scan_id,scan_len);
+	verilog_scan_in(GLOBAL_FN_TCP_DATA.Data_Ptr + 3,scan_id,scan_len);
+	//Send expected reply
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = 1;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	u8 reply = SUCCESS_REPLY; //Send success reply
+	err = transfer_data(&reply, data_size);
+
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	DEBUG_PRINT("Finished Running scanin\n");
+	return err;
+}
+
+err_t fn_scanout(){
+	//Data of this fn is structured as : scan_id,scan_len
+	err_t err = 0;
+	DEBUG_PRINT("Started Running scanout\n");
+	u8 scan_id = GLOBAL_FN_TCP_DATA.Data_Ptr[0];
+	u16 scan_len = ((u16)GLOBAL_FN_TCP_DATA.Data_Ptr[2] << 8) | (u32)GLOBAL_FN_TCP_DATA.Data_Ptr[1];
+	DEBUG_PRINT("scanid = %d\n",scan_id);
+	DEBUG_PRINT("scanlen = %d\n",scan_len);
+	if(scan_len != GLOBAL_SM_DATA.scan_len[scan_id]){
+		printf("Partial Scan Out will happen\n");
+	}
+	//Call c scan out here
+	//u32 scan_out_bytes = c_scan_out(scan_id,scan_len);
+	u32 scan_out_bytes = verilog_scan_out(scan_id,scan_len);
+	//Send expected reply
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = scan_out_bytes;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	//Send required bytes from SCAN_OUT_BUFFER
+	err = transfer_data(GLOBAL_SM_DATA.dma_scanout_buffer, data_size);
+
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	DEBUG_PRINT("Finished Running scanout\n");
+	return err;
+}
+
+err_t fn_writeSRAM(){
+	//Data of this fn is structured as : write_data ({8 bit combined and padded 40 bytes}*1156)
+	err_t err = 0;
+	DEBUG_PRINT("Started Running writeSRAM\n");
+
+	//Call c write SRAM function here.
+	err = write_SRAM_Full(GLOBAL_FN_TCP_DATA.Data_Ptr);
+
+	//Set IO to default //Call this only if necessary
+	set_ChipIO_to_Default();
+
+	//Send expected reply
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = 1;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	u8 reply = SUCCESS_REPLY; //Send success reply
+	err = transfer_data(&reply, data_size);
+
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	DEBUG_PRINT("Finished Running writeSRAM\n");
+	return err;
+}
+
+err_t fn_writeSRAM_Masked(){
+	//Data of this fn is structured as : write_data ({8 bit combined and padded 40 bytes}*1156)
+	err_t err = 0;
+	DEBUG_PRINT("Started Running writeSRAM\n");
+
+	//Call c write SRAM function here.
+	err = write_SRAM_Masked(GLOBAL_FN_TCP_DATA.Data_Ptr);
+
+	//Set IO to default //Call this only if necessary
+	set_ChipIO_to_Default();
+
+	//Send expected reply
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = 1;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	u8 reply = SUCCESS_REPLY; //Send success reply
+	err = transfer_data(&reply, data_size);
+
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	DEBUG_PRINT("Finished Running writeSRAM\n");
+	return err;
+}
+
+err_t fn_readSRAM(){
+	//Data of this fn is structured as : 128 no data required as of now
+	err_t err = 0;
+	DEBUG_PRINT("Started Running readSRAM\n");
+
+	//Call c write SRAM function here.
+	err = read_SRAM_Full();
+
+	//Set IO to default
+	set_ChipIO_to_Default();
+
+	//Send expected reply
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = 40*NUM_WL;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	err = transfer_data(GLOBAL_SM_DATA.sram_read_buffer, data_size);
+
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	DEBUG_PRINT("Finished Running readSRAM\n");
+	return err;
+}
+
+err_t fn_linear(){
+	err_t err = 0;
+	DEBUG_PRINT("Started Running Linear\n");
+	//Unpack the Sizes from data.
+
+	GLOBAL_LINEAR_DATA.MAC_LEN = ((u16)GLOBAL_FN_TCP_DATA.Data_Ptr[1] << 8) | (u16)GLOBAL_FN_TCP_DATA.Data_Ptr[0]; //This is NUM_WL in python
+	GLOBAL_LINEAR_DATA.NUM_CHUNK = GLOBAL_FN_TCP_DATA.Data_Ptr[2];
+	GLOBAL_LINEAR_DATA.WDL = GLOBAL_FN_TCP_DATA.Data_Ptr[3];
+	GLOBAL_LINEAR_DATA.XDL = GLOBAL_FN_TCP_DATA.Data_Ptr[4];
+	GLOBAL_LINEAR_DATA.WBL = GLOBAL_FN_TCP_DATA.Data_Ptr[5];
+	GLOBAL_LINEAR_DATA.XBL = GLOBAL_FN_TCP_DATA.Data_Ptr[6];
+	GLOBAL_LINEAR_DATA.MANTISSA = GLOBAL_FN_TCP_DATA.Data_Ptr[7];
+	GLOBAL_LINEAR_DATA.x_batch = GLOBAL_FN_TCP_DATA.Data_Ptr[8];
+	GLOBAL_LINEAR_DATA.w_batch = GLOBAL_FN_TCP_DATA.Data_Ptr[9];
+	GLOBAL_LINEAR_DATA.x_chunks = GLOBAL_FN_TCP_DATA.Data_Ptr[10];
+	GLOBAL_LINEAR_DATA.w_chunks = GLOBAL_FN_TCP_DATA.Data_Ptr[11];
+	GLOBAL_LINEAR_DATA.x_bits = GLOBAL_FN_TCP_DATA.Data_Ptr[12];
+	GLOBAL_LINEAR_DATA.w_bits = GLOBAL_FN_TCP_DATA.Data_Ptr[13];
+	GLOBAL_LINEAR_DATA.w_batch_unpadded = GLOBAL_FN_TCP_DATA.Data_Ptr[14];
+	GLOBAL_LINEAR_DATA.chunks_unpadded = GLOBAL_FN_TCP_DATA.Data_Ptr[15];
+
+	//Check if the data received is correct.
+	DEBUG_PRINT("MAC_LEN=%d\nNUM_CHUNK=%d\nWDL=%d\nXDL=%d\nWBL=%d\nXBL=%d\nMANTISSA=%d\nx_batch=%d\n"
+			"w_batch=%d\nx_chunks=%d\nw_chunks=%d\nx_bits=%d\nw_bits=%d\nw_batch_unpadded=%d\nchunk_unpadded=%d\n",GLOBAL_LINEAR_DATA.MAC_LEN,GLOBAL_LINEAR_DATA.NUM_CHUNK,GLOBAL_LINEAR_DATA.WDL,GLOBAL_LINEAR_DATA.XDL,
+			GLOBAL_LINEAR_DATA.WBL,GLOBAL_LINEAR_DATA.XBL,GLOBAL_LINEAR_DATA.MANTISSA,GLOBAL_LINEAR_DATA.x_batch,
+			GLOBAL_LINEAR_DATA.w_batch,GLOBAL_LINEAR_DATA.x_chunks,GLOBAL_LINEAR_DATA.w_chunks,GLOBAL_LINEAR_DATA.x_bits,GLOBAL_LINEAR_DATA.w_bits,
+			GLOBAL_LINEAR_DATA.w_batch_unpadded,GLOBAL_LINEAR_DATA.chunks_unpadded);
+	//Shape of the data_size is 16
+	GLOBAL_LINEAR_DATA.sizes_data = 16;
+	//Shape of x_input_tesnsor = x_batch,x_chunks,MAC_LEN,x_bits
+	GLOBAL_LINEAR_DATA.x_tensor_size = GLOBAL_LINEAR_DATA.x_batch * GLOBAL_LINEAR_DATA.x_chunks * GLOBAL_LINEAR_DATA.MAC_LEN * GLOBAL_LINEAR_DATA.x_bits;
+	//Shape of w_input_tensor = w_batch,w_chunks,MAC_LEN,w_bits
+	GLOBAL_LINEAR_DATA.w_tensor_size = GLOBAL_LINEAR_DATA.w_batch * GLOBAL_LINEAR_DATA.w_chunks * GLOBAL_LINEAR_DATA.MAC_LEN * GLOBAL_LINEAR_DATA.w_bits;
+	//Shape of input_max_exp = x_batch,x_chunks 4bytes
+	GLOBAL_LINEAR_DATA.x_exp_size = GLOBAL_LINEAR_DATA.x_batch * GLOBAL_LINEAR_DATA.x_chunks * 4;
+	//Shape of weight_max_exp = w_batch,w_chunks 4bytes
+	GLOBAL_LINEAR_DATA.w_exp_size = GLOBAL_LINEAR_DATA.w_batch * GLOBAL_LINEAR_DATA.w_chunks * 4;
+	//Data is arranged as [14 bytes of sizes] + [x_input_tensor + w_input_tensor](1 byte elements) + [input_max_exp, weight_max_exp](4 byte element)
+	//Start Running Linear Loop here
+	//Allocate output array LIN_OUT. Keep it 1D easy to send through LWIP.
+	float* LIN_OUT = (float*)calloc(GLOBAL_LINEAR_DATA.x_batch*GLOBAL_LINEAR_DATA.w_batch,sizeof(float));
+
+	u32 x_offset = GLOBAL_LINEAR_DATA.sizes_data;
+	u32 w_offset = x_offset + GLOBAL_LINEAR_DATA.x_tensor_size;
+	XTime start, end;
+
+	XTime_GetTime(&start);
+	for(u8 oc = 0; oc< GLOBAL_LINEAR_DATA.w_batch; oc += GLOBAL_LINEAR_DATA.WDL){ //For padded kernels
+		for(u8 c = 0; c<GLOBAL_LINEAR_DATA.w_chunks; c+=GLOBAL_LINEAR_DATA.NUM_CHUNK){//For chunks
+			for(u8 wb = 0; wb<GLOBAL_LINEAR_DATA.w_bits; wb += GLOBAL_LINEAR_DATA.WBL){ //For padded weight bits
+				//Write Weights
+				WeightData_To_SRAMBuff(oc,c,wb,w_offset, GLOBAL_LINEAR_DATA.w_chunks, GLOBAL_LINEAR_DATA.MAC_LEN, GLOBAL_LINEAR_DATA.w_bits);
+				for(u8 b = 0; b <GLOBAL_LINEAR_DATA.x_batch; b += GLOBAL_LINEAR_DATA.XDL){ //For padded image batch
+					for(u8 xb = 0; xb < GLOBAL_LINEAR_DATA.x_bits; xb+=GLOBAL_LINEAR_DATA.XBL){ //For padded image bits
+						//Call Fast IMC
+						InputData_To_SRAMBuff(b,0,c,xb,x_offset, 1,GLOBAL_LINEAR_DATA.x_chunks,GLOBAL_LINEAR_DATA.MAC_LEN, GLOBAL_LINEAR_DATA.x_bits);
+						write_SRAM_Masked(GLOBAL_SM_DATA.sram_write_buffer);
+						fast_IMC(1);
+						//set_ChipIO_to_Default();
+						LINIMCHW(oc,c,wb,b,xb,LIN_OUT);
+					}
+				}
+			}
+		}
+	}
+	XTime_GetTime(&end);
+	double time_taken = (double)(end - start) / COUNTS_PER_SECOND;
+	printf("Elapsed time = %f seconds\n", time_taken);
+
+	set_ChipIO_to_Default();
+	set_ModeIO_to_Default();
+	//Send expected reply
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = GLOBAL_LINEAR_DATA.x_batch * GLOBAL_LINEAR_DATA.w_batch * 4;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	err = transfer_data((u8*)LIN_OUT, data_size);
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	free(LIN_OUT);
+	DEBUG_PRINT("Finished Running Linear\n");
+	return err;
+}
+
+err_t fn_convolution(){
+	err_t err = 0;
+	DEBUG_PRINT("Started Running Convolution\n");
+	//Unpack the Sizes from data.
+
+	GLOBAL_CONVOLUTION_DATA.MAC_LEN = ((u16)GLOBAL_FN_TCP_DATA.Data_Ptr[1] << 8) | (u16)GLOBAL_FN_TCP_DATA.Data_Ptr[0]; //This is NUM_WL in python
+	GLOBAL_CONVOLUTION_DATA.x_stride = ((u16)GLOBAL_FN_TCP_DATA.Data_Ptr[3] << 8) | (u16)GLOBAL_FN_TCP_DATA.Data_Ptr[2];
+	GLOBAL_CONVOLUTION_DATA.w_stride = ((u16)GLOBAL_FN_TCP_DATA.Data_Ptr[5] << 8) | (u16)GLOBAL_FN_TCP_DATA.Data_Ptr[4];
+	GLOBAL_CONVOLUTION_DATA.padded_strides = ((u16)GLOBAL_FN_TCP_DATA.Data_Ptr[7] << 8) | (u16)GLOBAL_FN_TCP_DATA.Data_Ptr[6];
+	GLOBAL_CONVOLUTION_DATA.NUM_STRIDE = GLOBAL_FN_TCP_DATA.Data_Ptr[8];
+	GLOBAL_CONVOLUTION_DATA.WDL = GLOBAL_FN_TCP_DATA.Data_Ptr[9];
+	GLOBAL_CONVOLUTION_DATA.XDL = GLOBAL_FN_TCP_DATA.Data_Ptr[10];
+	GLOBAL_CONVOLUTION_DATA.WBL = GLOBAL_FN_TCP_DATA.Data_Ptr[11];
+	GLOBAL_CONVOLUTION_DATA.XBL = GLOBAL_FN_TCP_DATA.Data_Ptr[12];
+	GLOBAL_CONVOLUTION_DATA.MANTISSA = GLOBAL_FN_TCP_DATA.Data_Ptr[13];
+	GLOBAL_CONVOLUTION_DATA.x_batch = GLOBAL_FN_TCP_DATA.Data_Ptr[14];
+	GLOBAL_CONVOLUTION_DATA.w_batch = GLOBAL_FN_TCP_DATA.Data_Ptr[15];
+	GLOBAL_CONVOLUTION_DATA.x_chunks = GLOBAL_FN_TCP_DATA.Data_Ptr[16];
+	GLOBAL_CONVOLUTION_DATA.w_chunks = GLOBAL_FN_TCP_DATA.Data_Ptr[17];
+	GLOBAL_CONVOLUTION_DATA.x_bits = GLOBAL_FN_TCP_DATA.Data_Ptr[18];
+	GLOBAL_CONVOLUTION_DATA.w_bits = GLOBAL_FN_TCP_DATA.Data_Ptr[19];
+	GLOBAL_CONVOLUTION_DATA.w_batch_unpadded = GLOBAL_FN_TCP_DATA.Data_Ptr[20];
+	GLOBAL_CONVOLUTION_DATA.strides_unpadded = ((u16)GLOBAL_FN_TCP_DATA.Data_Ptr[22] << 8) | (u16)GLOBAL_FN_TCP_DATA.Data_Ptr[21];
+
+	//Check if the data received is correct.
+	DEBUG_PRINT("MAC_LEN=%d\nNUM_STRIDE=%d\nWDL=%d\nXDL=%d\nWBL=%d\nXBL=%d\nMANTISSA=%d\nx_batch=%d\n"
+			"w_batch=%d\nx_stride=%d\nw_stride=%d\npadded_strides=%d\nx_chunks=%d\nw_chunks=%d\nx_bits=%d\nw_bits=%d\nw_batch_unpadded=%d\nstrides_unpadded=%d\n"
+			,GLOBAL_CONVOLUTION_DATA.MAC_LEN,
+			GLOBAL_CONVOLUTION_DATA.NUM_STRIDE,GLOBAL_CONVOLUTION_DATA.WDL,GLOBAL_CONVOLUTION_DATA.XDL,
+			GLOBAL_CONVOLUTION_DATA.WBL,GLOBAL_CONVOLUTION_DATA.XBL,GLOBAL_CONVOLUTION_DATA.MANTISSA,GLOBAL_CONVOLUTION_DATA.x_batch,
+			GLOBAL_CONVOLUTION_DATA.w_batch,GLOBAL_CONVOLUTION_DATA.x_stride,GLOBAL_CONVOLUTION_DATA.w_stride,GLOBAL_CONVOLUTION_DATA.padded_strides,
+			GLOBAL_CONVOLUTION_DATA.x_chunks,GLOBAL_CONVOLUTION_DATA.w_chunks,GLOBAL_CONVOLUTION_DATA.x_bits,GLOBAL_CONVOLUTION_DATA.w_bits,
+			GLOBAL_CONVOLUTION_DATA.w_batch_unpadded,GLOBAL_CONVOLUTION_DATA.strides_unpadded);
+
+	//Shape of the data_size is 22
+	GLOBAL_CONVOLUTION_DATA.sizes_data = 23;
+	//Shape of x_input_tesnsor = x_batch,x_stride,x_chunks,MAC_LEN,x_bits
+	GLOBAL_CONVOLUTION_DATA.x_tensor_size = GLOBAL_CONVOLUTION_DATA.x_batch * GLOBAL_CONVOLUTION_DATA.x_stride * GLOBAL_CONVOLUTION_DATA.x_chunks * GLOBAL_CONVOLUTION_DATA.MAC_LEN * GLOBAL_CONVOLUTION_DATA.x_bits;
+	//Shape of w_input_tensor = w_batch,w_stride,w_chunks,MAC_LEN,w_bits
+	GLOBAL_CONVOLUTION_DATA.w_tensor_size = GLOBAL_CONVOLUTION_DATA.w_batch * GLOBAL_CONVOLUTION_DATA.w_stride * GLOBAL_CONVOLUTION_DATA.w_chunks * GLOBAL_CONVOLUTION_DATA.MAC_LEN * GLOBAL_CONVOLUTION_DATA.w_bits;
+	//Shape of input_max_exp = x_batch,x_stride,x_chunks 4bytes
+	GLOBAL_CONVOLUTION_DATA.x_exp_size = GLOBAL_CONVOLUTION_DATA.x_batch * GLOBAL_CONVOLUTION_DATA.x_stride * GLOBAL_CONVOLUTION_DATA.x_chunks * 4;
+	//Shape of weight_max_exp = w_batch,w_stride,w_chunks 4bytes
+	GLOBAL_CONVOLUTION_DATA.w_exp_size = GLOBAL_CONVOLUTION_DATA.w_batch * GLOBAL_CONVOLUTION_DATA.w_stride * GLOBAL_CONVOLUTION_DATA.w_chunks * 4;
+	//Data is arranged as [20 bytes of sizes] + [x_input_tensor + w_input_tensor](1 byte elements) + [input_max_exp, weight_max_exp](4 byte element)
+	//Start Running Linear Loop here
+	//Allocate output array LIN_OUT. Keep it 1D easy to send through LWIP.
+	float* CONV_OUT = (float*)calloc(GLOBAL_CONVOLUTION_DATA.x_batch*GLOBAL_CONVOLUTION_DATA.w_batch*GLOBAL_CONVOLUTION_DATA.padded_strides,sizeof(float));
+
+	u32 x_offset = GLOBAL_CONVOLUTION_DATA.sizes_data;
+	u32 w_offset = x_offset + GLOBAL_CONVOLUTION_DATA.x_tensor_size;
+
+	for(u8 oc = 0; oc< GLOBAL_CONVOLUTION_DATA.w_batch; oc += GLOBAL_CONVOLUTION_DATA.WDL){ //For padded kernels
+		for(u8 c = 0; c<GLOBAL_CONVOLUTION_DATA.w_chunks; c++){//For chunks
+			for(u8 wb = 0; wb<GLOBAL_CONVOLUTION_DATA.w_bits; wb += GLOBAL_CONVOLUTION_DATA.WBL){ //For padded weight bits
+				//Store weights here
+				WeightData_To_SRAMBuff_Conv(oc,c,wb,w_offset, GLOBAL_CONVOLUTION_DATA.w_chunks, GLOBAL_CONVOLUTION_DATA.MAC_LEN, GLOBAL_CONVOLUTION_DATA.w_bits);
+				for(u16 s = 0; s<GLOBAL_CONVOLUTION_DATA.x_stride;s+=GLOBAL_CONVOLUTION_DATA.NUM_STRIDE){
+					for(u8 b = 0; b <GLOBAL_CONVOLUTION_DATA.x_batch; b += GLOBAL_CONVOLUTION_DATA.XDL){ //For padded image batch
+						for(u8 xb = 0; xb < GLOBAL_CONVOLUTION_DATA.x_bits; xb+=GLOBAL_CONVOLUTION_DATA.XBL){ //For padded image bits
+							InputData_To_SRAMBuff_Conv(b,s,c,xb,x_offset, GLOBAL_CONVOLUTION_DATA.x_stride,GLOBAL_CONVOLUTION_DATA.x_chunks,
+									GLOBAL_CONVOLUTION_DATA.MAC_LEN, GLOBAL_CONVOLUTION_DATA.x_bits);
+							write_SRAM_Masked(GLOBAL_SM_DATA.sram_write_buffer);
+							fast_IMC(1);
+							CONVIMCHW(oc,c,wb,s,b,xb,CONV_OUT);
+						}
+					}
+				}
+			}
+		}
+	}
+	//Set IO to default //Call this only if necessary
+	set_ChipIO_to_Default();
+	set_ModeIO_to_Default();
+	//Send expected reply
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = GLOBAL_CONVOLUTION_DATA.x_batch * GLOBAL_CONVOLUTION_DATA.w_batch * GLOBAL_CONVOLUTION_DATA.padded_strides * 4;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	err = transfer_data((u8*)CONV_OUT, data_size);
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	free(CONV_OUT);
+	DEBUG_PRINT("Finished Running Convolution\n");
+	return err;
+
+}
+
+//Marching pattern to test SRAM
+err_t fn_marchingsram(){
+	//Data of this fn is structured as : No write Data. No return data.
+	err_t err = 0;
+	DEBUG_PRINT("Started Running marchingSRAM\n");
+
+	//Call c write SRAM function here.
+	err = marching_Pattern_SRAM();
+
+	//Set IO to default //Call this only if necessary
+	set_ChipIO_to_Default();
+
+	//Send expected reply
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = 1;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	u8 reply = SUCCESS_REPLY; //Send success reply
+	err = transfer_data(&reply, data_size);
+
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	DEBUG_PRINT("Finished Running marchingSRAM\n");
+	return err;
+}
+
+err_t fn_fastCalib(){
+	//Data of this fn is structured as : DATA LINE
+	DEBUG_PRINT("Started Running fastCalib\n");
+	err_t err = 0;
+	u8 DL = GLOBAL_FN_TCP_DATA.Data_Ptr[0];
+	//printf("DL = %d\n",DL);
+	u8 scan_id = CL_EN_SC_LM;
+	u16 scan_len = GLOBAL_SM_DATA.scan_len[scan_id];
+	u8 arr[12] = {0};
+	set_nth_bit(arr,DL);
+	verilog_scan_in(arr,scan_id,scan_len);
+
+	set_ChipIO_to_Default();
+
+	{
+		u8 signals[6] = {BANK_EN_0,PRECHARGE,DEL_RST,TDC_RST,ENTIME,InputEN_DAC};
+		u8 values[6] = {1,1,1,1,1,1};
+		set_AXI_Bits(signals,6,values);
+	}
+	{
+		u8 signals[1] = {CALIB_EN};
+		u8 values[1] = {1};
+		set_AXI_Bits(signals,1,values);
+	}
+
+	//Send expected reply
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = 1;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	u8 reply = SUCCESS_REPLY; //Send success reply
+	err = transfer_data(&reply, data_size);
+
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	DEBUG_PRINT("Finished Running fastCalib\n");
+	return err;
+}
+
+//Fast IMC for DNN
+err_t fn_fastimc(){
+	//Data of this fn is structured as : Dummy Data.
+	err_t err = 0;
+	DEBUG_PRINT("Started Running FastIMC\n");
+	u8 TIME_CHARGE = GLOBAL_FN_TCP_DATA.Data_Ptr[0];
+	//Call c write SRAM function here.
+	err = fast_IMC(TIME_CHARGE);
+
+	//Set IO to default //Call this only if necessary
+	set_ChipIO_to_Default();
+	//Send expected reply
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = 1280; //640*4*4 bits -> 1280 bytes
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	err = transfer_data(GLOBAL_SM_DATA.dma_imcout_buffer, data_size);
+
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	DEBUG_PRINT("Finished Running FastIMC\n");
+	return err;
+}
+
+//Get Data for DL Correction
+err_t fn_getcorrectiondata(){
+	//Data present is flattened byte array of 2*4*4*64 *4bytes per float
+	err_t err = 0;
+	DEBUG_PRINT("Started Running Correctiondata\n");
+	int offset = 4*4*64*4;
+	for(int i = 0; i < 4*4*64; i++){
+		GLOBAL_SM_DATA.Correction_Data[0][(int)(i/256)][(int)(i/64)%4][i%64] =  bytes_to_float(GLOBAL_FN_TCP_DATA.Data_Ptr + 4*i);
+		GLOBAL_SM_DATA.Correction_Data[1][(int)(i/256)][(int)(i/64)%4][i%64] =  bytes_to_float(GLOBAL_FN_TCP_DATA.Data_Ptr + offset + 4*i);
+	}
+
+	DEBUG_PRINT("%f\n",GLOBAL_SM_DATA.Correction_Data[0][3][3][63]);
+	DEBUG_PRINT("%f\n",GLOBAL_SM_DATA.Correction_Data[1][3][3][63]);
+
+	//Send expected reply
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = 1;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	u8 reply = SUCCESS_REPLY; //Send success reply
+	err = transfer_data(&reply, data_size);
+
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	DEBUG_PRINT("Finished Running Correctiondata\n");
+	return err;
+}
+
+/********************** Call each function here based on function ID *****************************/
+err_t process_fn(){
+	err_t err=0;
+	if(GLOBAL_FN_TCP_DATA.fn_name == echo){
+		err = fn_echo();
+	}
+	else if(GLOBAL_FN_TCP_DATA.fn_name == setChipIO){
+		err = fn_setChipIO();
+	}
+	else if(GLOBAL_FN_TCP_DATA.fn_name == scanin){
+		err = fn_scanin();
+	}
+	else if(GLOBAL_FN_TCP_DATA.fn_name == scanout){
+		err = fn_scanout();
+	}
+	else if(GLOBAL_FN_TCP_DATA.fn_name == readsram){
+		err = fn_readSRAM();
+	}
+	else if(GLOBAL_FN_TCP_DATA.fn_name == writesram){
+		err = fn_writeSRAM();
+	}
+	else if(GLOBAL_FN_TCP_DATA.fn_name == linear){
+		err = fn_linear();
+	}
+	else if(GLOBAL_FN_TCP_DATA.fn_name == convolution){
+		err = fn_convolution();
+	}
+	else if(GLOBAL_FN_TCP_DATA.fn_name == marchingsram){
+		err = fn_marchingsram();
+	}
+	else if(GLOBAL_FN_TCP_DATA.fn_name == writesrammasked){
+		err = fn_writeSRAM_Masked();
+	}
+	else if(GLOBAL_FN_TCP_DATA.fn_name == setModeIO){
+		err = fn_setModeIO();
+	}
+	else if(GLOBAL_FN_TCP_DATA.fn_name == fastCalib){
+		err = fn_fastCalib();
+	}
+	else if(GLOBAL_FN_TCP_DATA.fn_name == fastimc){
+		err = fn_fastimc();
+	}
+	else if(GLOBAL_FN_TCP_DATA.fn_name == getcorrectiondata){
+		err = fn_getcorrectiondata();
+	}
+	else{
+		printf("No Valid Function Requested to RUN\n");
+	}
+	return err;
+}
+
+

@@ -163,10 +163,15 @@ initialise_FPGA();
 #endif
 //ETHERNET CODE ENDS HERE
 /* start the application (web server, rxtest, txtest, etc..) */
+xil_printf("\n\nDEBUG CHECK before start_application()\n\n");
 start_application();
 /* receive and process packets */
-
+int count = 0;
 while (1) {
+	count += 1;
+	if(count%10000000 == 0) {
+		xil_printf("\nPolling loop running\n");
+	}
 	/********LWIP Timers ***********/
 	if (TcpFastTmrFlag) {
 		tcp_fasttmr();
