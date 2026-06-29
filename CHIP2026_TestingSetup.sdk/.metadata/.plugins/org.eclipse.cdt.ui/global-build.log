@@ -10766,3 +10766,3138 @@ arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
  170420	   3592	424712480	424886492	195340dc	C_Controller_v1.elf
 'Finished building: C_Controller_v1.elf.size'
 ' '
+17:53:15 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:67:16: error: 'server_netif' undeclared (first use in this function); did you mean 'echo_netif'?
+  echo_netif = &server_netif;
+                ^~~~~~~~~~~~
+                echo_netif
+../src/main.c:67:16: note: each undeclared identifier is reported only once for each function it appears in
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/main.o] Error 1
+17:53:27 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:67:16: error: 'server_netif' undeclared (first use in this function); did you mean 'echo_netif'?
+  echo_netif = &server_netif;
+                ^~~~~~~~~~~~
+                echo_netif
+../src/main.c:67:16: note: each undeclared identifier is reported only once for each function it appears in
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/main.o] Error 1
+17:57:51 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/state_machine.c:7:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'marching_Pattern_SRAM':
+../src/utils.c:990:7: warning: variable 'scanned_bytes' set but not used [-Wunused-but-set-variable]
+   u16 scanned_bytes = read_SRAM_WL(wl);
+       ^~~~~~~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170420	   3592	424712480	424886492	195340dc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+17:58:21 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170332	   3592	424712480	424886404	19534084	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+10:22:00 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/state_machine.c:7:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/state_machine.o: In function `fn_fastimc':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/state_machine.c:465: undefined reference to `fast_IMC'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+10:22:53 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:898:40: error: 'ENTIME' undeclared (first use in this function); did you mean 'INLINE'?
+   u8 signals[3] = {CTRL_EN,InputEN_DAC,ENTIME};
+                                        ^~~~~~
+                                        INLINE
+../src/utils.c:898:40: note: each undeclared identifier is reported only once for each function it appears in
+../src/utils.c:909:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)32));
+  ^~~~~
+../src/utils.c:912:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:942:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:946:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'marching_Pattern_SRAM':
+../src/utils.c:990:7: warning: variable 'scanned_bytes' set but not used [-Wunused-but-set-variable]
+   u16 scanned_bytes = read_SRAM_WL(wl);
+       ^~~~~~~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:23:18 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+../src/utils.c:909:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)32));
+  ^~~~~
+../src/utils.c:912:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:919:40: error: 'ENTIME' undeclared (first use in this function); did you mean 'INLINE'?
+   u8 signals[3] = {CTRL_EN,InputEN_DAC,ENTIME};
+                                        ^~~~~~
+                                        INLINE
+../src/utils.c:919:40: note: each undeclared identifier is reported only once for each function it appears in
+../src/utils.c:942:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:946:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'marching_Pattern_SRAM':
+../src/utils.c:990:7: warning: variable 'scanned_bytes' set but not used [-Wunused-but-set-variable]
+   u16 scanned_bytes = read_SRAM_WL(wl);
+       ^~~~~~~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:24:50 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+../src/utils.c:908:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)32));
+  ^~~~~
+../src/utils.c:911:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:941:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:945:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'marching_Pattern_SRAM':
+../src/utils.c:989:7: warning: variable 'scanned_bytes' set but not used [-Wunused-but-set-variable]
+   u16 scanned_bytes = read_SRAM_WL(wl);
+       ^~~~~~~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:25:04 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+../src/utils.c:908:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)32));
+  ^~~~~
+../src/utils.c:911:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:941:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:945:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'marching_Pattern_SRAM':
+../src/utils.c:989:7: warning: variable 'scanned_bytes' set but not used [-Wunused-but-set-variable]
+   u16 scanned_bytes = read_SRAM_WL(wl);
+       ^~~~~~~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:26:31 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+../src/utils.c:908:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)32));
+  ^~~~~
+../src/utils.c:911:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:941:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:945:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'marching_Pattern_SRAM':
+../src/utils.c:989:7: warning: variable 'scanned_bytes' set but not used [-Wunused-but-set-variable]
+   u16 scanned_bytes = read_SRAM_WL(wl);
+       ^~~~~~~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:26:46 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+../src/utils.c:908:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)32));
+  ^~~~~
+../src/utils.c:911:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'marching_Pattern_SRAM':
+../src/utils.c:991:7: warning: variable 'scanned_bytes' set but not used [-Wunused-but-set-variable]
+   u16 scanned_bytes = read_SRAM_WL(wl);
+       ^~~~~~~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:26:53 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+../src/utils.c:908:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)32));
+  ^~~~~
+../src/utils.c:911:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'marching_Pattern_SRAM':
+../src/utils.c:991:7: warning: variable 'scanned_bytes' set but not used [-Wunused-but-set-variable]
+   u16 scanned_bytes = read_SRAM_WL(wl);
+       ^~~~~~~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:27:07 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+../src/utils.c: In function 'marching_Pattern_SRAM':
+../src/utils.c:993:7: warning: variable 'scanned_bytes' set but not used [-Wunused-but-set-variable]
+   u16 scanned_bytes = read_SRAM_WL(wl);
+       ^~~~~~~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:27:15 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+../src/utils.c: In function 'marching_Pattern_SRAM':
+../src/utils.c:993:7: warning: variable 'scanned_bytes' set but not used [-Wunused-but-set-variable]
+   u16 scanned_bytes = read_SRAM_WL(wl);
+       ^~~~~~~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:27:53 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+../src/utils.c: In function 'marching_Pattern_SRAM':
+../src/utils.c:1005:3: error: 'scanned_bytes' undeclared (first use in this function)
+   scanned_bytes = read_SRAM_WL(wl);
+   ^~~~~~~~~~~~~
+../src/utils.c:1005:3: note: each undeclared identifier is reported only once for each function it appears in
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:28:00 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+../src/utils.c: In function 'marching_Pattern_SRAM':
+../src/utils.c:993:7: warning: variable 'scanned_bytes' set but not used [-Wunused-but-set-variable]
+   u16 scanned_bytes = read_SRAM_WL(wl);
+       ^~~~~~~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:28:15 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+../src/utils.c: In function 'marching_Pattern_SRAM':
+../src/utils.c:1005:7: warning: unused variable 'scanned_bytes' [-Wunused-variable]
+   u16 scanned_bytes = read_SRAM_WL(wl);
+       ^~~~~~~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:28:46 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:28:49 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:29:09 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+../src/state_machine.c: In function 'fn_fastimc':
+../src/state_machine.c:465:8: error: too few arguments to function 'fast_IMC'
+  err = fast_IMC();
+        ^~~~~~~~
+In file included from ../src/state_machine.h:5:0,
+                 from ../src/state_machine.c:7:
+../src/utils.h:150:4: note: declared here
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+../src/state_machine.c:463:5: warning: unused variable 'TIME_CHARGE' [-Wunused-variable]
+  u8 TIME_CHARGE = GLOBAL_FN_TCP_DATA.Data_Ptr[0];
+     ^~~~~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/state_machine.c:7:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/state_machine.o] Error 1
+10:30:10 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+../src/state_machine.c: In function 'fn_fastimc':
+../src/state_machine.c:465:8: error: too few arguments to function 'fast_IMC'
+  err = fast_IMC();
+        ^~~~~~~~
+In file included from ../src/state_machine.h:5:0,
+                 from ../src/state_machine.c:7:
+../src/utils.h:150:4: note: declared here
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/state_machine.c:7:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/state_machine.o] Error 1
+10:31:16 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+../src/state_machine.c: In function 'fn_fastimc':
+../src/state_machine.c:465:8: error: too few arguments to function 'fast_IMC'
+  err = fast_IMC();
+        ^~~~~~~~
+In file included from ../src/state_machine.h:5:0,
+                 from ../src/state_machine.c:7:
+../src/utils.h:150:4: note: declared here
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/state_machine.c:7:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/state_machine.o] Error 1
+10:39:08 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/state_machine.c:7:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:39:21 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+../src/state_machine.c: In function 'fn_fastimc':
+../src/state_machine.c:465:8: error: too few arguments to function 'fast_IMC'
+  err = fast_IMC();
+        ^~~~~~~~
+In file included from ../src/state_machine.h:5:0,
+                 from ../src/state_machine.c:7:
+../src/utils.h:150:4: note: declared here
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/state_machine.c:7:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/state_machine.o] Error 1
+10:39:32 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/state_machine.c:7:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'fast_IMC':
+../src/utils.c:894:1: error: number of arguments doesn't match prototype
+ u8 fast_IMC(){
+ ^~
+In file included from ../src/utils.c:2:0:
+../src/utils.h:150:4: error: prototype declaration
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/utils.o] Error 1
+10:39:43 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+../src/state_machine.c: In function 'fn_fastimc':
+../src/state_machine.c:464:5: error: conflicting types for 'err'
+  u8 err = fast_IMC();
+     ^~~
+../src/state_machine.c:461:8: note: previous definition of 'err' was here
+  err_t err = 0;
+        ^~~
+../src/state_machine.c:464:11: error: too few arguments to function 'fast_IMC'
+  u8 err = fast_IMC();
+           ^~~~~~~~
+In file included from ../src/state_machine.h:5:0,
+                 from ../src/state_machine.c:7:
+../src/utils.h:150:4: note: declared here
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/state_machine.c:7:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/state_machine.o] Error 1
+10:39:50 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+../src/state_machine.c: In function 'fn_fastimc':
+../src/state_machine.c:464:8: error: too few arguments to function 'fast_IMC'
+  err = fast_IMC();
+        ^~~~~~~~
+In file included from ../src/state_machine.h:5:0,
+                 from ../src/state_machine.c:7:
+../src/utils.h:150:4: note: declared here
+ u8 fast_IMC(u8 TIME_CHARGE);
+    ^~~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/state_machine.c:7:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/state_machine.o] Error 1
+10:41:08 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+'Finished building: ../src/echo.c'
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/state_machine.c:7:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'dma_send_recv_test':
+../src/utils.c:452:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:454:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:519:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:521:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:542:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:544:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:576:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:578:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:600:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:603:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:703:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:706:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+10:41:48 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:521:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+  ^~~~~
+../src/utils.c:523:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:544:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:546:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:578:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:580:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:602:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:605:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:705:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:708:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+10:42:02 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'verilog_scan_in':
+../src/utils.c:546:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)4));
+  ^~~~~
+../src/utils.c:548:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:580:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:582:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:604:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:607:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:707:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:710:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+10:42:20 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:582:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:584:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:606:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:609:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c: In function 'write_SRAM_WL_Verilog':
+../src/utils.c:709:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)16));
+  ^~~~~
+../src/utils.c:712:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+10:42:31 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:582:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:584:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+../src/utils.c:606:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+  ^~~~~
+../src/utils.c:609:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+10:42:42 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+../src/utils.c: In function 'verilog_scan_out':
+../src/utils.c:582:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while(!(get_AXI_Bits(0) & (u8)8));
+  ^~~~~
+../src/utils.c:584:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+10:42:51 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/utils.c: In function 'initialise_FPGA':
+../src/utils.c:129:2: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+  sleep(1); //Let the IOs.
+  ^~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+At top level:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+10:44:20 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+10:55:00 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:67:16: error: 'server_netif' undeclared (first use in this function); did you mean 'echo_netif'?
+  echo_netif = &server_netif;
+                ^~~~~~~~~~~~
+                echo_netif
+../src/main.c:67:16: note: each undeclared identifier is reported only once for each function it appears in
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+make: *** [src/subdir.mk:59: src/main.o] Error 1
+10:55:21 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/state_machine.c:7:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+10:57:00 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:67: undefined reference to `server_netif'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:67: undefined reference to `server_netif'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+10:57:43 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/state_machine.c:7:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.h:6:0,
+                 from ../src/utils.c:3:
+../src/echo.h:38:21: warning: 'server_netif' defined but not used [-Wunused-variable]
+ static struct netif server_netif;
+                     ^~~~~~~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+11:00:18 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:159:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/main.o: In function `main':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:67: undefined reference to `server_netif'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/main.c:67: undefined reference to `server_netif'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+11:00:30 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+'Finished building: ../src/echo.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+11:01:35 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:161:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+11:01:39 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+'Finished building: ../src/echo.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+11:17:34 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:161:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+11:17:43 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:161:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+11:23:54 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+11:23:58 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+12:24:20 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+12:24:25 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+12:24:29 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+12:24:34 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+12:29:18 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/echo.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+'Finished building: ../src/echo.c'
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/main.c:43:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:161:2: warning: implicit declaration of function 'print_ip_settings' [-Wimplicit-function-declaration]
+  print_ip_settings(&ipaddr, &netmask, &gw);
+  ^~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/state_machine.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/state_machine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/state_machine.d" -MT"src/state_machine.o" -o "src/state_machine.o" "../src/state_machine.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/state_machine.c:7:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+In file included from ../src/state_machine.c:9:0:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xtime_l.h:87:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+'Finished building: ../src/state_machine.c'
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '
+12:29:38 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/utils.o: In function `replicateLINIMCHW':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/utils.c:1053: undefined reference to `pow'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/utils.c:1053: undefined reference to `pow'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+14:42:56 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/utils.o: In function `replicateLINIMCHW':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/utils.c:1053: undefined reference to `pow'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/utils.c:1053: undefined reference to `pow'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+14:43:13 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+./src/utils.o: In function `replicateLINIMCHW':
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/utils.c:1053: undefined reference to `pow'
+C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\C_Controller_v1\Debug/../src/utils.c:1053: undefined reference to `pow'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:41: C_Controller_v1.elf] Error 1
+14:43:33 **** Auto Build of configuration Debug for project C_Controller_v1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/utils.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/utils.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../C_Controller_v1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/utils.d" -MT"src/utils.o" -o "src/utils.o" "../src/utils.c"
+In file included from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:116:0,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:83,
+                 from ../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xaxidma.h:488,
+                 from ../src/state_machine.h:9,
+                 from ../src/utils.c:3:
+../../C_Controller_v1_bsp/ps7_cortexa9_0/include/xdebug.h:8:2: warning: #warning DEBUG is enabled [-Wcpp]
+ #warning DEBUG is enabled
+  ^~~~~~~
+'Finished building: ../src/utils.c'
+' '
+'Building target: C_Controller_v1.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../C_Controller_v1_bsp/ps7_cortexa9_0/lib -o "C_Controller_v1.elf"  ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o ./src/state_machine.o ./src/utils.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: C_Controller_v1.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size C_Controller_v1.elf  |tee "C_Controller_v1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 170916	   3592	424712480	424886988	195342cc	C_Controller_v1.elf
+'Finished building: C_Controller_v1.elf.size'
+' '

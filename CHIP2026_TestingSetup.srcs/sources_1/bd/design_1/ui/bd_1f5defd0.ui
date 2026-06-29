@@ -104,8 +104,8 @@ preplace netloc Unbundle_AXI_Bus_0_CTRL_EN_C 1 5 1 N
 preplace netloc processing_system7_0_DDR 1 1 1 450J
 preplace netloc Verilog_Controller_0_VTC_EN 1 6 1 N
 preplace netloc Verilog_Controller_0_CTRL_VBN 1 6 1 N
-preplace netloc axi_interconnect_0_M02_AXI 1 2 2 840 380 NJ
 preplace netloc axi_interconnect_0_M01_AXI 1 2 2 820 240 NJ
+preplace netloc axi_interconnect_0_M02_AXI 1 2 2 840 380 NJ
 preplace netloc Unbundle_AXI_Bus_0_CTRL_VBP_C 1 5 1 N
 preplace netloc Verilog_Controller_0_CTRL_VBP 1 6 1 N
 preplace netloc Verilog_Controller_0_SA_EN 1 6 1 N

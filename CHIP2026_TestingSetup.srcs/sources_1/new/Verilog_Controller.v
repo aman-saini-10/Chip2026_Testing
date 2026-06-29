@@ -220,7 +220,7 @@ module Verilog_Controller(
     defparam u_send_scn.MAX_ITER_BITS = 8;
     // DMA Send IMC_out_data module definition
     wire [4*900 - 1 : 0] IMC_OUT_BUFF;
-    wire [7:0] IMC_OUT_LEN_WORD = 7'd113;
+    wire [7:0] IMC_OUT_LEN_WORD = 8'd113;
     dma_send_data u_send_imc (
         .clk(clk),
         .EN(SEND_IMC_DATA),

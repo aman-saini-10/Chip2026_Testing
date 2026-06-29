@@ -1,0 +1,688 @@
+,,Parameter,,,,,,C0,C1,C2
+,,temperature,,,,,,2.7000E+01,0.0000E+00,1.0000E+02
+,,toplevel.scs,,,,,,tt_localmc,ff_localmc,ss_localmc
+,,vdda,,,,,,9.0000E-01,1.0000E+00,8.0000E-01
+,,,,,,,,,,
+Point,Test,Output,Spec,Weight,Pass/Fail,Min,Max,C0,C1,C2
+"Parameters: Vb=700m, Vin=600m",,,,,,,,,,
+1.0000E+00,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.7700E-10,1.4400E-09,7.8200E-10,3.7700E-10,1.4400E-09
+"Parameters: Vb=700m, Vin=610m",,,,,,,,,,
+2.0000E+00,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.0100E-10,1.5000E-09,8.2000E-10,4.0100E-10,1.5000E-09
+"Parameters: Vb=700m, Vin=620m",,,,,,,,,,
+3.0000E+00,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.2600E-10,1.5600E-09,8.5900E-10,4.2600E-10,1.5600E-09
+"Parameters: Vb=700m, Vin=630m",,,,,,,,,,
+4.0000E+00,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.5000E-10,1.6100E-09,8.9700E-10,4.5000E-10,1.6100E-09
+"Parameters: Vb=700m, Vin=640m",,,,,,,,,,
+5.0000E+00,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.7400E-10,1.6700E-09,9.3500E-10,4.7400E-10,1.6700E-09
+"Parameters: Vb=700m, Vin=650m",,,,,,,,,,
+6.0000E+00,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.9900E-10,1.7300E-09,9.7400E-10,4.9900E-10,1.7300E-09
+"Parameters: Vb=700m, Vin=660m",,,,,,,,,,
+7.0000E+00,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.2300E-10,1.7800E-09,1.0100E-09,5.2300E-10,1.7800E-09
+"Parameters: Vb=700m, Vin=670m",,,,,,,,,,
+8.0000E+00,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.4800E-10,1.8400E-09,1.0500E-09,5.4800E-10,1.8400E-09
+"Parameters: Vb=700m, Vin=680m",,,,,,,,,,
+9.0000E+00,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.7200E-10,1.9000E-09,1.0900E-09,5.7200E-10,1.9000E-09
+"Parameters: Vb=700m, Vin=690m",,,,,,,,,,
+1.0000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.9600E-10,1.9500E-09,1.1300E-09,5.9600E-10,1.9500E-09
+"Parameters: Vb=700m, Vin=700m",,,,,,,,,,
+1.1000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.2100E-10,2.0100E-09,1.1700E-09,6.2100E-10,2.0100E-09
+"Parameters: Vb=700m, Vin=710m",,,,,,,,,,
+1.2000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.4500E-10,2.0700E-09,1.2000E-09,6.4500E-10,2.0700E-09
+"Parameters: Vb=700m, Vin=720m",,,,,,,,,,
+1.3000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.7000E-10,2.1200E-09,1.2400E-09,6.7000E-10,2.1200E-09
+"Parameters: Vb=700m, Vin=730m",,,,,,,,,,
+1.4000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.9400E-10,2.1800E-09,1.2800E-09,6.9400E-10,2.1800E-09
+"Parameters: Vb=700m, Vin=740m",,,,,,,,,,
+1.5000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.1800E-10,2.2400E-09,1.3200E-09,7.1800E-10,2.2400E-09
+"Parameters: Vb=700m, Vin=750m",,,,,,,,,,
+1.6000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.4300E-10,2.3000E-09,1.3600E-09,7.4300E-10,2.3000E-09
+"Parameters: Vb=700m, Vin=760m",,,,,,,,,,
+1.7000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.6700E-10,2.3500E-09,1.4000E-09,7.6700E-10,2.3500E-09
+"Parameters: Vb=700m, Vin=770m",,,,,,,,,,
+1.8000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.9100E-10,2.4100E-09,1.4400E-09,7.9100E-10,2.4100E-09
+"Parameters: Vb=700m, Vin=780m",,,,,,,,,,
+1.9000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.1600E-10,2.4700E-09,1.4700E-09,8.1600E-10,2.4700E-09
+"Parameters: Vb=700m, Vin=790m",,,,,,,,,,
+2.0000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.4000E-10,2.5200E-09,1.5100E-09,8.4000E-10,2.5200E-09
+"Parameters: Vb=700m, Vin=800m",,,,,,,,,,
+2.1000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.6400E-10,2.5800E-09,1.5500E-09,8.6400E-10,2.5800E-09
+"Parameters: Vb=700m, Vin=810m",,,,,,,,,,
+2.2000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.8900E-10,2.6400E-09,1.5900E-09,8.8900E-10,2.6400E-09
+"Parameters: Vb=700m, Vin=820m",,,,,,,,,,
+2.3000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.1300E-10,2.6900E-09,1.6300E-09,9.1300E-10,2.6900E-09
+"Parameters: Vb=700m, Vin=830m",,,,,,,,,,
+2.4000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.3800E-10,2.7500E-09,1.6700E-09,9.3800E-10,2.7500E-09
+"Parameters: Vb=700m, Vin=840m",,,,,,,,,,
+2.5000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.6200E-10,2.8100E-09,1.7000E-09,9.6200E-10,2.8100E-09
+"Parameters: Vb=700m, Vin=850m",,,,,,,,,,
+2.6000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.8600E-10,2.8600E-09,1.7400E-09,9.8600E-10,2.8600E-09
+"Parameters: Vb=700m, Vin=860m",,,,,,,,,,
+2.7000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,1.0100E-09,2.9200E-09,1.7800E-09,1.0100E-09,2.9200E-09
+"Parameters: Vb=700m, Vin=870m",,,,,,,,,,
+2.8000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,1.0400E-09,2.9800E-09,1.8200E-09,1.0400E-09,2.9800E-09
+"Parameters: Vb=700m, Vin=880m",,,,,,,,,,
+2.9000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,1.0600E-09,3.0300E-09,1.8600E-09,1.0600E-09,3.0300E-09
+"Parameters: Vb=700m, Vin=890m",,,,,,,,,,
+3.0000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,1.0800E-09,3.0900E-09,1.9000E-09,1.0800E-09,3.0900E-09
+"Parameters: Vb=700m, Vin=900m",,,,,,,,,,
+3.1000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,1.1100E-09,3.1400E-09,1.9300E-09,1.1100E-09,3.1400E-09
+"Parameters: Vb=710m, Vin=600m",,,,,,,,,,
+3.2000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.5900E-10,1.3900E-09,7.4500E-10,3.5900E-10,1.3900E-09
+"Parameters: Vb=710m, Vin=610m",,,,,,,,,,
+3.3000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.8200E-10,1.4500E-09,7.8100E-10,3.8200E-10,1.4500E-09
+"Parameters: Vb=710m, Vin=620m",,,,,,,,,,
+3.4000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.0500E-10,1.5000E-09,8.1800E-10,4.0500E-10,1.5000E-09
+"Parameters: Vb=710m, Vin=630m",,,,,,,,,,
+3.5000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.2800E-10,1.5600E-09,8.5400E-10,4.2800E-10,1.5600E-09
+"Parameters: Vb=710m, Vin=640m",,,,,,,,,,
+3.6000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.5100E-10,1.6100E-09,8.9100E-10,4.5100E-10,1.6100E-09
+"Parameters: Vb=710m, Vin=650m",,,,,,,,,,
+3.7000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.7400E-10,1.6600E-09,9.2700E-10,4.7400E-10,1.6600E-09
+"Parameters: Vb=710m, Vin=660m",,,,,,,,,,
+3.8000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.9800E-10,1.7200E-09,9.6400E-10,4.9800E-10,1.7200E-09
+"Parameters: Vb=710m, Vin=670m",,,,,,,,,,
+3.9000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.2100E-10,1.7700E-09,1.0000E-09,5.2100E-10,1.7700E-09
+"Parameters: Vb=710m, Vin=680m",,,,,,,,,,
+4.0000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.4400E-10,1.8300E-09,1.0400E-09,5.4400E-10,1.8300E-09
+"Parameters: Vb=710m, Vin=690m",,,,,,,,,,
+4.1000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.6700E-10,1.8800E-09,1.0700E-09,5.6700E-10,1.8800E-09
+"Parameters: Vb=710m, Vin=700m",,,,,,,,,,
+4.2000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.9000E-10,1.9400E-09,1.1100E-09,5.9000E-10,1.9400E-09
+"Parameters: Vb=710m, Vin=710m",,,,,,,,,,
+4.3000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.1300E-10,1.9900E-09,1.1500E-09,6.1300E-10,1.9900E-09
+"Parameters: Vb=710m, Vin=720m",,,,,,,,,,
+4.4000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.3600E-10,2.0500E-09,1.1800E-09,6.3600E-10,2.0500E-09
+"Parameters: Vb=710m, Vin=730m",,,,,,,,,,
+4.5000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.5900E-10,2.1000E-09,1.2200E-09,6.5900E-10,2.1000E-09
+"Parameters: Vb=710m, Vin=740m",,,,,,,,,,
+4.6000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.8200E-10,2.1600E-09,1.2600E-09,6.8200E-10,2.1600E-09
+"Parameters: Vb=710m, Vin=750m",,,,,,,,,,
+4.7000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.0500E-10,2.2100E-09,1.2900E-09,7.0500E-10,2.2100E-09
+"Parameters: Vb=710m, Vin=760m",,,,,,,,,,
+4.8000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.2800E-10,2.2700E-09,1.3300E-09,7.2800E-10,2.2700E-09
+"Parameters: Vb=710m, Vin=770m",,,,,,,,,,
+4.9000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.5200E-10,2.3200E-09,1.3600E-09,7.5200E-10,2.3200E-09
+"Parameters: Vb=710m, Vin=780m",,,,,,,,,,
+5.0000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.7500E-10,2.3700E-09,1.4000E-09,7.7500E-10,2.3700E-09
+"Parameters: Vb=710m, Vin=790m",,,,,,,,,,
+5.1000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.9800E-10,2.4300E-09,1.4400E-09,7.9800E-10,2.4300E-09
+"Parameters: Vb=710m, Vin=800m",,,,,,,,,,
+5.2000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.2100E-10,2.4800E-09,1.4700E-09,8.2100E-10,2.4800E-09
+"Parameters: Vb=710m, Vin=810m",,,,,,,,,,
+5.3000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.4400E-10,2.5400E-09,1.5100E-09,8.4400E-10,2.5400E-09
+"Parameters: Vb=710m, Vin=820m",,,,,,,,,,
+5.4000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.6700E-10,2.5900E-09,1.5500E-09,8.6700E-10,2.5900E-09
+"Parameters: Vb=710m, Vin=830m",,,,,,,,,,
+5.5000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.9000E-10,2.6500E-09,1.5800E-09,8.9000E-10,2.6500E-09
+"Parameters: Vb=710m, Vin=840m",,,,,,,,,,
+5.6000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.1300E-10,2.7000E-09,1.6200E-09,9.1300E-10,2.7000E-09
+"Parameters: Vb=710m, Vin=850m",,,,,,,,,,
+5.7000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.3600E-10,2.7600E-09,1.6600E-09,9.3600E-10,2.7600E-09
+"Parameters: Vb=710m, Vin=860m",,,,,,,,,,
+5.8000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.5900E-10,2.8100E-09,1.6900E-09,9.5900E-10,2.8100E-09
+"Parameters: Vb=710m, Vin=870m",,,,,,,,,,
+5.9000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.8200E-10,2.8600E-09,1.7300E-09,9.8200E-10,2.8600E-09
+"Parameters: Vb=710m, Vin=880m",,,,,,,,,,
+6.0000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,1.0100E-09,2.9200E-09,1.7700E-09,1.0100E-09,2.9200E-09
+"Parameters: Vb=710m, Vin=890m",,,,,,,,,,
+6.1000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,1.0300E-09,2.9700E-09,1.8000E-09,1.0300E-09,2.9700E-09
+"Parameters: Vb=710m, Vin=900m",,,,,,,,,,
+6.2000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,1.0500E-09,3.0300E-09,1.8400E-09,1.0500E-09,3.0300E-09
+"Parameters: Vb=720m, Vin=600m",,,,,,,,,,
+6.3000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.4200E-10,1.3400E-09,7.1200E-10,3.4200E-10,1.3400E-09
+"Parameters: Vb=720m, Vin=610m",,,,,,,,,,
+6.4000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.6400E-10,1.4000E-09,7.4600E-10,3.6400E-10,1.4000E-09
+"Parameters: Vb=720m, Vin=620m",,,,,,,,,,
+6.5000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.8600E-10,1.4500E-09,7.8100E-10,3.8600E-10,1.4500E-09
+"Parameters: Vb=720m, Vin=630m",,,,,,,,,,
+6.6000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.0800E-10,1.5000E-09,8.1600E-10,4.0800E-10,1.5000E-09
+"Parameters: Vb=720m, Vin=640m",,,,,,,,,,
+6.7000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.3000E-10,1.5600E-09,8.5000E-10,4.3000E-10,1.5600E-09
+"Parameters: Vb=720m, Vin=650m",,,,,,,,,,
+6.8000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.5200E-10,1.6100E-09,8.8500E-10,4.5200E-10,1.6100E-09
+"Parameters: Vb=720m, Vin=660m",,,,,,,,,,
+6.9000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.7400E-10,1.6600E-09,9.2000E-10,4.7400E-10,1.6600E-09
+"Parameters: Vb=720m, Vin=670m",,,,,,,,,,
+7.0000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.9600E-10,1.7100E-09,9.5400E-10,4.9600E-10,1.7100E-09
+"Parameters: Vb=720m, Vin=680m",,,,,,,,,,
+7.1000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.1800E-10,1.7700E-09,9.8900E-10,5.1800E-10,1.7700E-09
+"Parameters: Vb=720m, Vin=690m",,,,,,,,,,
+7.2000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.4000E-10,1.8200E-09,1.0200E-09,5.4000E-10,1.8200E-09
+"Parameters: Vb=720m, Vin=700m",,,,,,,,,,
+7.3000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.6200E-10,1.8700E-09,1.0600E-09,5.6200E-10,1.8700E-09
+"Parameters: Vb=720m, Vin=710m",,,,,,,,,,
+7.4000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.8400E-10,1.9200E-09,1.0900E-09,5.8400E-10,1.9200E-09
+"Parameters: Vb=720m, Vin=720m",,,,,,,,,,
+7.5000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.0600E-10,1.9800E-09,1.1300E-09,6.0600E-10,1.9800E-09
+"Parameters: Vb=720m, Vin=730m",,,,,,,,,,
+7.6000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.2800E-10,2.0300E-09,1.1600E-09,6.2800E-10,2.0300E-09
+"Parameters: Vb=720m, Vin=740m",,,,,,,,,,
+7.7000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.4900E-10,2.0800E-09,1.2000E-09,6.4900E-10,2.0800E-09
+"Parameters: Vb=720m, Vin=750m",,,,,,,,,,
+7.8000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.7100E-10,2.1300E-09,1.2300E-09,6.7100E-10,2.1300E-09
+"Parameters: Vb=720m, Vin=760m",,,,,,,,,,
+7.9000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.9300E-10,2.1900E-09,1.2700E-09,6.9300E-10,2.1900E-09
+"Parameters: Vb=720m, Vin=770m",,,,,,,,,,
+8.0000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.1500E-10,2.2400E-09,1.3000E-09,7.1500E-10,2.2400E-09
+"Parameters: Vb=720m, Vin=780m",,,,,,,,,,
+8.1000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.3700E-10,2.2900E-09,1.3400E-09,7.3700E-10,2.2900E-09
+"Parameters: Vb=720m, Vin=790m",,,,,,,,,,
+8.2000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.5900E-10,2.3400E-09,1.3700E-09,7.5900E-10,2.3400E-09
+"Parameters: Vb=720m, Vin=800m",,,,,,,,,,
+8.3000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.8100E-10,2.4000E-09,1.4100E-09,7.8100E-10,2.4000E-09
+"Parameters: Vb=720m, Vin=810m",,,,,,,,,,
+8.4000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.0300E-10,2.4500E-09,1.4400E-09,8.0300E-10,2.4500E-09
+"Parameters: Vb=720m, Vin=820m",,,,,,,,,,
+8.5000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.2500E-10,2.5000E-09,1.4700E-09,8.2500E-10,2.5000E-09
+"Parameters: Vb=720m, Vin=830m",,,,,,,,,,
+8.6000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.4700E-10,2.5500E-09,1.5100E-09,8.4700E-10,2.5500E-09
+"Parameters: Vb=720m, Vin=840m",,,,,,,,,,
+8.7000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.6800E-10,2.6100E-09,1.5400E-09,8.6800E-10,2.6100E-09
+"Parameters: Vb=720m, Vin=850m",,,,,,,,,,
+8.8000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.9000E-10,2.6600E-09,1.5800E-09,8.9000E-10,2.6600E-09
+"Parameters: Vb=720m, Vin=860m",,,,,,,,,,
+8.9000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.1200E-10,2.7100E-09,1.6100E-09,9.1200E-10,2.7100E-09
+"Parameters: Vb=720m, Vin=870m",,,,,,,,,,
+9.0000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.3400E-10,2.7600E-09,1.6500E-09,9.3400E-10,2.7600E-09
+"Parameters: Vb=720m, Vin=880m",,,,,,,,,,
+9.1000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.5600E-10,2.8200E-09,1.6800E-09,9.5600E-10,2.8200E-09
+"Parameters: Vb=720m, Vin=890m",,,,,,,,,,
+9.2000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.7800E-10,2.8700E-09,1.7200E-09,9.7800E-10,2.8700E-09
+"Parameters: Vb=720m, Vin=900m",,,,,,,,,,
+9.3000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,1.0000E-09,2.9200E-09,1.7500E-09,1.0000E-09,2.9200E-09
+"Parameters: Vb=730m, Vin=600m",,,,,,,,,,
+9.4000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.2700E-10,1.3000E-09,6.8100E-10,3.2700E-10,1.3000E-09
+"Parameters: Vb=730m, Vin=610m",,,,,,,,,,
+9.5000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.4800E-10,1.3500E-09,7.1400E-10,3.4800E-10,1.3500E-09
+"Parameters: Vb=730m, Vin=620m",,,,,,,,,,
+9.6000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.6900E-10,1.4000E-09,7.4800E-10,3.6900E-10,1.4000E-09
+"Parameters: Vb=730m, Vin=630m",,,,,,,,,,
+9.7000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.9000E-10,1.4500E-09,7.8100E-10,3.9000E-10,1.4500E-09
+"Parameters: Vb=730m, Vin=640m",,,,,,,,,,
+9.8000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.1100E-10,1.5100E-09,8.1400E-10,4.1100E-10,1.5100E-09
+"Parameters: Vb=730m, Vin=650m",,,,,,,,,,
+9.9000E+01,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.3200E-10,1.5600E-09,8.4700E-10,4.3200E-10,1.5600E-09
+"Parameters: Vb=730m, Vin=660m",,,,,,,,,,
+1.0000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.5200E-10,1.6100E-09,8.8000E-10,4.5200E-10,1.6100E-09
+"Parameters: Vb=730m, Vin=670m",,,,,,,,,,
+1.0100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.7300E-10,1.6600E-09,9.1300E-10,4.7300E-10,1.6600E-09
+"Parameters: Vb=730m, Vin=680m",,,,,,,,,,
+1.0200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.9400E-10,1.7100E-09,9.4600E-10,4.9400E-10,1.7100E-09
+"Parameters: Vb=730m, Vin=690m",,,,,,,,,,
+1.0300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.1500E-10,1.7600E-09,9.7900E-10,5.1500E-10,1.7600E-09
+"Parameters: Vb=730m, Vin=700m",,,,,,,,,,
+1.0400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.3600E-10,1.8100E-09,1.0100E-09,5.3600E-10,1.8100E-09
+"Parameters: Vb=730m, Vin=710m",,,,,,,,,,
+1.0500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.5700E-10,1.8600E-09,1.0500E-09,5.5700E-10,1.8600E-09
+"Parameters: Vb=730m, Vin=720m",,,,,,,,,,
+1.0600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.7800E-10,1.9100E-09,1.0800E-09,5.7800E-10,1.9100E-09
+"Parameters: Vb=730m, Vin=730m",,,,,,,,,,
+1.0700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.9800E-10,1.9600E-09,1.1100E-09,5.9800E-10,1.9600E-09
+"Parameters: Vb=730m, Vin=740m",,,,,,,,,,
+1.0800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.1900E-10,2.0100E-09,1.1400E-09,6.1900E-10,2.0100E-09
+"Parameters: Vb=730m, Vin=750m",,,,,,,,,,
+1.0900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.4000E-10,2.0600E-09,1.1800E-09,6.4000E-10,2.0600E-09
+"Parameters: Vb=730m, Vin=760m",,,,,,,,,,
+1.1000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.6100E-10,2.1100E-09,1.2100E-09,6.6100E-10,2.1100E-09
+"Parameters: Vb=730m, Vin=770m",,,,,,,,,,
+1.1100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.8200E-10,2.1700E-09,1.2400E-09,6.8200E-10,2.1700E-09
+"Parameters: Vb=730m, Vin=780m",,,,,,,,,,
+1.1200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.0300E-10,2.2200E-09,1.2800E-09,7.0300E-10,2.2200E-09
+"Parameters: Vb=730m, Vin=790m",,,,,,,,,,
+1.1300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.2300E-10,2.2700E-09,1.3100E-09,7.2300E-10,2.2700E-09
+"Parameters: Vb=730m, Vin=800m",,,,,,,,,,
+1.1400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.4400E-10,2.3200E-09,1.3400E-09,7.4400E-10,2.3200E-09
+"Parameters: Vb=730m, Vin=810m",,,,,,,,,,
+1.1500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.6500E-10,2.3700E-09,1.3800E-09,7.6500E-10,2.3700E-09
+"Parameters: Vb=730m, Vin=820m",,,,,,,,,,
+1.1600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.8600E-10,2.4200E-09,1.4100E-09,7.8600E-10,2.4200E-09
+"Parameters: Vb=730m, Vin=830m",,,,,,,,,,
+1.1700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.0700E-10,2.4700E-09,1.4400E-09,8.0700E-10,2.4700E-09
+"Parameters: Vb=730m, Vin=840m",,,,,,,,,,
+1.1800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.2700E-10,2.5200E-09,1.4700E-09,8.2700E-10,2.5200E-09
+"Parameters: Vb=730m, Vin=850m",,,,,,,,,,
+1.1900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.4800E-10,2.5700E-09,1.5100E-09,8.4800E-10,2.5700E-09
+"Parameters: Vb=730m, Vin=860m",,,,,,,,,,
+1.2000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.6900E-10,2.6200E-09,1.5400E-09,8.6900E-10,2.6200E-09
+"Parameters: Vb=730m, Vin=870m",,,,,,,,,,
+1.2100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.9000E-10,2.6700E-09,1.5700E-09,8.9000E-10,2.6700E-09
+"Parameters: Vb=730m, Vin=880m",,,,,,,,,,
+1.2200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.1100E-10,2.7200E-09,1.6100E-09,9.1100E-10,2.7200E-09
+"Parameters: Vb=730m, Vin=890m",,,,,,,,,,
+1.2300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.3200E-10,2.7700E-09,1.6400E-09,9.3200E-10,2.7700E-09
+"Parameters: Vb=730m, Vin=900m",,,,,,,,,,
+1.2400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.5200E-10,2.8200E-09,1.6700E-09,9.5200E-10,2.8200E-09
+"Parameters: Vb=740m, Vin=600m",,,,,,,,,,
+1.2500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.1400E-10,1.2600E-09,6.5400E-10,3.1400E-10,1.2600E-09
+"Parameters: Vb=740m, Vin=610m",,,,,,,,,,
+1.2600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.3300E-10,1.3100E-09,6.8600E-10,3.3300E-10,1.3100E-09
+"Parameters: Vb=740m, Vin=620m",,,,,,,,,,
+1.2700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.5300E-10,1.3600E-09,7.1700E-10,3.5300E-10,1.3600E-09
+"Parameters: Vb=740m, Vin=630m",,,,,,,,,,
+1.2800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.7300E-10,1.4100E-09,7.4900E-10,3.7300E-10,1.4100E-09
+"Parameters: Vb=740m, Vin=640m",,,,,,,,,,
+1.2900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.9300E-10,1.4600E-09,7.8000E-10,3.9300E-10,1.4600E-09
+"Parameters: Vb=740m, Vin=650m",,,,,,,,,,
+1.3000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.1300E-10,1.5100E-09,8.1200E-10,4.1300E-10,1.5100E-09
+"Parameters: Vb=740m, Vin=660m",,,,,,,,,,
+1.3100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.3300E-10,1.5600E-09,8.4300E-10,4.3300E-10,1.5600E-09
+"Parameters: Vb=740m, Vin=670m",,,,,,,,,,
+1.3200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.5300E-10,1.6100E-09,8.7500E-10,4.5300E-10,1.6100E-09
+"Parameters: Vb=740m, Vin=680m",,,,,,,,,,
+1.3300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.7200E-10,1.6600E-09,9.0700E-10,4.7200E-10,1.6600E-09
+"Parameters: Vb=740m, Vin=690m",,,,,,,,,,
+1.3400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.9200E-10,1.7100E-09,9.3800E-10,4.9200E-10,1.7100E-09
+"Parameters: Vb=740m, Vin=700m",,,,,,,,,,
+1.3500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.1200E-10,1.7500E-09,9.7000E-10,5.1200E-10,1.7500E-09
+"Parameters: Vb=740m, Vin=710m",,,,,,,,,,
+1.3600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.3200E-10,1.8000E-09,1.0000E-09,5.3200E-10,1.8000E-09
+"Parameters: Vb=740m, Vin=720m",,,,,,,,,,
+1.3700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.5200E-10,1.8500E-09,1.0300E-09,5.5200E-10,1.8500E-09
+"Parameters: Vb=740m, Vin=730m",,,,,,,,,,
+1.3800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.7200E-10,1.9000E-09,1.0600E-09,5.7200E-10,1.9000E-09
+"Parameters: Vb=740m, Vin=740m",,,,,,,,,,
+1.3900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.9200E-10,1.9500E-09,1.1000E-09,5.9200E-10,1.9500E-09
+"Parameters: Vb=740m, Vin=750m",,,,,,,,,,
+1.4000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.1100E-10,2.0000E-09,1.1300E-09,6.1100E-10,2.0000E-09
+"Parameters: Vb=740m, Vin=760m",,,,,,,,,,
+1.4100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.3100E-10,2.0500E-09,1.1600E-09,6.3100E-10,2.0500E-09
+"Parameters: Vb=740m, Vin=770m",,,,,,,,,,
+1.4200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.5100E-10,2.1000E-09,1.1900E-09,6.5100E-10,2.1000E-09
+"Parameters: Vb=740m, Vin=780m",,,,,,,,,,
+1.4300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.7100E-10,2.1500E-09,1.2200E-09,6.7100E-10,2.1500E-09
+"Parameters: Vb=740m, Vin=790m",,,,,,,,,,
+1.4400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.9100E-10,2.2000E-09,1.2500E-09,6.9100E-10,2.2000E-09
+"Parameters: Vb=740m, Vin=800m",,,,,,,,,,
+1.4500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.1000E-10,2.2400E-09,1.2900E-09,7.1000E-10,2.2400E-09
+"Parameters: Vb=740m, Vin=810m",,,,,,,,,,
+1.4600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.3000E-10,2.2900E-09,1.3200E-09,7.3000E-10,2.2900E-09
+"Parameters: Vb=740m, Vin=820m",,,,,,,,,,
+1.4700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.5000E-10,2.3400E-09,1.3500E-09,7.5000E-10,2.3400E-09
+"Parameters: Vb=740m, Vin=830m",,,,,,,,,,
+1.4800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.7000E-10,2.3900E-09,1.3800E-09,7.7000E-10,2.3900E-09
+"Parameters: Vb=740m, Vin=840m",,,,,,,,,,
+1.4900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.9000E-10,2.4400E-09,1.4100E-09,7.9000E-10,2.4400E-09
+"Parameters: Vb=740m, Vin=850m",,,,,,,,,,
+1.5000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.1000E-10,2.4900E-09,1.4400E-09,8.1000E-10,2.4900E-09
+"Parameters: Vb=740m, Vin=860m",,,,,,,,,,
+1.5100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.2900E-10,2.5400E-09,1.4700E-09,8.2900E-10,2.5400E-09
+"Parameters: Vb=740m, Vin=870m",,,,,,,,,,
+1.5200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.4900E-10,2.5900E-09,1.5100E-09,8.4900E-10,2.5900E-09
+"Parameters: Vb=740m, Vin=880m",,,,,,,,,,
+1.5300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.6900E-10,2.6400E-09,1.5400E-09,8.6900E-10,2.6400E-09
+"Parameters: Vb=740m, Vin=890m",,,,,,,,,,
+1.5400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.8900E-10,2.6900E-09,1.5700E-09,8.8900E-10,2.6900E-09
+"Parameters: Vb=740m, Vin=900m",,,,,,,,,,
+1.5500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,9.0900E-10,2.7300E-09,1.6000E-09,9.0900E-10,2.7300E-09
+"Parameters: Vb=750m, Vin=600m",,,,,,,,,,
+1.5600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.0100E-10,1.2300E-09,6.2900E-10,3.0100E-10,1.2300E-09
+"Parameters: Vb=750m, Vin=610m",,,,,,,,,,
+1.5700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.2000E-10,1.2700E-09,6.5900E-10,3.2000E-10,1.2700E-09
+"Parameters: Vb=750m, Vin=620m",,,,,,,,,,
+1.5800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.3900E-10,1.3200E-09,6.9000E-10,3.3900E-10,1.3200E-09
+"Parameters: Vb=750m, Vin=630m",,,,,,,,,,
+1.5900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.5800E-10,1.3700E-09,7.2000E-10,3.5800E-10,1.3700E-09
+"Parameters: Vb=750m, Vin=640m",,,,,,,,,,
+1.6000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.7700E-10,1.4200E-09,7.5000E-10,3.7700E-10,1.4200E-09
+"Parameters: Vb=750m, Vin=650m",,,,,,,,,,
+1.6100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.9600E-10,1.4700E-09,7.8000E-10,3.9600E-10,1.4700E-09
+"Parameters: Vb=750m, Vin=660m",,,,,,,,,,
+1.6200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.1500E-10,1.5100E-09,8.1100E-10,4.1500E-10,1.5100E-09
+"Parameters: Vb=750m, Vin=670m",,,,,,,,,,
+1.6300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.3400E-10,1.5600E-09,8.4100E-10,4.3400E-10,1.5600E-09
+"Parameters: Vb=750m, Vin=680m",,,,,,,,,,
+1.6400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.5200E-10,1.6100E-09,8.7100E-10,4.5200E-10,1.6100E-09
+"Parameters: Vb=750m, Vin=690m",,,,,,,,,,
+1.6500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.7100E-10,1.6600E-09,9.0100E-10,4.7100E-10,1.6600E-09
+"Parameters: Vb=750m, Vin=700m",,,,,,,,,,
+1.6600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.9000E-10,1.7000E-09,9.3100E-10,4.9000E-10,1.7000E-09
+"Parameters: Vb=750m, Vin=710m",,,,,,,,,,
+1.6700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.0900E-10,1.7500E-09,9.6200E-10,5.0900E-10,1.7500E-09
+"Parameters: Vb=750m, Vin=720m",,,,,,,,,,
+1.6800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.2800E-10,1.8000E-09,9.9200E-10,5.2800E-10,1.8000E-09
+"Parameters: Vb=750m, Vin=730m",,,,,,,,,,
+1.6900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.4700E-10,1.8500E-09,1.0200E-09,5.4700E-10,1.8500E-09
+"Parameters: Vb=750m, Vin=740m",,,,,,,,,,
+1.7000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.6600E-10,1.8900E-09,1.0500E-09,5.6600E-10,1.8900E-09
+"Parameters: Vb=750m, Vin=750m",,,,,,,,,,
+1.7100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.8500E-10,1.9400E-09,1.0800E-09,5.8500E-10,1.9400E-09
+"Parameters: Vb=750m, Vin=760m",,,,,,,,,,
+1.7200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.0400E-10,1.9900E-09,1.1100E-09,6.0400E-10,1.9900E-09
+"Parameters: Vb=750m, Vin=770m",,,,,,,,,,
+1.7300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.2300E-10,2.0400E-09,1.1400E-09,6.2300E-10,2.0400E-09
+"Parameters: Vb=750m, Vin=780m",,,,,,,,,,
+1.7400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.4200E-10,2.0800E-09,1.1700E-09,6.4200E-10,2.0800E-09
+"Parameters: Vb=750m, Vin=790m",,,,,,,,,,
+1.7500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.6100E-10,2.1300E-09,1.2000E-09,6.6100E-10,2.1300E-09
+"Parameters: Vb=750m, Vin=800m",,,,,,,,,,
+1.7600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.8000E-10,2.1800E-09,1.2300E-09,6.8000E-10,2.1800E-09
+"Parameters: Vb=750m, Vin=810m",,,,,,,,,,
+1.7700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.9800E-10,2.2300E-09,1.2600E-09,6.9800E-10,2.2300E-09
+"Parameters: Vb=750m, Vin=820m",,,,,,,,,,
+1.7800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.1700E-10,2.2700E-09,1.2900E-09,7.1700E-10,2.2700E-09
+"Parameters: Vb=750m, Vin=830m",,,,,,,,,,
+1.7900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.3600E-10,2.3200E-09,1.3200E-09,7.3600E-10,2.3200E-09
+"Parameters: Vb=750m, Vin=840m",,,,,,,,,,
+1.8000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.5500E-10,2.3700E-09,1.3500E-09,7.5500E-10,2.3700E-09
+"Parameters: Vb=750m, Vin=850m",,,,,,,,,,
+1.8100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.7400E-10,2.4200E-09,1.3800E-09,7.7400E-10,2.4200E-09
+"Parameters: Vb=750m, Vin=860m",,,,,,,,,,
+1.8200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.9300E-10,2.4600E-09,1.4100E-09,7.9300E-10,2.4600E-09
+"Parameters: Vb=750m, Vin=870m",,,,,,,,,,
+1.8300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.1200E-10,2.5100E-09,1.4400E-09,8.1200E-10,2.5100E-09
+"Parameters: Vb=750m, Vin=880m",,,,,,,,,,
+1.8400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.3100E-10,2.5600E-09,1.4700E-09,8.3100E-10,2.5600E-09
+"Parameters: Vb=750m, Vin=890m",,,,,,,,,,
+1.8500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.5000E-10,2.6000E-09,1.5000E-09,8.5000E-10,2.6000E-09
+"Parameters: Vb=750m, Vin=900m",,,,,,,,,,
+1.8600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.6900E-10,2.6500E-09,1.5300E-09,8.6900E-10,2.6500E-09
+"Parameters: Vb=760m, Vin=600m",,,,,,,,,,
+1.8700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,2.8900E-10,1.1900E-09,6.0700E-10,2.8900E-10,1.1900E-09
+"Parameters: Vb=760m, Vin=610m",,,,,,,,,,
+1.8800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.0700E-10,1.2400E-09,6.3600E-10,3.0700E-10,1.2400E-09
+"Parameters: Vb=760m, Vin=620m",,,,,,,,,,
+1.8900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.2600E-10,1.2900E-09,6.6500E-10,3.2600E-10,1.2900E-09
+"Parameters: Vb=760m, Vin=630m",,,,,,,,,,
+1.9000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.4400E-10,1.3300E-09,6.9400E-10,3.4400E-10,1.3300E-09
+"Parameters: Vb=760m, Vin=640m",,,,,,,,,,
+1.9100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.6200E-10,1.3800E-09,7.2300E-10,3.6200E-10,1.3800E-09
+"Parameters: Vb=760m, Vin=650m",,,,,,,,,,
+1.9200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.8000E-10,1.4300E-09,7.5200E-10,3.8000E-10,1.4300E-09
+"Parameters: Vb=760m, Vin=660m",,,,,,,,,,
+1.9300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.9800E-10,1.4700E-09,7.8100E-10,3.9800E-10,1.4700E-09
+"Parameters: Vb=760m, Vin=670m",,,,,,,,,,
+1.9400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.1600E-10,1.5200E-09,8.1000E-10,4.1600E-10,1.5200E-09
+"Parameters: Vb=760m, Vin=680m",,,,,,,,,,
+1.9500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.3400E-10,1.5600E-09,8.3900E-10,4.3400E-10,1.5600E-09
+"Parameters: Vb=760m, Vin=690m",,,,,,,,,,
+1.9600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.5200E-10,1.6100E-09,8.6800E-10,4.5200E-10,1.6100E-09
+"Parameters: Vb=760m, Vin=700m",,,,,,,,,,
+1.9700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.7000E-10,1.6600E-09,8.9700E-10,4.7000E-10,1.6600E-09
+"Parameters: Vb=760m, Vin=710m",,,,,,,,,,
+1.9800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.8800E-10,1.7000E-09,9.2600E-10,4.8800E-10,1.7000E-09
+"Parameters: Vb=760m, Vin=720m",,,,,,,,,,
+1.9900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.0600E-10,1.7500E-09,9.5500E-10,5.0600E-10,1.7500E-09
+"Parameters: Vb=760m, Vin=730m",,,,,,,,,,
+2.0000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.2500E-10,1.7900E-09,9.8300E-10,5.2500E-10,1.7900E-09
+"Parameters: Vb=760m, Vin=740m",,,,,,,,,,
+2.0100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.4300E-10,1.8400E-09,1.0100E-09,5.4300E-10,1.8400E-09
+"Parameters: Vb=760m, Vin=750m",,,,,,,,,,
+2.0200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.6100E-10,1.8900E-09,1.0400E-09,5.6100E-10,1.8900E-09
+"Parameters: Vb=760m, Vin=760m",,,,,,,,,,
+2.0300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.7900E-10,1.9300E-09,1.0700E-09,5.7900E-10,1.9300E-09
+"Parameters: Vb=760m, Vin=770m",,,,,,,,,,
+2.0400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.9700E-10,1.9800E-09,1.1000E-09,5.9700E-10,1.9800E-09
+"Parameters: Vb=760m, Vin=780m",,,,,,,,,,
+2.0500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.1500E-10,2.0300E-09,1.1300E-09,6.1500E-10,2.0300E-09
+"Parameters: Vb=760m, Vin=790m",,,,,,,,,,
+2.0600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.3300E-10,2.0700E-09,1.1600E-09,6.3300E-10,2.0700E-09
+"Parameters: Vb=760m, Vin=800m",,,,,,,,,,
+2.0700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.5100E-10,2.1200E-09,1.1900E-09,6.5100E-10,2.1200E-09
+"Parameters: Vb=760m, Vin=810m",,,,,,,,,,
+2.0800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.6900E-10,2.1600E-09,1.2200E-09,6.6900E-10,2.1600E-09
+"Parameters: Vb=760m, Vin=820m",,,,,,,,,,
+2.0900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.8700E-10,2.2100E-09,1.2400E-09,6.8700E-10,2.2100E-09
+"Parameters: Vb=760m, Vin=830m",,,,,,,,,,
+2.1000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.0500E-10,2.2600E-09,1.2700E-09,7.0500E-10,2.2600E-09
+"Parameters: Vb=760m, Vin=840m",,,,,,,,,,
+2.1100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.2300E-10,2.3000E-09,1.3000E-09,7.2300E-10,2.3000E-09
+"Parameters: Vb=760m, Vin=850m",,,,,,,,,,
+2.1200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.4100E-10,2.3500E-09,1.3300E-09,7.4100E-10,2.3500E-09
+"Parameters: Vb=760m, Vin=860m",,,,,,,,,,
+2.1300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.6000E-10,2.3900E-09,1.3600E-09,7.6000E-10,2.3900E-09
+"Parameters: Vb=760m, Vin=870m",,,,,,,,,,
+2.1400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.7800E-10,2.4400E-09,1.3900E-09,7.7800E-10,2.4400E-09
+"Parameters: Vb=760m, Vin=880m",,,,,,,,,,
+2.1500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.9600E-10,2.4800E-09,1.4200E-09,7.9600E-10,2.4800E-09
+"Parameters: Vb=760m, Vin=890m",,,,,,,,,,
+2.1600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.1400E-10,2.5300E-09,1.4500E-09,8.1400E-10,2.5300E-09
+"Parameters: Vb=760m, Vin=900m",,,,,,,,,,
+2.1700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,8.3200E-10,2.5800E-09,1.4800E-09,8.3200E-10,2.5800E-09
+"Parameters: Vb=770m, Vin=600m",,,,,,,,,,
+2.1800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,2.7900E-10,1.1600E-09,5.8600E-10,2.7900E-10,1.1600E-09
+"Parameters: Vb=770m, Vin=610m",,,,,,,,,,
+2.1900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,2.9600E-10,1.2100E-09,6.1400E-10,2.9600E-10,1.2100E-09
+"Parameters: Vb=770m, Vin=620m",,,,,,,,,,
+2.2000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.1300E-10,1.2500E-09,6.4200E-10,3.1300E-10,1.2500E-09
+"Parameters: Vb=770m, Vin=630m",,,,,,,,,,
+2.2100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.3100E-10,1.3000E-09,6.7000E-10,3.3100E-10,1.3000E-09
+"Parameters: Vb=770m, Vin=640m",,,,,,,,,,
+2.2200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.4800E-10,1.3400E-09,6.9800E-10,3.4800E-10,1.3400E-09
+"Parameters: Vb=770m, Vin=650m",,,,,,,,,,
+2.2300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.6500E-10,1.3900E-09,7.2600E-10,3.6500E-10,1.3900E-09
+"Parameters: Vb=770m, Vin=660m",,,,,,,,,,
+2.2400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.8300E-10,1.4300E-09,7.5300E-10,3.8300E-10,1.4300E-09
+"Parameters: Vb=770m, Vin=670m",,,,,,,,,,
+2.2500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.0000E-10,1.4800E-09,7.8100E-10,4.0000E-10,1.4800E-09
+"Parameters: Vb=770m, Vin=680m",,,,,,,,,,
+2.2600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.1700E-10,1.5200E-09,8.0900E-10,4.1700E-10,1.5200E-09
+"Parameters: Vb=770m, Vin=690m",,,,,,,,,,
+2.2700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.3500E-10,1.5700E-09,8.3700E-10,4.3500E-10,1.5700E-09
+"Parameters: Vb=770m, Vin=700m",,,,,,,,,,
+2.2800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.5200E-10,1.6100E-09,8.6500E-10,4.5200E-10,1.6100E-09
+"Parameters: Vb=770m, Vin=710m",,,,,,,,,,
+2.2900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.6900E-10,1.6600E-09,8.9300E-10,4.6900E-10,1.6600E-09
+"Parameters: Vb=770m, Vin=720m",,,,,,,,,,
+2.3000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.8600E-10,1.7000E-09,9.2100E-10,4.8600E-10,1.7000E-09
+"Parameters: Vb=770m, Vin=730m",,,,,,,,,,
+2.3100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.0400E-10,1.7500E-09,9.4800E-10,5.0400E-10,1.7500E-09
+"Parameters: Vb=770m, Vin=740m",,,,,,,,,,
+2.3200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.2100E-10,1.7900E-09,9.7600E-10,5.2100E-10,1.7900E-09
+"Parameters: Vb=770m, Vin=750m",,,,,,,,,,
+2.3300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.3800E-10,1.8400E-09,1.0000E-09,5.3800E-10,1.8400E-09
+"Parameters: Vb=770m, Vin=760m",,,,,,,,,,
+2.3400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.5600E-10,1.8800E-09,1.0300E-09,5.5600E-10,1.8800E-09
+"Parameters: Vb=770m, Vin=770m",,,,,,,,,,
+2.3500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.7300E-10,1.9300E-09,1.0600E-09,5.7300E-10,1.9300E-09
+"Parameters: Vb=770m, Vin=780m",,,,,,,,,,
+2.3600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.9000E-10,1.9700E-09,1.0900E-09,5.9000E-10,1.9700E-09
+"Parameters: Vb=770m, Vin=790m",,,,,,,,,,
+2.3700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.0800E-10,2.0200E-09,1.1200E-09,6.0800E-10,2.0200E-09
+"Parameters: Vb=770m, Vin=800m",,,,,,,,,,
+2.3800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.2500E-10,2.0600E-09,1.1400E-09,6.2500E-10,2.0600E-09
+"Parameters: Vb=770m, Vin=810m",,,,,,,,,,
+2.3900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.4200E-10,2.1100E-09,1.1700E-09,6.4200E-10,2.1100E-09
+"Parameters: Vb=770m, Vin=820m",,,,,,,,,,
+2.4000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.5900E-10,2.1500E-09,1.2000E-09,6.5900E-10,2.1500E-09
+"Parameters: Vb=770m, Vin=830m",,,,,,,,,,
+2.4100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.7700E-10,2.1900E-09,1.2300E-09,6.7700E-10,2.1900E-09
+"Parameters: Vb=770m, Vin=840m",,,,,,,,,,
+2.4200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.9400E-10,2.2400E-09,1.2500E-09,6.9400E-10,2.2400E-09
+"Parameters: Vb=770m, Vin=850m",,,,,,,,,,
+2.4300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.1100E-10,2.2800E-09,1.2800E-09,7.1100E-10,2.2800E-09
+"Parameters: Vb=770m, Vin=860m",,,,,,,,,,
+2.4400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.2900E-10,2.3300E-09,1.3100E-09,7.2900E-10,2.3300E-09
+"Parameters: Vb=770m, Vin=870m",,,,,,,,,,
+2.4500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.4600E-10,2.3700E-09,1.3400E-09,7.4600E-10,2.3700E-09
+"Parameters: Vb=770m, Vin=880m",,,,,,,,,,
+2.4600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.6300E-10,2.4200E-09,1.3700E-09,7.6300E-10,2.4200E-09
+"Parameters: Vb=770m, Vin=890m",,,,,,,,,,
+2.4700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.8100E-10,2.4600E-09,1.3900E-09,7.8100E-10,2.4600E-09
+"Parameters: Vb=770m, Vin=900m",,,,,,,,,,
+2.4800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.9800E-10,2.5100E-09,1.4200E-09,7.9800E-10,2.5100E-09
+"Parameters: Vb=780m, Vin=600m",,,,,,,,,,
+2.4900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,2.6900E-10,1.1400E-09,5.6700E-10,2.6900E-10,1.1400E-09
+"Parameters: Vb=780m, Vin=610m",,,,,,,,,,
+2.5000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,2.8600E-10,1.1800E-09,5.9400E-10,2.8600E-10,1.1800E-09
+"Parameters: Vb=780m, Vin=620m",,,,,,,,,,
+2.5100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.0200E-10,1.2200E-09,6.2100E-10,3.0200E-10,1.2200E-09
+"Parameters: Vb=780m, Vin=630m",,,,,,,,,,
+2.5200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.1900E-10,1.2700E-09,6.4800E-10,3.1900E-10,1.2700E-09
+"Parameters: Vb=780m, Vin=640m",,,,,,,,,,
+2.5300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.3500E-10,1.3100E-09,6.7500E-10,3.3500E-10,1.3100E-09
+"Parameters: Vb=780m, Vin=650m",,,,,,,,,,
+2.5400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.5200E-10,1.3500E-09,7.0200E-10,3.5200E-10,1.3500E-09
+"Parameters: Vb=780m, Vin=660m",,,,,,,,,,
+2.5500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.6900E-10,1.4000E-09,7.2900E-10,3.6900E-10,1.4000E-09
+"Parameters: Vb=780m, Vin=670m",,,,,,,,,,
+2.5600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.8500E-10,1.4400E-09,7.5600E-10,3.8500E-10,1.4400E-09
+"Parameters: Vb=780m, Vin=680m",,,,,,,,,,
+2.5700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.0200E-10,1.4900E-09,7.8200E-10,4.0200E-10,1.4900E-09
+"Parameters: Vb=780m, Vin=690m",,,,,,,,,,
+2.5800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.1800E-10,1.5300E-09,8.0900E-10,4.1800E-10,1.5300E-09
+"Parameters: Vb=780m, Vin=700m",,,,,,,,,,
+2.5900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.3500E-10,1.5700E-09,8.3600E-10,4.3500E-10,1.5700E-09
+"Parameters: Vb=780m, Vin=710m",,,,,,,,,,
+2.6000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.5200E-10,1.6200E-09,8.6300E-10,4.5200E-10,1.6200E-09
+"Parameters: Vb=780m, Vin=720m",,,,,,,,,,
+2.6100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.6800E-10,1.6600E-09,8.9000E-10,4.6800E-10,1.6600E-09
+"Parameters: Vb=780m, Vin=730m",,,,,,,,,,
+2.6200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.8500E-10,1.7000E-09,9.1700E-10,4.8500E-10,1.7000E-09
+"Parameters: Vb=780m, Vin=740m",,,,,,,,,,
+2.6300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.0100E-10,1.7500E-09,9.4300E-10,5.0100E-10,1.7500E-09
+"Parameters: Vb=780m, Vin=750m",,,,,,,,,,
+2.6400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.1800E-10,1.7900E-09,9.7000E-10,5.1800E-10,1.7900E-09
+"Parameters: Vb=780m, Vin=760m",,,,,,,,,,
+2.6500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.3400E-10,1.8300E-09,9.9700E-10,5.3400E-10,1.8300E-09
+"Parameters: Vb=780m, Vin=770m",,,,,,,,,,
+2.6600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.5100E-10,1.8800E-09,1.0200E-09,5.5100E-10,1.8800E-09
+"Parameters: Vb=780m, Vin=780m",,,,,,,,,,
+2.6700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.6800E-10,1.9200E-09,1.0500E-09,5.6800E-10,1.9200E-09
+"Parameters: Vb=780m, Vin=790m",,,,,,,,,,
+2.6800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.8400E-10,1.9600E-09,1.0800E-09,5.8400E-10,1.9600E-09
+"Parameters: Vb=780m, Vin=800m",,,,,,,,,,
+2.6900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.0100E-10,2.0100E-09,1.1000E-09,6.0100E-10,2.0100E-09
+"Parameters: Vb=780m, Vin=810m",,,,,,,,,,
+2.7000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.1700E-10,2.0500E-09,1.1300E-09,6.1700E-10,2.0500E-09
+"Parameters: Vb=780m, Vin=820m",,,,,,,,,,
+2.7100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.3400E-10,2.1000E-09,1.1600E-09,6.3400E-10,2.1000E-09
+"Parameters: Vb=780m, Vin=830m",,,,,,,,,,
+2.7200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.5100E-10,2.1400E-09,1.1900E-09,6.5100E-10,2.1400E-09
+"Parameters: Vb=780m, Vin=840m",,,,,,,,,,
+2.7300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.6700E-10,2.1800E-09,1.2100E-09,6.6700E-10,2.1800E-09
+"Parameters: Vb=780m, Vin=850m",,,,,,,,,,
+2.7400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.8400E-10,2.2300E-09,1.2400E-09,6.8400E-10,2.2300E-09
+"Parameters: Vb=780m, Vin=860m",,,,,,,,,,
+2.7500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.0000E-10,2.2700E-09,1.2700E-09,7.0000E-10,2.2700E-09
+"Parameters: Vb=780m, Vin=870m",,,,,,,,,,
+2.7600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.1700E-10,2.3100E-09,1.2900E-09,7.1700E-10,2.3100E-09
+"Parameters: Vb=780m, Vin=880m",,,,,,,,,,
+2.7700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.3300E-10,2.3600E-09,1.3200E-09,7.3300E-10,2.3600E-09
+"Parameters: Vb=780m, Vin=890m",,,,,,,,,,
+2.7800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.5000E-10,2.4000E-09,1.3500E-09,7.5000E-10,2.4000E-09
+"Parameters: Vb=780m, Vin=900m",,,,,,,,,,
+2.7900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.6700E-10,2.4400E-09,1.3700E-09,7.6700E-10,2.4400E-09
+"Parameters: Vb=790m, Vin=600m",,,,,,,,,,
+2.8000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,2.6000E-10,1.1100E-09,5.5000E-10,2.6000E-10,1.1100E-09
+"Parameters: Vb=790m, Vin=610m",,,,,,,,,,
+2.8100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,2.7600E-10,1.1500E-09,5.7600E-10,2.7600E-10,1.1500E-09
+"Parameters: Vb=790m, Vin=620m",,,,,,,,,,
+2.8200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,2.9200E-10,1.1900E-09,6.0200E-10,2.9200E-10,1.1900E-09
+"Parameters: Vb=790m, Vin=630m",,,,,,,,,,
+2.8300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.0800E-10,1.2400E-09,6.2800E-10,3.0800E-10,1.2400E-09
+"Parameters: Vb=790m, Vin=640m",,,,,,,,,,
+2.8400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.2400E-10,1.2800E-09,6.5400E-10,3.2400E-10,1.2800E-09
+"Parameters: Vb=790m, Vin=650m",,,,,,,,,,
+2.8500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.4000E-10,1.3200E-09,6.8000E-10,3.4000E-10,1.3200E-09
+"Parameters: Vb=790m, Vin=660m",,,,,,,,,,
+2.8600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.5600E-10,1.3700E-09,7.0600E-10,3.5600E-10,1.3700E-09
+"Parameters: Vb=790m, Vin=670m",,,,,,,,,,
+2.8700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.7200E-10,1.4100E-09,7.3200E-10,3.7200E-10,1.4100E-09
+"Parameters: Vb=790m, Vin=680m",,,,,,,,,,
+2.8800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.8800E-10,1.4500E-09,7.5800E-10,3.8800E-10,1.4500E-09
+"Parameters: Vb=790m, Vin=690m",,,,,,,,,,
+2.8900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.0400E-10,1.4900E-09,7.8400E-10,4.0400E-10,1.4900E-09
+"Parameters: Vb=790m, Vin=700m",,,,,,,,,,
+2.9000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.1900E-10,1.5400E-09,8.1000E-10,4.1900E-10,1.5400E-09
+"Parameters: Vb=790m, Vin=710m",,,,,,,,,,
+2.9100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.3500E-10,1.5800E-09,8.3600E-10,4.3500E-10,1.5800E-09
+"Parameters: Vb=790m, Vin=720m",,,,,,,,,,
+2.9200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.5100E-10,1.6200E-09,8.6200E-10,4.5100E-10,1.6200E-09
+"Parameters: Vb=790m, Vin=730m",,,,,,,,,,
+2.9300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.6700E-10,1.6600E-09,8.8700E-10,4.6700E-10,1.6600E-09
+"Parameters: Vb=790m, Vin=740m",,,,,,,,,,
+2.9400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.8300E-10,1.7100E-09,9.1300E-10,4.8300E-10,1.7100E-09
+"Parameters: Vb=790m, Vin=750m",,,,,,,,,,
+2.9500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.9900E-10,1.7500E-09,9.3900E-10,4.9900E-10,1.7500E-09
+"Parameters: Vb=790m, Vin=760m",,,,,,,,,,
+2.9600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.1500E-10,1.7900E-09,9.6500E-10,5.1500E-10,1.7900E-09
+"Parameters: Vb=790m, Vin=770m",,,,,,,,,,
+2.9700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.3100E-10,1.8300E-09,9.9100E-10,5.3100E-10,1.8300E-09
+"Parameters: Vb=790m, Vin=780m",,,,,,,,,,
+2.9800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.4700E-10,1.8800E-09,1.0200E-09,5.4700E-10,1.8800E-09
+"Parameters: Vb=790m, Vin=790m",,,,,,,,,,
+2.9900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.6300E-10,1.9200E-09,1.0400E-09,5.6300E-10,1.9200E-09
+"Parameters: Vb=790m, Vin=800m",,,,,,,,,,
+3.0000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.7900E-10,1.9600E-09,1.0700E-09,5.7900E-10,1.9600E-09
+"Parameters: Vb=790m, Vin=810m",,,,,,,,,,
+3.0100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.9500E-10,2.0000E-09,1.0900E-09,5.9500E-10,2.0000E-09
+"Parameters: Vb=790m, Vin=820m",,,,,,,,,,
+3.0200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.1000E-10,2.0400E-09,1.1200E-09,6.1000E-10,2.0400E-09
+"Parameters: Vb=790m, Vin=830m",,,,,,,,,,
+3.0300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.2600E-10,2.0900E-09,1.1500E-09,6.2600E-10,2.0900E-09
+"Parameters: Vb=790m, Vin=840m",,,,,,,,,,
+3.0400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.4200E-10,2.1300E-09,1.1700E-09,6.4200E-10,2.1300E-09
+"Parameters: Vb=790m, Vin=850m",,,,,,,,,,
+3.0500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.5800E-10,2.1700E-09,1.2000E-09,6.5800E-10,2.1700E-09
+"Parameters: Vb=790m, Vin=860m",,,,,,,,,,
+3.0600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.7400E-10,2.2100E-09,1.2200E-09,6.7400E-10,2.2100E-09
+"Parameters: Vb=790m, Vin=870m",,,,,,,,,,
+3.0700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.9000E-10,2.2600E-09,1.2500E-09,6.9000E-10,2.2600E-09
+"Parameters: Vb=790m, Vin=880m",,,,,,,,,,
+3.0800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.0600E-10,2.3000E-09,1.2800E-09,7.0600E-10,2.3000E-09
+"Parameters: Vb=790m, Vin=890m",,,,,,,,,,
+3.0900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.2200E-10,2.3400E-09,1.3000E-09,7.2200E-10,2.3400E-09
+"Parameters: Vb=790m, Vin=900m",,,,,,,,,,
+3.1000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.3800E-10,2.3800E-09,1.3300E-09,7.3800E-10,2.3800E-09
+"Parameters: Vb=800m, Vin=600m",,,,,,,,,,
+3.1100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,2.5200E-10,1.0800E-09,5.3500E-10,2.5200E-10,1.0800E-09
+"Parameters: Vb=800m, Vin=610m",,,,,,,,,,
+3.1200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,2.6700E-10,1.1300E-09,5.6000E-10,2.6700E-10,1.1300E-09
+"Parameters: Vb=800m, Vin=620m",,,,,,,,,,
+3.1300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,2.8300E-10,1.1700E-09,5.8500E-10,2.8300E-10,1.1700E-09
+"Parameters: Vb=800m, Vin=630m",,,,,,,,,,
+3.1400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,2.9800E-10,1.2100E-09,6.1000E-10,2.9800E-10,1.2100E-09
+"Parameters: Vb=800m, Vin=640m",,,,,,,,,,
+3.1500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.1300E-10,1.2500E-09,6.3500E-10,3.1300E-10,1.2500E-09
+"Parameters: Vb=800m, Vin=650m",,,,,,,,,,
+3.1600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.2900E-10,1.2900E-09,6.6000E-10,3.2900E-10,1.2900E-09
+"Parameters: Vb=800m, Vin=660m",,,,,,,,,,
+3.1700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.4400E-10,1.3300E-09,6.8500E-10,3.4400E-10,1.3300E-09
+"Parameters: Vb=800m, Vin=670m",,,,,,,,,,
+3.1800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.5900E-10,1.3800E-09,7.1000E-10,3.5900E-10,1.3800E-09
+"Parameters: Vb=800m, Vin=680m",,,,,,,,,,
+3.1900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.7500E-10,1.4200E-09,7.3600E-10,3.7500E-10,1.4200E-09
+"Parameters: Vb=800m, Vin=690m",,,,,,,,,,
+3.2000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,3.9000E-10,1.4600E-09,7.6100E-10,3.9000E-10,1.4600E-09
+"Parameters: Vb=800m, Vin=700m",,,,,,,,,,
+3.2100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.0500E-10,1.5000E-09,7.8600E-10,4.0500E-10,1.5000E-09
+"Parameters: Vb=800m, Vin=710m",,,,,,,,,,
+3.2200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.2000E-10,1.5400E-09,8.1100E-10,4.2000E-10,1.5400E-09
+"Parameters: Vb=800m, Vin=720m",,,,,,,,,,
+3.2300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.3600E-10,1.5800E-09,8.3600E-10,4.3600E-10,1.5800E-09
+"Parameters: Vb=800m, Vin=730m",,,,,,,,,,
+3.2400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.5100E-10,1.6300E-09,8.6100E-10,4.5100E-10,1.6300E-09
+"Parameters: Vb=800m, Vin=740m",,,,,,,,,,
+3.2500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.6600E-10,1.6700E-09,8.8600E-10,4.6600E-10,1.6700E-09
+"Parameters: Vb=800m, Vin=750m",,,,,,,,,,
+3.2600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.8200E-10,1.7100E-09,9.1100E-10,4.8200E-10,1.7100E-09
+"Parameters: Vb=800m, Vin=760m",,,,,,,,,,
+3.2700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,4.9700E-10,1.7500E-09,9.3600E-10,4.9700E-10,1.7500E-09
+"Parameters: Vb=800m, Vin=770m",,,,,,,,,,
+3.2800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.1200E-10,1.7900E-09,9.6100E-10,5.1200E-10,1.7900E-09
+"Parameters: Vb=800m, Vin=780m",,,,,,,,,,
+3.2900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.2800E-10,1.8300E-09,9.8600E-10,5.2800E-10,1.8300E-09
+"Parameters: Vb=800m, Vin=790m",,,,,,,,,,
+3.3000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.4300E-10,1.8700E-09,1.0100E-09,5.4300E-10,1.8700E-09
+"Parameters: Vb=800m, Vin=800m",,,,,,,,,,
+3.3100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.5800E-10,1.9100E-09,1.0400E-09,5.5800E-10,1.9100E-09
+"Parameters: Vb=800m, Vin=810m",,,,,,,,,,
+3.3200E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.7400E-10,1.9600E-09,1.0600E-09,5.7400E-10,1.9600E-09
+"Parameters: Vb=800m, Vin=820m",,,,,,,,,,
+3.3300E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,5.8900E-10,2.0000E-09,1.0900E-09,5.8900E-10,2.0000E-09
+"Parameters: Vb=800m, Vin=830m",,,,,,,,,,
+3.3400E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.0400E-10,2.0400E-09,1.1100E-09,6.0400E-10,2.0400E-09
+"Parameters: Vb=800m, Vin=840m",,,,,,,,,,
+3.3500E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.1900E-10,2.0800E-09,1.1400E-09,6.1900E-10,2.0800E-09
+"Parameters: Vb=800m, Vin=850m",,,,,,,,,,
+3.3600E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.3500E-10,2.1200E-09,1.1600E-09,6.3500E-10,2.1200E-09
+"Parameters: Vb=800m, Vin=860m",,,,,,,,,,
+3.3700E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.5000E-10,2.1600E-09,1.1900E-09,6.5000E-10,2.1600E-09
+"Parameters: Vb=800m, Vin=870m",,,,,,,,,,
+3.3800E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.6500E-10,2.2000E-09,1.2100E-09,6.6500E-10,2.2000E-09
+"Parameters: Vb=800m, Vin=880m",,,,,,,,,,
+3.3900E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.8100E-10,2.2500E-09,1.2400E-09,6.8100E-10,2.2500E-09
+"Parameters: Vb=800m, Vin=890m",,,,,,,,,,
+3.4000E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,6.9600E-10,2.2900E-09,1.2600E-09,6.9600E-10,2.2900E-09
+"Parameters: Vb=800m, Vin=900m",,,,,,,,,,
+3.4100E+02,TimeDomain_TB_Basic_VTC_TB_1,Delay,,,,7.1100E-10,2.3300E-09,1.2900E-09,7.1100E-10,2.3300E-09

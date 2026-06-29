@@ -217,7 +217,7 @@ err_t fn_readSRAM(){
 	DEBUG_PRINT("Finished Running readSRAM\n");
 	return err;
 }
-//
+
 //err_t fn_linear(){
 //	err_t err = 0;
 //	DEBUG_PRINT("Started Running Linear\n");
@@ -301,7 +301,8 @@ err_t fn_readSRAM(){
 //	DEBUG_PRINT("Finished Running Linear\n");
 //	return err;
 //}
-//
+
+
 //err_t fn_convolution(){
 //	err_t err = 0;
 //	DEBUG_PRINT("Started Running Convolution\n");
@@ -455,29 +456,28 @@ err_t fn_marchingsram(){
 //	return err;
 //}
 
-////Fast IMC for DNN
-//err_t fn_fastimc(){
-//	//Data of this fn is structured as : Dummy Data.
-//	err_t err = 0;
-//	DEBUG_PRINT("Started Running FastIMC\n");
-//	u8 TIME_CHARGE = GLOBAL_FN_TCP_DATA.Data_Ptr[0];
-//	//Call c write SRAM function here.
-//	err = fast_IMC(TIME_CHARGE);
-//
-//	//Set IO to default //Call this only if necessary
-//	set_ChipIO_to_Default();
-//	//Send expected reply
-//	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
-//	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
-//	u32 data_size = 1280; //640*4*4 bits -> 1280 bytes
-//	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
-//	err = transfer_data(GLOBAL_SM_DATA.dma_imcout_buffer, data_size);
-//
-//	//Set FN_DATA to default.
-//	set_fn_data_to_default();
-//	DEBUG_PRINT("Finished Running FastIMC\n");
-//	return err;
-//}
+//Fast IMC for DNN
+err_t fn_fastimc(){
+	//Data of this fn is structured as : Dummy Data.
+	err_t err = 0;
+	DEBUG_PRINT("Started Running FastIMC\n");
+	//Call c write SRAM function here.
+	err = fast_IMC();
+
+	//Set IO to default //Call this only if necessary
+	set_ChipIO_to_Default();
+	//Send expected reply
+	u8 fn_name = GLOBAL_FN_TCP_DATA.fn_name;
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &fn_name, 1, TCP_WRITE_FLAG_COPY);
+	u32 data_size = 450; //900*4 bits -> 450 bytes
+	err = tcp_write(GLOBAL_WRITE_TCP_DATA.pcb, &data_size, 4, TCP_WRITE_FLAG_COPY);
+	err = transfer_data(GLOBAL_SM_DATA.dma_imcout_buffer, data_size);
+
+	//Set FN_DATA to default.
+	set_fn_data_to_default();
+	DEBUG_PRINT("Finished Running FastIMC\n");
+	return err;
+}
 
 //Get Data for DL Correction
 //err_t fn_getcorrectiondata(){
@@ -546,9 +546,9 @@ err_t process_fn(){
 //	else if(GLOBAL_FN_TCP_DATA.fn_name == fastCalib){
 //		err = fn_fastCalib();
 //	}
-//	else if(GLOBAL_FN_TCP_DATA.fn_name == fastimc){
-//		err = fn_fastimc();
-//	}
+	else if(GLOBAL_FN_TCP_DATA.fn_name == fastimc){
+		err = fn_fastimc();
+	}
 //	else if(GLOBAL_FN_TCP_DATA.fn_name == getcorrectiondata){
 //		err = fn_getcorrectiondata();
 //	}

@@ -2,7 +2,7 @@
 #include "utils.h"
 #include "state_machine.h"
 #include <math.h>
-
+#include <unistd.h>
 #include <malloc.h>
 
 void print_heap_info() {
@@ -449,7 +449,9 @@ u8 dma_send_recv_test(u8 scan_id,u16 scan_len){
 		return -1;
 	}
 	// Wait for MM2S completion
-	while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+	while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE)){
+		// Do nothing
+	}
 	//EN low Recv_Data of verilog controller
 	{
 		u8 signals[1] = {SCAN_IN_RECV_V};
@@ -516,7 +518,9 @@ u8 verilog_scan_in(u8* scan_data, u8 scan_id, u16 scan_len){
 		return -1;
 	}
 	// Wait for MM2S completion
-	while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE));
+	while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DMA_TO_DEVICE)) {
+		// Do nothing
+	}
 	//EN low Recv_Data of verilog controller
 	{
 		u8 signals[1] = {SCAN_IN_RECV_V};
@@ -539,7 +543,9 @@ u8 verilog_scan_in(u8* scan_data, u8 scan_id, u16 scan_len){
 		set_MODE_AXI_Bits(signals,1,values);
 	}
 	//Wait for SCAN_IN_DONE to go high
-	while(!(get_AXI_Bits(0) & (u8)4));
+	while(!(get_AXI_Bits(0) & (u8)4)) {
+		// do nothing
+	}
 	//Disable SCAN_IN
 	{
 		u8 signals[1] = {SCAN_IN_EN_V};
@@ -573,7 +579,9 @@ u32 verilog_scan_out(u8 scan_id,u16 scan_len){
 		set_MODE_AXI_Bits(signals,1,values);
 	}
 	//Wait for SCAN_OUT_DONE to go high
-	while(!(get_AXI_Bits(0) & (u8)8));
+	while(!(get_AXI_Bits(0) & (u8)8)) {
+		// do nothing
+	}
 	//Disable SCAN_OUT
 	{
 		u8 signals[1] = {SCAN_OUT_EN_V};
@@ -597,7 +605,9 @@ u32 verilog_scan_out(u8 scan_id,u16 scan_len){
 		return -1;
 	}
 	// Wait for S2MM completion
-	while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
+	while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA)) {
+		// do nothing
+	}
 	//DEBUG_PRINT("Received SCAN_Out Data from Verilog Controller\n");
 	//EN low Send_Data of verilog controller
 	{
@@ -700,7 +710,9 @@ u8 write_SRAM_WL_Verilog(u16 wl, u8* write_data){
 	}
 
 	//Wait for it to finish
-	while(!(get_AXI_Bits(0) & (u8)16));
+	while(!(get_AXI_Bits(0) & (u8)16)) {
+		// do nothing
+	}
 
 	//disable verilog Write
 	{
@@ -891,76 +903,79 @@ u8 read_SRAM_Full(){
 	return 0;
 }
 
-//u8 fast_IMC(u8 TIME_CHARGE){
-//	//Turn on required signals
-//	//printf("T_C? = %d\n",TIME_CHARGE);
-//	{
-//		u8 signals[3] = {CTRL_EN,InputEN_DAC,ENTIME};
-//		u8 values[3] = {1,1,TIME_CHARGE};
-//		set_AXI_Bits(signals,3,values);
-//	}
-//	//Enable FAST_IMC
-//	{
-//		u8 signals[1] = {FAST_IMC_EN_V};
-//		u8 values[1] = {1};
-//		set_MODE_AXI_Bits(signals,1,values);
-//	}
-//	//Wait for FAST_IMC_DONE to go high
-//	while(!(get_AXI_Bits(0) & (u8)32));
-//	//sleep(1); //Dummy sleep
-//	//Disable FAST_IMC
-//	{
-//		u8 signals[1] = {FAST_IMC_EN_V};
-//		u8 values[1] = {0};
-//		set_MODE_AXI_Bits(signals,1,values);
-//	}
-//	//Turn off required signals
-//	{
-//		u8 signals[3] = {CTRL_EN,InputEN_DAC,ENTIME};
-//		u8 values[3] = {0,0,0};
-//		set_AXI_Bits(signals,3,values);
-//	}
-//	//DEBUG_PRINT("Verilog FAST_IMC Done\n");
-//
-//	//calling receive function
-//	//EN SEND_IMC_DATA_V of verilog controller
-//	{
-//		u8 signals[1] = {SEND_IMC_DATA_V};
-//		u8 values[1] = {1};
-//		set_MODE_AXI_Bits(signals,1,values);
-//	}
-//	// Start S2MM: Receive data back from FPGA
-//	u8 status;
-//	Xil_DCacheFlushRange((UINTPTR)GLOBAL_SM_DATA.dma_imcout_buffer, 1280);
-//	status = XAxiDma_SimpleTransfer(&GLOBAL_SM_DATA.AxiDma, (UINTPTR)GLOBAL_SM_DATA.dma_imcout_buffer, 1280, XAXIDMA_DEVICE_TO_DMA);
-//	if (status != XST_SUCCESS) {
-//		DEBUG_PRINT("S2MM transfer failed\n");
-//		return -1;
-//	}
-//
-//	// Wait for S2MM completion
-//	while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA));
-//	//DEBUG_PRINT("Received SCAN_Out Data from Verilog Controller\n");
-//
-//	//EN low Send_Data of verilog controller
-//	{
-//		u8 signals[2] = {SEND_IMC_DATA_V};
-//		u8 values[2] = {0};
-//		set_MODE_AXI_Bits(signals,1,values);
-//	}
-//	set_ModeIO_to_Default();
-//	TDC_OUT_u8_to_dec();
-//	/*
-//	for(int i = 0; i < 1024; i++){
-//		int value = round(GLOBAL_SM_DATA.imc_out_mac[i] * GLOBAL_SM_DATA.Correction_Data[0][(int)(i/256)][(int)(i/64)%4][i%64] + GLOBAL_SM_DATA.Correction_Data[1][(int)(i/256)][(int)(i/64)%4][i%64]);
-//		printf("%d  ",value);
-//		if(i%64 == 63 && i != 0){
-//			printf("\n\n");
-//		}
-//	}
-//	*/
-//	return 0;
-//}
+u8 fast_IMC(){
+	//Turn on required signals
+	{
+		u8 signals[2] = {CTRL_EN,InputEN_DAC};
+		u8 values[2] = {1,1};
+		set_AXI_Bits(signals,2,values);
+	}
+	//Enable FAST_IMC
+	{
+		u8 signals[1] = {FAST_IMC_EN_V};
+		u8 values[1] = {1};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	//Wait for FAST_IMC_DONE to go high
+	while(!(get_AXI_Bits(0) & (u8)32)){
+		// Do Nothing
+	}
+	//sleep(1); //Dummy sleep
+	//Disable FAST_IMC
+	{
+		u8 signals[1] = {FAST_IMC_EN_V};
+		u8 values[1] = {0};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	//Turn off required signals
+	{
+		u8 signals[2] = {CTRL_EN,InputEN_DAC};
+		u8 values[2] = {0,0};
+		set_AXI_Bits(signals,2,values);
+	}
+	//DEBUG_PRINT("Verilog FAST_IMC Done\n");
+
+	//calling receive function
+	//EN SEND_IMC_DATA_V of verilog controller
+	{
+		u8 signals[1] = {SEND_IMC_DATA_V};
+		u8 values[1] = {1};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	// Start S2MM: Receive data back from FPGA
+	u8 status;
+	Xil_DCacheFlushRange((UINTPTR)GLOBAL_SM_DATA.dma_imcout_buffer, 450);
+	status = XAxiDma_SimpleTransfer(&GLOBAL_SM_DATA.AxiDma, (UINTPTR)GLOBAL_SM_DATA.dma_imcout_buffer, 1280, XAXIDMA_DEVICE_TO_DMA);
+	if (status != XST_SUCCESS) {
+		DEBUG_PRINT("S2MM transfer failed\n");
+		return -1;
+	}
+
+	// Wait for S2MM completion
+	while (XAxiDma_Busy(&GLOBAL_SM_DATA.AxiDma, XAXIDMA_DEVICE_TO_DMA)){
+		// Do Nothing
+	}
+	//DEBUG_PRINT("Received SCAN_Out Data from Verilog Controller\n");
+
+	//EN low Send_Data of verilog controller
+	{
+		u8 signals[2] = {SEND_IMC_DATA_V};
+		u8 values[2] = {0};
+		set_MODE_AXI_Bits(signals,1,values);
+	}
+	set_ModeIO_to_Default();
+	TDC_OUT_u8_to_dec();
+	/*
+	for(int i = 0; i < 1024; i++){
+		int value = round(GLOBAL_SM_DATA.imc_out_mac[i] * GLOBAL_SM_DATA.Correction_Data[0][(int)(i/256)][(int)(i/64)%4][i%64] + GLOBAL_SM_DATA.Correction_Data[1][(int)(i/256)][(int)(i/64)%4][i%64]);
+		printf("%d  ",value);
+		if(i%64 == 63 && i != 0){
+			printf("\n\n");
+		}
+	}
+	*/
+	return 0;
+}
 
 //Compare the data for marching pattern
 //remember the data is in bytes not bits so all 0 -> 0 all 1 -> 255
@@ -987,7 +1002,7 @@ u8 marching_Pattern_SRAM(){
 	printf("WL0 -> WL1155\n");
 	for(u16 wl = 0; wl < NUM_WL; wl++){
 		//Read the data and check if all zeros
-		u16 scanned_bytes = read_SRAM_WL(wl);
+		//u16 scanned_bytes = read_SRAM_WL(wl);
 
 		GLOBAL_SM_DATA.dma_scanout_buffer[33] &= 0x3F;
 		u8 zero_match = compare_data(GLOBAL_SM_DATA.dma_scanout_buffer,GLOBAL_SM_DATA.scan_len[SA_OUT_SC]/8,0);
@@ -999,7 +1014,7 @@ u8 marching_Pattern_SRAM(){
 		write_SRAM_WL(wl,one_wl_array);
 
 		//Read one from WL and check if all ones
-		scanned_bytes = read_SRAM_WL(wl);
+		//u16 scanned_bytes = read_SRAM_WL(wl);
 
 		GLOBAL_SM_DATA.dma_scanout_buffer[33] |= 0xC0; // set the last 2 MSB to 1
 		u8 one_match = compare_data(GLOBAL_SM_DATA.dma_scanout_buffer,(GLOBAL_SM_DATA.scan_len[SA_OUT_SC]+2)/8,255);
@@ -1016,38 +1031,38 @@ u8 marching_Pattern_SRAM(){
 
 
 //Replicate Linear IMC functionality
-/*
-u8 replicateLINIMCHW(u8 oc,u8 c,u8 wb,u8 b,u8 xb,float* LIN_OUT){
-	u32 x_exp_offset = GLOBAL_LINEAR_DATA.sizes_data + GLOBAL_LINEAR_DATA.x_tensor_size + GLOBAL_LINEAR_DATA.w_tensor_size;
-	u32 w_exp_offset = x_exp_offset + GLOBAL_LINEAR_DATA.x_exp_size;
-	u32 offset = 0;
 
-	for(u8 kn = oc;kn < oc+ GLOBAL_LINEAR_DATA.WDL; kn++){//For set of W_Features
-		for(u8 ch = c; ch < c + GLOBAL_LINEAR_DATA.NUM_CHUNK;ch++){
-			offset = w_exp_offset + kn*GLOBAL_LINEAR_DATA.w_chunks*4 + ch*4;
-			u32 W_Weight = ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+3] << 24) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+2] << 16) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+1] << 8) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset]);
-			//printf("%d\n",offset);
-			//printf("%d\n",W_Weight);
-			for(u8 bt = b; bt < b + GLOBAL_LINEAR_DATA.XDL; bt ++){//For batch
-				offset = x_exp_offset + bt*GLOBAL_LINEAR_DATA.x_chunks*4 + ch*4;
-				u32 X_Weight = ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+3] << 24) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+2] << 16) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+1] << 8) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset]);
-				for(uint16_t n = 0; n < GLOBAL_LINEAR_DATA.MAC_LEN; n++){//For wordline
-					for(u8 i = wb; i < wb + GLOBAL_LINEAR_DATA.WBL;i++){//For weight bit
-						for(u8 j = xb; j < xb + GLOBAL_LINEAR_DATA.XBL; j++){// For image bit
-							int power = W_Weight+X_Weight+i+j;
-							float weight  = ((i == (GLOBAL_LINEAR_DATA.MANTISSA-1)) ^ (j==(GLOBAL_LINEAR_DATA.MANTISSA-1)))? (-1*pow(2,power)) : pow(2,power);
-							u8 x_bit = GLOBAL_FN_TCP_DATA.Data_Ptr[GLOBAL_LINEAR_DATA.sizes_data + bt*GLOBAL_LINEAR_DATA.x_chunks*GLOBAL_LINEAR_DATA.MAC_LEN*GLOBAL_LINEAR_DATA.x_bits + ch*GLOBAL_LINEAR_DATA.MAC_LEN*GLOBAL_LINEAR_DATA.x_bits + n*GLOBAL_LINEAR_DATA.x_bits + j];
-							u8 w_bit = GLOBAL_FN_TCP_DATA.Data_Ptr[GLOBAL_LINEAR_DATA.sizes_data + GLOBAL_LINEAR_DATA.x_tensor_size + kn*GLOBAL_LINEAR_DATA.w_chunks*GLOBAL_LINEAR_DATA.MAC_LEN*GLOBAL_LINEAR_DATA.w_bits + ch*GLOBAL_LINEAR_DATA.MAC_LEN*GLOBAL_LINEAR_DATA.w_bits + n*GLOBAL_LINEAR_DATA.w_bits + i];
-							LIN_OUT[bt*GLOBAL_LINEAR_DATA.w_batch + kn] += (x_bit * w_bit * weight);
-						}
-					}
-				}
-			}
-		}
-	}
-	return 0;
-}
-*/
+//u8 replicateLINIMCHW(u8 oc,u8 c,u8 wb,u8 b,u8 xb,float* LIN_OUT){
+//	u32 x_exp_offset = GLOBAL_LINEAR_DATA.sizes_data + GLOBAL_LINEAR_DATA.x_tensor_size + GLOBAL_LINEAR_DATA.w_tensor_size;
+//	u32 w_exp_offset = x_exp_offset + GLOBAL_LINEAR_DATA.x_exp_size;
+//	u32 offset = 0;
+//
+//	for(u8 kn = oc;kn < oc+ GLOBAL_LINEAR_DATA.WDL; kn++){//For set of W_Features
+//		for(u8 ch = c; ch < c + GLOBAL_LINEAR_DATA.NUM_CHUNK;ch++){
+//			offset = w_exp_offset + kn*GLOBAL_LINEAR_DATA.w_chunks*4 + ch*4;
+//			u32 W_Weight = ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+3] << 24) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+2] << 16) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+1] << 8) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset]);
+//			//printf("%d\n",offset);
+//			//printf("%d\n",W_Weight);
+//			for(u8 bt = b; bt < b + GLOBAL_LINEAR_DATA.XDL; bt ++){//For batch
+//				offset = x_exp_offset + bt*GLOBAL_LINEAR_DATA.x_chunks*4 + ch*4;
+//				u32 X_Weight = ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+3] << 24) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+2] << 16) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset+1] << 8) | ((u32)GLOBAL_FN_TCP_DATA.Data_Ptr[offset]);
+//				for(uint16_t n = 0; n < GLOBAL_LINEAR_DATA.MAC_LEN; n++){//For wordline
+//					for(u8 i = wb; i < wb + GLOBAL_LINEAR_DATA.WBL;i++){//For weight bit
+//						for(u8 j = xb; j < xb + GLOBAL_LINEAR_DATA.XBL; j++){// For image bit
+//							int power = W_Weight+X_Weight+i+j;
+//							float weight  = ((i == (GLOBAL_LINEAR_DATA.MANTISSA-1)) ^ (j==(GLOBAL_LINEAR_DATA.MANTISSA-1)))? (-1*pow(2,power)) : pow(2,power);
+//							u8 x_bit = GLOBAL_FN_TCP_DATA.Data_Ptr[GLOBAL_LINEAR_DATA.sizes_data + bt*GLOBAL_LINEAR_DATA.x_chunks*GLOBAL_LINEAR_DATA.MAC_LEN*GLOBAL_LINEAR_DATA.x_bits + ch*GLOBAL_LINEAR_DATA.MAC_LEN*GLOBAL_LINEAR_DATA.x_bits + n*GLOBAL_LINEAR_DATA.x_bits + j];
+//							u8 w_bit = GLOBAL_FN_TCP_DATA.Data_Ptr[GLOBAL_LINEAR_DATA.sizes_data + GLOBAL_LINEAR_DATA.x_tensor_size + kn*GLOBAL_LINEAR_DATA.w_chunks*GLOBAL_LINEAR_DATA.MAC_LEN*GLOBAL_LINEAR_DATA.w_bits + ch*GLOBAL_LINEAR_DATA.MAC_LEN*GLOBAL_LINEAR_DATA.w_bits + n*GLOBAL_LINEAR_DATA.w_bits + i];
+//							LIN_OUT[bt*GLOBAL_LINEAR_DATA.w_batch + kn] += (x_bit * w_bit * weight);
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
+//	return 0;
+//}
+
 /*
 u8 LINIMCHW(u8 oc, u8 c, u8 wb, u8 b, u8 xb, float* LIN_OUT) {
 	const u32 sizes_data       = GLOBAL_LINEAR_DATA.sizes_data;

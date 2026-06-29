@@ -1261,3 +1261,17 @@ con
 09:59:28 INFO  : Successfully done setting SDK workspace  
 09:59:28 INFO  : Processing command line option -hwspec C:/Chip2026_Testing/CHIP2026_TestingSetup/CHIP2026_TestingSetup.sdk/design_1_wrapper.hdf.
 09:59:28 INFO  : Checking for hwspec changes in the project design_1_wrapper_hw_platform_0.
+17:39:12 INFO  : Registering command handlers for SDK TCF services
+17:39:13 INFO  : Launching XSCT server: xsct.bat -interactive C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\temp_xsdb_launch_script.tcl
+17:39:18 INFO  : XSCT server has started successfully.
+17:39:18 INFO  : Successfully done setting XSCT server connection channel  
+17:39:23 INFO  : Successfully done setting SDK workspace  
+17:39:23 INFO  : Processing command line option -hwspec C:/Chip2026_Testing/CHIP2026_TestingSetup/CHIP2026_TestingSetup.sdk/design_1_wrapper.hdf.
+17:39:23 INFO  : Checking for hwspec changes in the project design_1_wrapper_hw_platform_0.
+09:31:08 INFO  : Registering command handlers for SDK TCF services
+09:31:09 INFO  : Launching XSCT server: xsct.bat -interactive C:\Chip2026_Testing\CHIP2026_TestingSetup\CHIP2026_TestingSetup.sdk\temp_xsdb_launch_script.tcl
+09:31:13 INFO  : XSCT server has started successfully.
+09:31:13 INFO  : Successfully done setting XSCT server connection channel  
+09:31:24 INFO  : Successfully done setting SDK workspace  
+09:31:24 INFO  : Processing command line option -hwspec C:/Chip2026_Testing/CHIP2026_TestingSetup/CHIP2026_TestingSetup.sdk/design_1_wrapper.hdf.
+09:31:24 INFO  : Checking for hwspec changes in the project design_1_wrapper_hw_platform_0.

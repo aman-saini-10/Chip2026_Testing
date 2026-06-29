@@ -64,7 +64,9 @@ initialise_FPGA();
 	unsigned char mac_ethernet_address[] =
 	{ 0x00, 0x0a, 0x35, 0x00, 0x01, 0x02 };
 
+	struct netif server_netif;
 	echo_netif = &server_netif;
+
 #if defined (__arm__) && !defined (ARMR5)
 #if XPAR_GIGE_PCS_PMA_SGMII_CORE_PRESENT == 1 || XPAR_GIGE_PCS_PMA_1000BASEX_CORE_PRESENT == 1
 	ProgramSi5324();
@@ -166,12 +168,9 @@ initialise_FPGA();
 xil_printf("\n\nDEBUG CHECK before start_application()\n\n");
 start_application();
 /* receive and process packets */
-int count = 0;
+
 while (1) {
-	count += 1;
-	if(count%10000000 == 0) {
-		xil_printf("\nPolling loop running\n");
-	}
+
 	/********LWIP Timers ***********/
 	if (TcpFastTmrFlag) {
 		tcp_fasttmr();

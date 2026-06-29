@@ -83,7 +83,7 @@ module IMC_ScanOut(
     reg [3:0] scan_idx;
     ////////////// SCAN_SELECT //////////////
     
-    assign SCAN_SEL = {3'b000, scan_id_cnt};
+    assign SCAN_SEL = {4'b0000, scan_id_cnt};
     
     
     ////////////// FSM LOGIC //////////////

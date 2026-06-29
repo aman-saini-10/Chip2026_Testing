@@ -144,17 +144,20 @@ u8 write_SRAM_Masked(u8* write_data);
 u8 set_CS(u8 coulmn_id);
 u16 read_SRAM_WL(u16 wl);
 u8 read_SRAM_Full();
+u8 marching_Pattern_SRAM();
+u8 fast_IMC();
+
 u8 replicateLINIMCHW(u8 oc,u8 c,u8 wb,u8 b,u8 xb,float* LIN_OUT);
 u8 replicateCONVIMCHW(u8 oc,u8 c,u8 wb,u16 s,u8 b,u8 xb,float* CONV_OUT);
-u8 marching_Pattern_SRAM();
-u8 fast_IMC(u8 TIME_CHARGE);
 u8 WeightData_To_SRAMBuff(u8 oc,u8 c,u8 wb,u32 w_offset, u8 w_chunks, u16 mac_len, u8 w_bits);
 u8 InputData_To_SRAMBuff(u8 b,u8 s,u8 c,u8 xb,u32 x_offset, u8 x_strides ,u8 x_chunks, u16 mac_len, u8 x_bits);
 u8 WeightData_To_SRAMBuff_Conv(u8 oc,u8 c,u8 wb,u32 w_offset, u8 w_chunks, u16 mac_len, u8 w_bits);
 u8 InputData_To_SRAMBuff_Conv(u8 b,u8 s,u8 c,u8 xb,u32 x_offset, u8 x_strides ,u8 x_chunks, u16 mac_len, u8 x_bits);
+u8 LINIMCHW(u8 oc, u8 c, u8 wb, u8 b, u8 xb, float* LIN_OUT);
+u8 CONVIMCHW(u8 oc, u8 c, u8 wb, u16 s, u8 b, u8 xb, float* CONV_OUT);
+
 float bytes_to_float(u8* bytes);
 void set_nth_bit(u8 *array, u8 n);
 void TDC_OUT_u8_to_dec();
-u8 LINIMCHW(u8 oc, u8 c, u8 wb, u8 b, u8 xb, float* LIN_OUT);
-u8 CONVIMCHW(u8 oc, u8 c, u8 wb, u16 s, u8 b, u8 xb, float* CONV_OUT);
+
 #endif /* SRC_UTILS_FUNC_H_ */
